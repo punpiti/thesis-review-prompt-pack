@@ -1,5 +1,7 @@
 # ข้อความสำหรับส่งให้นิสิต
 
+Thesis Review Prompt Pack: Student Edition v1.1
+
 ใช้ข้อความนี้ส่งให้นิสิตใน LINE, Google Classroom, LMS หรืออีเมลได้
 
 ```text

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About | Thesis Review Prompt Pack</title>
+  <title>About | Thesis Review Prompt Pack v1.1</title>
   <style>
     :root { --bg:#f7f8fb; --ink:#1f2933; --muted:#5b6776; --line:#d9dee7; --panel:#fff; --accent:#0f766e; --danger:#b42318; --radius:8px; font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
     * { box-sizing:border-box; }
@@ -46,7 +46,7 @@
   <div class="hero">
     <div class="hero-inner">
       <h1>About</h1>
-      <p>รายละเอียดของระบบ ขอบเขตการใช้ ข้อจำกัด และรายการไฟล์ในชุด prompt pack</p>
+      <p>รายละเอียดของระบบ ขอบเขตการใช้ ข้อจำกัด และรายการไฟล์ในชุด prompt pack รุ่น v1.1</p>
     </div>
   </div>
 
@@ -105,6 +105,7 @@
         <div class="file-row"><a href="webapp.html">webapp.html</a><span>fallback สำหรับ Gemini / ChatGPT / Claude เฉพาะตรวจข้อความสั้น ๆ</span></div>
         <div class="file-row"><span>input/v.../</span><span>โฟลเดอร์เก็บเอกสารต้นฉบับเป็นเวอร์ชัน เช่น v01_original, v02_revised โดย workflow ใช้เฉพาะเวอร์ชันล่าสุด</span></div>
         <div class="file-row"><span>02_references/pdf/</span><span>โฟลเดอร์ที่นิสิตควรใส่ PDF ของ reference ต้นฉบับ ถ้าไม่มี BibTeX ให้ AI สร้าง BibTeX จาก PDF เหล่านี้ได้โดยห้ามแต่งข้อมูลเอง</span></div>
+        <div class="file-row"><span>02_references/extracted_md/</span><span>โฟลเดอร์ที่ Codex หรือ Claude Code ควรเขียน Markdown หนึ่งไฟล์ต่อหนึ่ง PDF หลัง scan reference เพื่อเก็บ metadata, abstract evidence, หน้าที่ตรวจ และจุดที่ต้อง verify</span></div>
         <div class="file-row"><span>02_references/official_pages/</span><span>โฟลเดอร์สำหรับหน้า DOI, publisher page หรือข้อมูลจากแหล่งทางการของ paper ถ้ามี</span></div>
         <div class="file-row"><a href="00_intake_checklist.md">00_intake_checklist.md</a><span>checklist อ้างอิงแบบ Markdown สำหรับคนที่อยากเตรียม context เอง</span></div>
         <div class="file-row"><a href="01_full_thesis_review_prompt.md">01_full_thesis_review_prompt.md</a><span>prompt หลักสำหรับตรวจทั้งเล่มหรือทั้ง manuscript</span></div>
@@ -115,8 +116,13 @@
         <div class="file-row"><a href="05_choose_your_ai_workflow.md">05_choose_your_ai_workflow.md</a><span>เริ่มเลือกว่าจะใช้ AI แบบ chat หรือ workspace</span></div>
         <div class="file-row"><a href="05a_chat_ai_quota_limited_guide.md">05a_chat_ai_quota_limited_guide.md</a><span>คู่มือ Gemini / ChatGPT / Claude สำหรับ quota จำกัด</span></div>
         <div class="file-row"><a href="05b_workspace_ai_codex_claude_code_guide.md">05b_workspace_ai_codex_claude_code_guide.md</a><span>คู่มือ Codex / Claude Code / Antigravity</span></div>
+        <div class="file-row"><a href="AGENTS.md">AGENTS.md</a><span>instruction สำหรับ workspace agents เมื่อนำ prompt pack ไปใช้กับ Codex / Claude Code / Antigravity</span></div>
+        <div class="file-row"><a href="CLAUDE.md">CLAUDE.md</a><span>instruction คู่กันสำหรับ Claude Code</span></div>
+        <div class="file-row"><a href="workspace_template/README.md">workspace_template/</a><span>โครง workspace พร้อม AGENTS.md, CLAUDE.md และ README ในแต่ละโฟลเดอร์สำหรับให้นิสิตวางไฟล์งาน</span></div>
+        <div class="file-row"><a href="codex_skill/SKILL.md">codex_skill/SKILL.md</a><span>skill แบบย่อสำหรับ Codex หรือ agent ที่รองรับ skill เพื่อลดการ paste prompt ยาว</span></div>
         <div class="file-row"><a href="STUDENT_HANDOUT.md">STUDENT_HANDOUT.md</a><span>ข้อความสั้นสำหรับส่งให้นิสิต</span></div>
         <div class="file-row"><a href="LICENSE.md">LICENSE.md</a><span>เงื่อนไขการนำไปใช้และเผยแพร่ต่อ</span></div>
+        <div class="file-row"><a href="VERSION.md">VERSION.md</a><span>เลขเวอร์ชันและสรุปการเปลี่ยนแปลง</span></div>
         <div class="file-row"><a href="templates/04_review_notes/01_full_review_TEMPLATE.md">01_full_review_TEMPLATE.md</a><span>template โครงรายงานสำหรับไฟล์ผลตรวจเต็มที่ AI จะสร้างเป็น 04_review_notes/01_full_review.md</span></div>
         <div class="file-row"><a href="templates/04_review_notes/03_student_action_checklist_TEMPLATE.md">03_student_action_checklist_TEMPLATE.md</a><span>template ตัวอย่างของไฟล์ action checklist ที่ AI จะสร้างใน workspace หลังตรวจเสร็จ</span></div>
         <div class="file-row"><a href="templates/04_review_notes/99_review_state_TEMPLATE.md">99_review_state_TEMPLATE.md</a><span>template สำหรับบันทึกว่าเคยตรวจอะไรแล้ว อะไรค้าง และรอบหน้าควรใช้ prompt อะไรทำต่อ</span></div>

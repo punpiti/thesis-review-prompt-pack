@@ -2,6 +2,8 @@
 
 ใช้ prompt นี้เมื่อต้องการตรวจ bibliography, BibTeX, citation use, literature clusters หรือเมื่อต้องสร้าง/เติม BibTeX จาก PDF reference
 
+ถ้าใช้ใน workspace AI เช่น Codex หรือ Claude Code และมีการอ่าน PDF reference ให้บันทึกผลอ่านเป็น Markdown หนึ่งไฟล์ต่อหนึ่ง PDF ใน `02_references/extracted_md/` ด้วย ก่อนนำข้อมูลไปเติม `02_references/bib/references.bib`
+
 ## Case A: มี BibTeX แล้ว
 
 ```text
@@ -32,13 +34,14 @@ Tasks:
    - abstract field
 2. Identify entries missing abstract.
 3. For entries missing abstract, ask for source PDF or official abstract page. Do not fabricate abstracts.
-4. If an internal rationale is needed, put it in note or annote, not in abstract.
-5. Normalize obvious BibTeX hygiene issues:
+4. If you read or scan source PDFs, create/update one Markdown extraction note per PDF in 02_references/extracted_md/ before using that evidence to fill abstract or metadata.
+5. If an internal rationale is needed, put it in note or annote, not in abstract.
+6. Normalize obvious BibTeX hygiene issues:
    - DOI should be DOI string, not full https://doi.org URL.
    - URL should go in url field.
    - Citation keys should be stable author-year or semantic keys, not full URL strings.
    - arXiv entries should include eprint, archivePrefix, and primaryClass if known.
-6. Cluster references by role:
+7. Cluster references by role:
    - core domain/problem
    - direct prior work
    - method foundation
@@ -51,10 +54,10 @@ Tasks:
    - implementation/tool citation
    - broad background
    - weak or replaceable reference
-7. Judge whether the reference set is credible for the target venue.
-8. Identify missing reference families, not invented individual papers unless verifiable from supplied material.
-9. Flag references whose DOI, URL, author list, venue, year, or publication status looks like a placeholder.
-10. Identify references that are stronger than the manuscript's actual experiment and therefore raise reviewer expectations.
+8. Judge whether the reference set is credible for the target venue.
+9. Identify missing reference families, not invented individual papers unless verifiable from supplied material.
+10. Flag references whose DOI, URL, author list, venue, year, or publication status looks like a placeholder.
+11. Identify references that are stronger than the manuscript's actual experiment and therefore raise reviewer expectations.
 
 Output in Thai with English technical names preserved:
 
@@ -69,6 +72,7 @@ Output in Thai with English technical names preserved:
 ## References to Keep
 ## References to Demote or Replace
 ## Required PDF / Source Requests
+## PDF Extraction Notes Created or Needed
 ## Revised BibTeX Entries
 ```
 
@@ -82,7 +86,8 @@ Important rules:
 2. Do not invent author names, titles, venues, DOI, abstracts, or publication status.
 3. If metadata is missing from the PDF, mark it as NEEDS_VERIFICATION.
 4. Include an abstract field only when the abstract is present in the PDF or official source supplied by the user.
-5. Preserve exact title capitalization when needed for proper nouns, dataset names, model names, and acronyms.
+5. For every PDF you read, create a matching Markdown extraction note in 02_references/extracted_md/.
+6. Preserve exact title capitalization when needed for proper nouns, dataset names, model names, and acronyms.
 
 Context:
 - Field/subfield:
@@ -96,16 +101,19 @@ Supplied PDFs / reference files:
 [LIST FILE NAMES OR PASTE PDF TEXT EXTRACTS HERE]
 
 Tasks:
-1. Create one BibTeX entry per reference.
-2. Use stable citation keys, preferably author-year-topic.
-3. Add abstract field where available.
-4. Add note = {NEEDS_VERIFICATION: ...} where metadata is incomplete.
-5. After creating BibTeX, cluster references by role in the manuscript.
-6. Evaluate whether the reference set is sufficient for the field, degree level, and target venue.
-7. List PDFs or official metadata pages still needed.
+1. Create one Markdown extraction note per PDF in 02_references/extracted_md/.
+   Each note should include source PDF filename, title/authors/year/venue/DOI found, abstract evidence if present, pages/sections checked, short topic summary, and uncertainty flags.
+2. Create one BibTeX entry per reference.
+3. Use stable citation keys, preferably author-year-topic.
+4. Add abstract field where available from the PDF or supplied official source.
+5. Add note = {NEEDS_VERIFICATION: ...} where metadata is incomplete.
+6. After creating BibTeX, cluster references by role in the manuscript.
+7. Evaluate whether the reference set is sufficient for the field, degree level, and target venue.
+8. List PDFs or official metadata pages still needed.
 
 Output:
 
+## PDF Extraction Notes Created
 ## Created BibTeX
 ## Entries Needing Verification
 ## Reference Clusters
@@ -138,4 +146,3 @@ Tasks:
 
 Output in Thai.
 ```
-

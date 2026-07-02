@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Workspace AI Guide | Thesis Review Prompt Pack</title>
+  <title>Workspace AI Guide | Thesis Review Prompt Pack v1.1</title>
   <style>
     :root { --bg:#f7f8fb; --ink:#1f2933; --muted:#5b6776; --line:#d9dee7; --panel:#fff; --accent:#7c3aed; --danger:#b42318; --radius:8px; font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
     * { box-sizing:border-box; }
@@ -89,6 +89,8 @@
         <article class="card">
           <h3>โครงโฟลเดอร์ที่แนะนำ</h3>
           <pre>my_thesis_review/
+  AGENTS.md
+  CLAUDE.md
   input/
     v01_original/
     v02_revised/
@@ -96,6 +98,7 @@
   02_references/
     bib/
     pdf/
+    extracted_md/
     official_pages/
   03_results/
   04_review_notes/
@@ -118,6 +121,7 @@
         <h3>Step 1: จัดไฟล์ให้ AI อ่านได้</h3>
         <p>ให้สร้างโฟลเดอร์งานใหม่ แล้วคัดลอกไฟล์เข้าไปตามรายการนี้ อย่าทำงานบนไฟล์ thesis ต้นฉบับเพียงชุดเดียว</p>
         <pre>1. สร้างโฟลเดอร์ใหม่ชื่อ my_thesis_review/
+   ถ้าใช้ workspace_template/ จะมี AGENTS.md สำหรับ Codex และ CLAUDE.md สำหรับ Claude Code อยู่แล้ว
 
 2. เก็บไฟล์ต้นฉบับเป็นเวอร์ชันใน:
    input/
@@ -152,24 +156,33 @@
    - 02_references/pdf/Smith_2021_topic.pdf
    - 02_references/pdf/Wang_2023_method.pdf
 
-6. ถ้ามีหน้าเว็บหรือข้อมูลจากแหล่งทางการของ paper ให้ใส่ใน:
+6. เวลาสั่ง Codex หรือ Claude Code อ่าน PDF reference ให้ AI เก็บบันทึกผลอ่านไว้ใน:
+   02_references/extracted_md/
+   ตัวอย่าง:
+   - 02_references/extracted_md/Smith_2021_topic.md
+   - 02_references/extracted_md/Wang_2023_method.md
+
+   แต่ละไฟล์ควรบอกว่าอ่านจาก PDF ใด พบ title/authors/year/venue/DOI/abstract อะไร หน้าไหน และอะไรยังต้อง verify
+   ใช้เป็นร่องรอยการตรวจ ไม่ใช่หลักฐานใหม่แทน PDF
+
+7. ถ้ามีหน้าเว็บหรือข้อมูลจากแหล่งทางการของ paper ให้ใส่ใน:
    02_references/official_pages/
    ตัวอย่าง:
    - 02_references/official_pages/doi_pages.md
    - 02_references/official_pages/publisher_abstracts.md
    - 02_references/official_pages/acm_ieee_springer_pages.md
 
-7. ใส่ผลทดลอง ตาราง รูป หรือ log ที่เกี่ยวข้องใน:
+8. ใส่ผลทดลอง ตาราง รูป หรือ log ที่เกี่ยวข้องใน:
    03_results/
    ตัวอย่าง:
    - 03_results/result_table.xlsx
    - 03_results/figures/
    - 03_results/evaluation_notes.md
 
-8. แตกไฟล์ prompt pack นี้ไว้ใน:
+9. แตกไฟล์ prompt pack นี้ไว้ใน:
    prompt_pack/
 
-9. สร้างโฟลเดอร์ว่างให้ AI เขียนผลตรวจ:
+10. สร้างโฟลเดอร์ว่างให้ AI เขียนผลตรวจ:
    04_review_notes/</pre>
         <p class="small-note">ถ้าเอกสารหลักเป็น <code>.docx</code> หรือ <code>.pdf</code> ให้ export เป็น Markdown/text เพิ่มใน <code>01_working_text/</code> ถ้าทำได้ เพื่อให้ AI อ้าง section และ paragraph ได้ง่ายขึ้น</p>
       </div>
@@ -203,6 +216,7 @@
 - 01_working_text/ ทุกไฟล์ที่เกี่ยวข้อง
 - 02_references/bib/references.bib ถ้ามี
 - 02_references/pdf/ รายชื่อไฟล์ PDF reference ทั้งหมด
+- 02_references/extracted_md/ ถ้ามี
 - 02_references/official_pages/ ถ้ามี
 - 03_results/ ถ้ามี
 - prompt_pack/README.md และ prompt_pack/*.md
@@ -254,7 +268,7 @@
 ใช้ prompt_pack/templates/04_review_notes/01_full_review_TEMPLATE.md เป็นโครงรายงาน
 ตรวจ thesis จาก 01_working_text/thesis_draft.md
 ใช้ 00_context_notes.md เป็น context ถ้ามี
-ใช้ 02_references/bib/references.bib, 02_references/pdf/, 02_references/official_pages/ และ 03_results/ เท่าที่มีเป็นหลักฐาน
+ใช้ 02_references/bib/references.bib, 02_references/pdf/, 02_references/extracted_md/, 02_references/official_pages/ และ 03_results/ เท่าที่มีเป็นหลักฐาน
 
 สร้างไฟล์ 04_review_notes/01_full_review.md
 อัปเดต 04_review_notes/99_review_state.md ว่าทำ full review ถึงหัวข้อใดแล้ว และยังค้างอะไร
@@ -299,6 +313,8 @@
 ถ้ามี 02_references/bib/references.bib ให้ตรวจเทียบกับ 01_working_text/thesis_draft.md
 ถ้าไม่มี references.bib ไม่เป็นไร ให้สร้าง 02_references/bib/references.bib จาก PDF ใน 02_references/pdf/
 ใช้ไฟล์ PDF reference ต้นฉบับใน 02_references/pdf/ และหน้าเว็บ/ข้อมูลจากแหล่งทางการใน 02_references/official_pages/ เป็นหลักฐาน
+ถ้ามีการอ่านหรือ scan PDF reference ให้สร้างหรืออัปเดต Markdown หนึ่งไฟล์ต่อหนึ่ง PDF ใน 02_references/extracted_md/ ก่อนนำข้อมูลไปเติม references.bib
+ในไฟล์ extracted_md ให้ระบุ source PDF filename, metadata ที่พบ, abstract evidence ถ้ามี, หน้า/section ที่ตรวจ, summary สั้น ๆ และ uncertainty flags
 
 สร้างไฟล์ 04_review_notes/02_reference_audit.md
 อัปเดต 04_review_notes/99_review_state.md ว่าตรวจ reference เสร็จหรือยัง และยังต้องขอ PDF/official page อะไรเพิ่ม

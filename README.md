@@ -1,4 +1,6 @@
-# Thesis Review Prompt Pack: Student Edition
+# Thesis Review Prompt Pack: Student Edition v1.1
+
+Current version: `v1.1`
 
 ชุด prompt นี้ทำไว้สำหรับให้นิสิตใช้ตรวจวิทยานิพนธ์ บทความจากวิทยานิพนธ์ หรือ manuscript ของตนเองและของเพื่อนอย่างเป็นระบบ ก่อนส่งให้อาจารย์หรือกรรมการตรวจรอบถัดไป
 
@@ -12,6 +14,7 @@
 - [workspace.html](workspace.html) - เส้นทางหลักสำหรับ Codex / Claude Code / Antigravity มีแนวทางติดตั้ง จัด workspace และสั่ง AI ตรวจไฟล์
 - [webapp.html](webapp.html) - fallback สำหรับ Gemini / ChatGPT / Claude เฉพาะกรณีตรวจส่วนสั้น ๆ ไม่แนะนำสำหรับตรวจทั้งเล่ม
 - [about.html](about.html) - รายละเอียดระบบ privacy ข้อจำกัด และรายการไฟล์
+- [VERSION.md](VERSION.md) - เลขเวอร์ชันและสรุปการเปลี่ยนแปลงของชุดนี้
 
 1. เปิด [index.html](index.html)
 2. ใช้ [workspace.html](workspace.html) เป็นหลัก ถ้ามี Codex / Claude Code / Antigravity
@@ -33,15 +36,23 @@
 - [05_choose_your_ai_workflow.md](05_choose_your_ai_workflow.md) - จุดเริ่มต้นสำหรับเลือก workflow ตามเครื่องมือที่มี
 - [05a_chat_ai_quota_limited_guide.md](05a_chat_ai_quota_limited_guide.md) - วิธีใช้กับ Gemini / ChatGPT / Claude แบบ chat โดยเฉพาะกรณี quota จำกัด
 - [05b_workspace_ai_codex_claude_code_guide.md](05b_workspace_ai_codex_claude_code_guide.md) - วิธีใช้กับ Codex / Claude Code / Antigravity หรือ AI ที่อ่านไฟล์ใน workspace ได้
+- [AGENTS.md](AGENTS.md) - instruction สำหรับ workspace agents เมื่อนำ prompt pack ไปใช้กับ Codex / Claude Code / Antigravity
+- [CLAUDE.md](CLAUDE.md) - instruction คู่กันสำหรับ Claude Code
+- [workspace_template/](workspace_template/) - โครง workspace พร้อม `AGENTS.md`, `CLAUDE.md` และ README ในแต่ละโฟลเดอร์สำหรับให้นิสิตวางไฟล์งาน
+- [codex_skill/SKILL.md](codex_skill/SKILL.md) - skill แบบย่อสำหรับ Codex หรือ agent ที่รองรับ skill เพื่อลดการ paste prompt ยาว
 - [STUDENT_HANDOUT.md](STUDENT_HANDOUT.md) - ข้อความสั้นสำหรับส่งให้นิสิตในแชต อีเมล หรือ LMS
 - [LICENSE.md](LICENSE.md) - เงื่อนไขการนำไปใช้และเผยแพร่ต่อ
+- [VERSION.md](VERSION.md) - เลขเวอร์ชันและสรุปการเปลี่ยนแปลง
 
 ## What You Must Prepare
+
+ถ้าไม่อยากสร้างโฟลเดอร์เอง ให้เริ่มจาก `workspace_template/` แล้วคัดลอกเป็น workspace ของงานนั้น
 
 - เอกสารต้นฉบับใน `input/v01_original/`, `input/v02_revised/` ฯลฯ โดยเวลาใช้งานให้ใช้เฉพาะเวอร์ชันล่าสุด
 - ไฟล์ข้อความที่ AI อ่านได้ใน `01_working_text/` เช่น `.md` หรือ `.txt`
 - BibTeX หรือ reference list ใน `02_references/bib/` ถ้ามี ถ้าไม่มีให้ใส่ PDF reference ก่อน แล้วให้ AI สร้าง BibTeX จาก PDF
 - PDF ของ reference ต้นฉบับใน `02_references/pdf/`
+- Markdown extraction notes จาก PDF ใน `02_references/extracted_md/` ถ้า AI เคย scan PDF reference แล้ว
 - หน้าเว็บหรือข้อมูลจากแหล่งทางการของ paper ใน `02_references/official_pages/` ถ้ามี
 - dataset, baseline, metric, raw results, script หรือหลักฐานผลทดลองใน `03_results/` ถ้ามี
 - context สั้น ๆ ใน `00_context_notes.md` ถ้ามี เช่น สาขา ระดับงาน target venue หรือข้อจำกัดพิเศษ
@@ -52,6 +63,7 @@
 - ห้ามให้ AI แต่ง citation, DOI, venue metric, paper title, result หรือ ranking เอง
 - ถ้าไม่แน่ใจ ให้เขียนว่า `ยังไม่ได้ตรวจสอบ` แทนการเดา
 - citation ทุกตัวควรตรวจจาก paper หรือหน้าเว็บ/ข้อมูลจากแหล่งทางการ
+- ถ้าใช้ Codex หรือ Claude Code อ่าน PDF reference ให้ AI เก็บบันทึกผลอ่านเป็น Markdown ใน `02_references/extracted_md/` หนึ่งไฟล์ต่อหนึ่ง PDF ก่อนนำไปเติม `abstract` หรือ metadata ใน BibTeX
 - claim เชิงผลทดลองต้องมี dataset, baseline, metric, raw result และวิธีคำนวณรองรับ
 - ถ้างานเกี่ยวข้องกับคน ผู้ใช้ ข้อมูลส่วนบุคคล scraping dataset license หรือข้อมูลที่มีข้อบังคับ ต้องตรวจ IRB/ethics/legal compliance ตั้งแต่ต้น
 - ถ้างานใช้ LLM ต้องบอกให้ชัดว่าใช้ทำอะไร และตรวจผลจากแหล่งจริงอย่างไร

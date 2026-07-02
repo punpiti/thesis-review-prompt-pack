@@ -17,6 +17,7 @@ my_thesis_review/
   02_references/
     bib/
     pdf/
+    extracted_md/
     official_pages/
   03_results/
   04_review_notes/
@@ -51,16 +52,23 @@ my_thesis_review/
    - 02_references/pdf/Smith_2021_topic.pdf
    - 02_references/pdf/Wang_2023_method.pdf
 
-5. ถ้ามีหน้าเว็บหรือข้อมูลจากแหล่งทางการของ paper ให้ใส่ใน 02_references/official_pages/
+5. เวลาสั่ง Codex หรือ Claude Code อ่าน PDF reference ให้ AI เก็บบันทึกผลอ่านไว้ใน 02_references/extracted_md/ ด้วย
+   - 02_references/extracted_md/Smith_2021_topic.md
+   - 02_references/extracted_md/Wang_2023_method.md
+
+   ไฟล์นี้ควรบอกว่าอ่านจาก PDF ใด พบ title/authors/year/venue/DOI/abstract อะไร หน้าไหน และอะไรยังต้อง verify
+   ใช้เป็นร่องรอยการตรวจ ไม่ใช่หลักฐานใหม่แทน PDF
+
+6. ถ้ามีหน้าเว็บหรือข้อมูลจากแหล่งทางการของ paper ให้ใส่ใน 02_references/official_pages/
    - 02_references/official_pages/doi_pages.md
    - 02_references/official_pages/publisher_abstracts.md
    - 02_references/official_pages/acm_ieee_springer_pages.md
 
-6. ใส่ผลทดลอง ตาราง รูป หรือ log ใน 03_results/
+7. ใส่ผลทดลอง ตาราง รูป หรือ log ใน 03_results/
 
-7. แตกไฟล์ prompt pack นี้ไว้ใน prompt_pack/
+8. แตกไฟล์ prompt pack นี้ไว้ใน prompt_pack/
 
-8. สร้างโฟลเดอร์ว่างให้ AI เขียนผลตรวจ: 04_review_notes/
+9. สร้างโฟลเดอร์ว่างให้ AI เขียนผลตรวจ: 04_review_notes/
 ```
 
 ถ้าเอกสารหลักเป็น `.docx` หรือ `.pdf` ให้ export เป็น Markdown/text เพิ่มใน `01_working_text/` ถ้าทำได้ เพื่อให้ AI อ้าง section และ paragraph ได้ง่ายขึ้น
@@ -82,6 +90,7 @@ my_thesis_review/
 - 01_working_text/ ทุกไฟล์ที่เกี่ยวข้อง
 - 02_references/bib/references.bib ถ้ามี
 - 02_references/pdf/ รายชื่อไฟล์ PDF reference ทั้งหมด
+- 02_references/extracted_md/ ถ้ามี
 - 02_references/official_pages/ ถ้ามี
 - 03_results/ ถ้ามี
 - prompt_pack/README.md และ prompt_pack/*.md
@@ -129,7 +138,7 @@ my_thesis_review/
 ใช้ prompt_pack/templates/04_review_notes/01_full_review_TEMPLATE.md เป็นโครงรายงาน
 ตรวจ thesis จาก 01_working_text/thesis_draft.md
 ใช้ 00_context_notes.md เป็น context ถ้ามี
-ใช้ 02_references/bib/references.bib, 02_references/pdf/, 02_references/official_pages/ และ 03_results/ เท่าที่มีเป็นหลักฐาน
+ใช้ 02_references/bib/references.bib, 02_references/pdf/, 02_references/extracted_md/, 02_references/official_pages/ และ 03_results/ เท่าที่มีเป็นหลักฐาน
 
 สร้างไฟล์ 04_review_notes/01_full_review.md
 อัปเดต 04_review_notes/99_review_state.md ว่าทำ full review ถึงหัวข้อใดแล้ว และยังค้างอะไร
@@ -149,6 +158,8 @@ my_thesis_review/
 ถ้ามี 02_references/bib/references.bib ให้ตรวจเทียบกับ 01_working_text/thesis_draft.md
 ถ้าไม่มี references.bib ไม่เป็นไร ให้สร้าง 02_references/bib/references.bib จาก PDF ใน 02_references/pdf/
 ใช้ไฟล์ PDF reference ต้นฉบับใน 02_references/pdf/ และหน้าเว็บ/ข้อมูลจากแหล่งทางการใน 02_references/official_pages/ เป็นหลักฐาน
+ถ้ามีการอ่านหรือ scan PDF reference ให้สร้างหรืออัปเดต Markdown หนึ่งไฟล์ต่อหนึ่ง PDF ใน 02_references/extracted_md/ ก่อนนำข้อมูลไปเติม references.bib
+ในไฟล์ extracted_md ให้ระบุ source PDF filename, metadata ที่พบ, abstract evidence ถ้ามี, หน้า/section ที่ตรวจ, summary สั้น ๆ และ uncertainty flags
 
 สร้างไฟล์ 04_review_notes/02_reference_audit.md
 อัปเดต 04_review_notes/99_review_state.md ว่าตรวจ reference เสร็จหรือยัง และยังต้องขอ PDF/official page อะไรเพิ่ม
