@@ -40,8 +40,8 @@ The review may not finish in one run. The state file lets the next agent continu
 ## Next Prompt To Continue
 
 ```text
-ให้ประเมินต่อจาก 04_review_notes/99_review_state.md
-ถ้าหัวข้อใดประเมินครบแล้ว ไม่ต้องทำซ้ำ ยกเว้นฉันสั่งว่าให้ประเมินใหม่ทั้งหมด
-ให้ประเมินหัวข้อที่เหลือจนจบ แล้วอัปเดต 04_review_notes/99_review_state.md
+ประเมินต่อจาก 04_review_notes/99_review_state.md
+ถ้าหัวข้อใดประเมินครบแล้ว ไม่ต้องทำซ้ำ ยกเว้นฉันสั่งว่า "ประเมินใหม่ทั้งหมด"
+ประเมินหัวข้อที่เหลือจนจบ แล้วอัปเดต 04_review_notes/99_review_state.md
 ```
 ````

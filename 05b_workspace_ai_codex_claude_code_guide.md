@@ -6,86 +6,126 @@
 
 ## Step 1: จัดไฟล์ให้ AI อ่านได้
 
-สร้างโฟลเดอร์งานใหม่ เช่น:
+เลือก command ตามระบบปฏิบัติการ แล้วรันทีละบรรทัดจากโฟลเดอร์ที่ต้องการสร้าง project folder
 
-```text
-my_thesis_review/
-  input/
-    v01_original/
-    v02_revised/
-  01_working_text/
-  02_references/
-    bib/
-    pdf/
-    extracted_md/
-    official_pages/
-  03_results/
-  04_review_notes/
-  prompt_pack/
+ค่าเริ่มต้นคือ `my_thesis_review/` ถ้าต้องการชื่ออื่น ให้แก้ตัวแปร `PROJECT` หรือ `$Project` ใน command ก่อนรัน
+
+### Linux / macOS
+
+```bash
+PROJECT="my_thesis_review"
+curl -L -o thesis_review_student_edition.zip https://punpiti.github.io/thesis-review-prompt-pack/thesis_review_student_edition.zip
+unzip -o thesis_review_student_edition.zip
+cd prompt_packs/thesis_review_student_edition
+WORKSPACE="$PWD/../../$PROJECT"
+mkdir -p "$WORKSPACE"
+cp -R workspace_template/. "$WORKSPACE/"
+mkdir -p "$WORKSPACE/prompt_pack"
+cp -R . "$WORKSPACE/prompt_pack/"
+cd "$WORKSPACE"
 ```
 
-ใส่ไฟล์ตามนี้:
+### Windows PowerShell
 
-```text
-1. เก็บไฟล์ต้นฉบับเป็นเวอร์ชันใน input/
-   - input/v01_original/thesis_draft.docx
-   - input/v01_original/thesis_draft.pdf
-   - input/v02_revised_after_advisor/thesis_draft.docx
-   - input/v02_revised_after_advisor/thesis_draft.pdf
-
-   เวลาใช้งาน ให้ใช้เฉพาะเวอร์ชันล่าสุด
-   ไม่ต้องให้ AI อ่านทุกเวอร์ชันพร้อมกัน เว้นแต่ต้องการเปรียบเทียบ revision
-
-2. ใส่ไฟล์ข้อความที่ AI อ่านและอ้างตำแหน่งได้ใน 01_working_text/
-   - 01_working_text/thesis_draft.md
-   - 01_working_text/chapter_1_introduction.md
-   - 01_working_text/chapter_2_literature_review.md
-
-3. ใส่ bibliography ใน 02_references/bib/
-   - 02_references/bib/references.bib
-   - 02_references/bib/references_from_word.txt
-
-   ถ้ายังไม่มี .bib ไม่เป็นไร ให้ข้ามขั้นนี้ แล้วใส่ PDF ของ reference ในข้อ 4
-   จากนั้นสั่ง AI สร้าง references.bib จาก PDF ที่มี โดยห้ามแต่งข้อมูลที่ไม่มีหลักฐาน
-
-4. ใส่ไฟล์ reference ต้นฉบับ เช่น paper PDF ที่อ้างอิง ใน 02_references/pdf/
-   - 02_references/pdf/Smith_2021_topic.pdf
-   - 02_references/pdf/Wang_2023_method.pdf
-
-5. เวลาสั่ง Codex หรือ Claude Code อ่าน PDF reference ให้ AI เก็บบันทึกผลอ่านไว้ใน 02_references/extracted_md/ ด้วย
-   - 02_references/extracted_md/Smith_2021_topic.md
-   - 02_references/extracted_md/Wang_2023_method.md
-
-   ไฟล์นี้ควรบอกว่าอ่านจาก PDF ใด พบ title/authors/year/venue/DOI/abstract อะไร หน้าไหน และอะไรยังต้อง verify
-   ใช้เป็นร่องรอยการตรวจ ไม่ใช่หลักฐานใหม่แทน PDF
-
-6. ถ้ามีหน้าเว็บหรือข้อมูลจากแหล่งทางการของ paper ให้ใส่ใน 02_references/official_pages/
-   - 02_references/official_pages/doi_pages.md
-   - 02_references/official_pages/publisher_abstracts.md
-   - 02_references/official_pages/acm_ieee_springer_pages.md
-
-7. ใส่ผลทดลอง ตาราง รูป หรือ log ใน 03_results/
-
-8. แตกไฟล์ prompt pack นี้ไว้ใน prompt_pack/
-
-9. สร้างโฟลเดอร์ว่างให้ AI เขียนผลตรวจ: 04_review_notes/
+```powershell
+$Project = "my_thesis_review"
+Invoke-WebRequest -Uri "https://punpiti.github.io/thesis-review-prompt-pack/thesis_review_student_edition.zip" -OutFile ".\thesis_review_student_edition.zip"
+Expand-Archive -Path .\thesis_review_student_edition.zip -DestinationPath . -Force
+Set-Location .\prompt_packs\thesis_review_student_edition
+$Workspace = Join-Path (Resolve-Path ..\..).Path $Project
+New-Item -ItemType Directory -Force -Path $Workspace | Out-Null
+Copy-Item -Path .\workspace_template\* -Destination $Workspace -Recurse -Force
+New-Item -ItemType Directory -Force -Path (Join-Path $Workspace "prompt_pack") | Out-Null
+Copy-Item -Path .\* -Destination (Join-Path $Workspace "prompt_pack") -Recurse -Force
+Set-Location $Workspace
 ```
 
-ถ้าเอกสารหลักเป็น `.docx` หรือ `.pdf` ให้ export เป็น Markdown/text เพิ่มใน `01_working_text/` ถ้าทำได้ เพื่อให้ AI อ้าง section และ paragraph ได้ง่ายขึ้น
-
-## Step 2: สั่ง AI ประเมิน
+วางไฟล์รวมทั้งหมดไว้ใน:
 
 ```text
-ให้ประเมิน
+my_thesis_review/00_inbox/
+
+ใส่ได้ทั้ง thesis/manuscript, LaTeX, Word, PDF, BibTeX, reference PDF, รูป, ตาราง, ผลทดลอง, script, log, metric และ baseline
+
+ไฟล์ใน 00_review_instructions/ และ 02_references/extracted_md/ ให้ AI สร้างเอง
+```
+
+ถ้ามีหลายเวอร์ชัน ใส่รวมไว้ใน `00_inbox/` ได้ แล้วให้ AI จัดเวอร์ชันใน Step 2
+
+## Step 2: ให้ AI จัดไฟล์จาก 00_inbox
+
+ใช้เมื่อวางไฟล์รวมไว้ใน `00_inbox/`
+
+```text
+init workspace จากไฟล์รวม
+```
+
+ถ้าต้องการ prompt แบบเต็ม ให้ใช้:
+
+```text
+init workspace จากไฟล์รวม
+
+อ่านไฟล์ทั้งหมดใน 00_inbox/
+สร้างโฟลเดอร์ที่ขาดถ้าจำเป็น
+จัดไฟล์โดย copy จาก 00_inbox/ ไปยังโฟลเดอร์ที่เหมาะสม ห้ามลบไฟล์ต้นฉบับใน 00_inbox/
+
+จัดตามนี้:
+- thesis/manuscript เวอร์ชันล่าสุด -> input/v02_revised/
+- ไฟล์ต้นฉบับก่อนแก้หรือเวอร์ชันเก่า -> input/v01_original/
+- .tex/.md/.txt ที่เป็นเนื้อหางาน -> 01_working_text/
+- .bib/.ris/.enw/reference list -> 02_references/bib/
+- PDF reference -> 02_references/pdf/
+- DOI page / publisher page / official abstract -> 02_references/official_pages/
+- dataset/table/figure/log/script/metric/baseline/result evidence -> 03_results/
+
+ถ้าไม่แน่ใจว่าไฟล์ใดควรอยู่ไหน ให้คงไว้ใน 00_inbox/ และ mark ว่า needs classification
+สร้างหรืออัปเดต 00_review_instructions/file_inventory.md โดยมี source path, target path, file role, uncertainty
+ห้ามแก้เนื้อหา thesis/manuscript/references ในขั้นนี้
+```
+
+## Step 3: ให้ AI สร้าง instruction จากงานปัจจุบัน
+
+ใช้ขั้นนี้ก่อน `ประเมิน` โดยเฉพาะงานที่เป็น LaTeX หลายไฟล์
+
+```text
+เตรียม instruction จากงานปัจจุบัน
+```
+
+ถ้าต้องการ prompt แบบเต็ม ให้ใช้:
+
+```text
+โหลด instruction folder ที่ 00_review_instructions/
+
+อ่านงานเวอร์ชันล่าสุดจาก input/ และ 01_working_text/ เท่าที่มี
+ถ้าเป็น LaTeX ให้หา root .tex ปัจจุบัน แล้วตาม \input{} และ \include{} เท่าที่จำเป็น
+ให้ระบุ bibliography file, figure/table/result file ที่ถูกอ้างถึงด้วย
+
+สร้างหรืออัปเดต:
+- 00_review_instructions/review_profile.md
+- 00_review_instructions/document_map.md
+- 00_review_instructions/review_scope.md
+- 00_review_instructions/missing_inputs.md
+
+ให้สรุปจากหลักฐานใน workspace เท่านั้น
+ถ้าข้อมูลไม่อยู่ในไฟล์ ให้เขียนว่า missing input
+ห้ามแต่ง citation, DOI, venue ranking, result, IRB/legal requirement หรือ claim เอง
+ห้ามแก้ thesis/manuscript/references ในขั้นนี้
+```
+
+## Step 4: สั่ง AI ประเมิน
+
+```text
+ประเมิน
 ```
 
 ถ้าต้องการ prompt แบบเต็ม ให้ใช้ข้อความนี้:
 
 ```text
-ให้ประเมิน workspace นี้แบบ full review จนจบ โดยยังไม่ต้องแก้ thesis ต้นฉบับ
+ประเมิน workspace นี้แบบ full review จนจบ โดยยังไม่ต้องแก้ thesis ต้นฉบับ
 
 อ่าน:
 - 00_context_notes.md ถ้ามี
+- 00_review_instructions/ ทุกไฟล์ที่มี ถ้ายังไม่มีหรือเก่า ให้สร้างจากงานปัจจุบันก่อน
 - 01_working_text/thesis_draft.md
 - 01_working_text/ ทุกไฟล์ที่เกี่ยวข้อง
 - 02_references/bib/references.bib ถ้ามี
@@ -97,8 +137,8 @@ my_thesis_review/
 - 04_review_notes/99_review_state.md ถ้ามี
 
 ถ้ามี 04_review_notes/99_review_state.md ให้ดูว่าหัวข้อใดทำเสร็จแล้วและหัวข้อใดค้าง
-ให้ประเมินหัวข้อที่เหลือจนจบ ไม่ต้องทำซ้ำหัวข้อที่เสร็จแล้ว
-ยกเว้นฉันสั่งชัดเจนว่า "ให้ประเมินใหม่ทั้งหมด"
+ประเมินหัวข้อที่เหลือจนจบ ไม่ต้องทำซ้ำหัวข้อที่เสร็จแล้ว
+ยกเว้นฉันสั่งชัดเจนว่า "ประเมินใหม่ทั้งหมด"
 
 ให้สร้างหรืออัปเดตไฟล์เหล่านี้:
 - 04_review_notes/00_inventory.md
@@ -122,12 +162,12 @@ my_thesis_review/
 - รอบนี้ทำอะไรเสร็จแล้ว
 - อะไรยังค้างและค้างเพราะขาดหลักฐานอะไร
 - รอบหน้าควรใช้ prompt อะไรเพื่อทำต่อ
-- หัวข้อใดไม่ควรประเมินซ้ำ เว้นแต่ผู้ใช้สั่งให้ประเมินใหม่ทั้งหมด
+- หัวข้อใดไม่ควรประเมินซ้ำ เว้นแต่ผู้ใช้สั่งว่า "ประเมินใหม่ทั้งหมด"
 
 ห้ามแก้ thesis หรือ references ในรอบนี้
 ```
 
-## Step 3: ถ้าต้องการสั่ง full review note แยก
+## Step 5: ถ้าต้องการสั่ง full review note แยก
 
 ใช้ template:
 
@@ -138,6 +178,7 @@ my_thesis_review/
 ใช้ prompt_pack/templates/04_review_notes/01_full_review_TEMPLATE.md เป็นโครงรายงาน
 ตรวจ thesis จาก 01_working_text/thesis_draft.md
 ใช้ 00_context_notes.md เป็น context ถ้ามี
+ใช้ 00_review_instructions/ เป็น context หลัก ถ้ามี ถ้ายังไม่มีให้สร้างก่อน
 ใช้ 02_references/bib/references.bib, 02_references/pdf/, 02_references/extracted_md/, 02_references/official_pages/ และ 03_results/ เท่าที่มีเป็นหลักฐาน
 
 สร้างไฟล์ 04_review_notes/01_full_review.md
@@ -151,7 +192,7 @@ my_thesis_review/
 - ห้ามแก้ thesis ต้นฉบับ
 ```
 
-## Step 4: ถ้าต้องการตรวจ references แยก
+## Step 6: ถ้าต้องการตรวจ references แยก
 
 ```text
 ใช้ prompt_pack/02_reference_bibtex_prompt.md เป็นเกณฑ์
@@ -180,7 +221,7 @@ my_thesis_review/
 ห้ามสร้าง reference ใหม่เองถ้าไม่มีแหล่งตรวจสอบ
 ```
 
-## Step 5: ถ้าต้องการสร้าง action checklist แยก
+## Step 7: ถ้าต้องการสร้าง action checklist แยก
 
 ใช้ template:
 
@@ -204,7 +245,7 @@ my_thesis_review/
 - งานที่ต้องใช้ข้อมูลเพิ่ม
 ```
 
-## Step 6: ถ้าจะให้ AI ช่วยแก้ไฟล์
+## Step 8: ถ้าจะให้ AI ช่วยแก้ไฟล์
 
 ให้ทำหลังจากมี review notes เท่านั้น และใช้ working copy:
 

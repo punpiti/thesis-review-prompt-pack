@@ -7,6 +7,8 @@ my_thesis_review/
   AGENTS.md
   CLAUDE.md
   00_context_notes.md
+  00_inbox/
+  00_review_instructions/
   input/
   01_working_text/
   02_references/
@@ -22,7 +24,21 @@ my_thesis_review/
 หลังจัดไฟล์แล้ว เปิด workspace นี้ด้วย Codex / Claude Code / Antigravity แล้วสั่ง:
 
 ```text
-ให้ประเมิน
+init workspace จากไฟล์รวม
 ```
 
-AI ควรสร้าง review notes ใน `04_review_notes/` ก่อน ห้ามแก้ thesis ต้นฉบับทันที
+ถ้าวางไฟล์เข้าถูกโฟลเดอร์เองแล้ว ข้าม prompt นี้ได้
+
+จากนั้นสั่ง:
+
+```text
+เตรียม instruction จากงานปัจจุบัน
+```
+
+จากนั้นสั่ง:
+
+```text
+ประเมิน
+```
+
+AI ควรสร้างหรืออัปเดต context ใน `00_review_instructions/` ก่อน แล้วจึงสร้าง review notes ใน `04_review_notes/` ห้ามแก้ thesis ต้นฉบับทันที

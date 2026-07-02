@@ -10,13 +10,16 @@ Thesis Review Prompt Pack: Student Edition v1.1
 ลำดับการใช้:
 1. เปิด index.html ก่อน
 2. ให้ใช้ workspace.html เป็นหลัก ถ้ามี Codex/Claude Code/Antigravity
-3. เตรียม manuscript/thesis, BibTeX หรือ reference list และหลักฐานผลทดลองที่มีใน workspace
-4. ใน workspace AI ให้สั่งสั้น ๆ ว่า "ให้ประเมิน"
-5. ให้ AI ตรวจจากเอกสารก่อนว่าขาดอะไรและจำเป็นแค่ไหน ไม่ต้องกรอกข้อมูลซ้ำในเว็บ
-6. ให้ AI สร้าง 04_review_notes/99_review_state.md เพื่อจดว่าอะไรเสร็จแล้ว อะไรค้าง และรอบหน้าควรทำอะไรต่อ
-7. ใช้ webapp.html เฉพาะกรณีไม่มี workspace AI และต้องตรวจข้อความสั้น ๆ เท่านั้น
-8. ถ้าต้องการดูรายละเอียดระบบ privacy หรือรายการไฟล์ ให้เปิด about.html
-9. ตรวจ blocking issues ก่อนแก้ภาษา
+3. copy command ใน workspace.html ไปรันทีละบรรทัด command จะดาวน์โหลด zip และสร้าง my_thesis_review/ ให้เอง
+4. ถ้ายังไม่รู้ว่าไฟล์ไหนควรอยู่ไหน ให้วางไฟล์รวมทั้งหมดใน my_thesis_review/00_inbox/
+5. ถ้าวางไฟล์ใน 00_inbox/ ให้สั่ง AI ว่า "init workspace จากไฟล์รวม"
+6. ใน workspace AI ให้สั่งว่า "เตรียม instruction จากงานปัจจุบัน"
+7. จากนั้นสั่งสั้น ๆ ว่า "ประเมิน"
+8. ให้ AI ตรวจจากเอกสารก่อนว่าขาดอะไรและจำเป็นแค่ไหน ไม่ต้องกรอกข้อมูลซ้ำในเว็บ
+9. ให้ AI สร้าง 04_review_notes/99_review_state.md เพื่อจดว่าอะไรเสร็จแล้ว อะไรค้าง และรอบหน้าควรทำอะไรต่อ
+10. ใช้ webapp.html เฉพาะกรณีไม่มี workspace AI และต้องตรวจข้อความสั้น ๆ เท่านั้น
+11. ถ้าต้องการดูรายละเอียดระบบ privacy หรือรายการไฟล์ ให้เปิด about.html
+12. ตรวจ blocking issues ก่อนแก้ภาษา
 
 ข้อสำคัญ:
 - AI เป็นผู้ช่วยตรวจ ไม่ใช่ผู้รับผิดชอบงานแทนเรา

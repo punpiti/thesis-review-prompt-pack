@@ -10,7 +10,9 @@ Create review notes first. Do not edit the thesis/manuscript source file unless 
 
 ```text
 my_thesis_review/
+  00_inbox/
   input/
+  00_review_instructions/
   01_working_text/
   02_references/
     bib/
@@ -24,19 +26,64 @@ my_thesis_review/
 
 Use only the latest thesis/manuscript version unless the user asks to compare versions.
 
-## When User Says "ให้ประเมิน"
+## Init Workspace From Inbox
+
+When the user says `init workspace จากไฟล์รวม`, inspect `00_inbox/` and organize files into the workspace.
+
+Rules:
+
+- Create missing folders if needed.
+- Copy files from `00_inbox/` to target folders; do not delete originals unless the user explicitly asks.
+- Put latest thesis/manuscript drafts in `input/v02_revised/`.
+- Put older/original drafts in `input/v01_original/` when clear from filename/date.
+- Put readable `.tex`, `.md`, `.txt` thesis text in `01_working_text/`.
+- Put `.bib`, `.ris`, `.enw`, or reference lists in `02_references/bib/`.
+- Put paper/reference PDFs in `02_references/pdf/`.
+- Put DOI pages, publisher pages, and official abstracts in `02_references/official_pages/`.
+- Put datasets, tables, figures, logs, scripts, metrics, baselines, and result evidence in `03_results/`.
+- If uncertain, leave the file in `00_inbox/` and list it in `00_review_instructions/missing_inputs.md` or `04_review_notes/00_inventory.md` as `needs classification`.
+- Create or update `00_review_instructions/file_inventory.md` with source path, target path, file role, and uncertainty.
+
+## Instruction Folder First
+
+Before a full review, load `00_review_instructions/`.
+
+If `00_review_instructions/review_profile.md` or `00_review_instructions/document_map.md` is missing or stale:
+
+1. Inspect the latest work from `input/` and `01_working_text/`.
+2. If the current work is LaTeX, find the root `.tex` file, follow `\input{}` and `\include{}` where needed, and identify bibliography files without editing source files.
+3. Create or update:
+   - `00_review_instructions/review_profile.md`
+   - `00_review_instructions/document_map.md`
+   - `00_review_instructions/review_scope.md`
+   - `00_review_instructions/missing_inputs.md`
+4. Fill these files from workspace evidence only. Mark unavailable facts as `missing input`.
+
+## When User Says "ประเมิน"
 
 1. Inspect the workspace and identify the main document, reference sources, result/evidence files, and existing review notes.
-2. If `04_review_notes/99_review_state.md` exists, continue unfinished items only unless the user says `ให้ประเมินใหม่ทั้งหมด`.
-3. Use evidence from manuscript text, references, PDFs, official pages, and result files only.
-4. Do not invent citations, DOI, venue ranking, paper metadata, results, law, IRB requirement, or claims.
-5. If you scan reference PDFs, create or update one Markdown extraction note per PDF in `02_references/extracted_md/` before using that PDF to fill BibTeX `abstract` fields or metadata.
-6. Create or update:
+2. Load or create the instruction files in `00_review_instructions/` before full review.
+3. If `04_review_notes/99_review_state.md` exists, continue unfinished items only unless the user says `ประเมินใหม่ทั้งหมด`.
+4. Use evidence from manuscript text, references, PDFs, official pages, result files, and the generated instruction files only.
+5. Do not invent citations, DOI, venue ranking, paper metadata, results, law, IRB requirement, or claims.
+6. If you scan reference PDFs, create or update one Markdown extraction note per PDF in `02_references/extracted_md/` before using that PDF to fill BibTeX `abstract` fields or metadata.
+7. Create or update:
    - `04_review_notes/00_inventory.md`
    - `04_review_notes/01_full_review.md`
    - `04_review_notes/02_reference_audit.md`
    - `04_review_notes/03_student_action_checklist.md`
    - `04_review_notes/99_review_state.md`
+
+## When User Says "เตรียม instruction จากงานปัจจุบัน"
+
+Create or update only the instruction folder files:
+
+- `00_review_instructions/review_profile.md`
+- `00_review_instructions/document_map.md`
+- `00_review_instructions/review_scope.md`
+- `00_review_instructions/missing_inputs.md`
+
+Read the latest thesis/manuscript files, including LaTeX roots and included files if applicable. Do not create full review notes and do not edit thesis/manuscript files in this step.
 
 ## Review Priorities
 

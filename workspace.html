@@ -27,15 +27,44 @@
     .prompt-block { margin-top:14px; }
     .prompt-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
     .prompt-head h3 { margin:0; }
+    .nested-prompt { margin-top:14px; padding-top:14px; border-top:1px solid var(--line); }
     .prompt-actions { display:flex; gap:8px; flex:0 0 auto; }
     .icon-button { width:38px; height:38px; display:grid; place-items:center; border:1px solid var(--line); border-radius:8px; background:#fff; color:var(--accent); font-size:18px; font-weight:900; cursor:pointer; }
     .icon-button:hover { border-color:var(--accent); background:#f5f3ff; }
     .icon-button.copied { background:#ecfdf3; border-color:#16a34a; color:#166534; }
+    .copy-button[data-copy-target*="prompt"] { width:auto; min-width:92px; padding:0 12px; grid-template-columns:auto auto; gap:6px; font-size:14px; }
+    .copy-button[data-copy-target*="prompt"]::after { content:"คัดลอก"; font-size:13px; font-weight:850; }
+    .copy-button.copied[data-copy-target*="prompt"]::after { content:"คัดแล้ว"; }
+    .tab-list { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+    .tab-button { min-height:38px; padding:8px 14px; border:1px solid var(--line); border-radius:8px; background:#fff; color:var(--ink); font-weight:850; cursor:pointer; }
+    .tab-button[aria-selected="true"] { border-color:var(--accent); background:#f5f3ff; color:var(--accent); }
+    .tab-panel[hidden] { display:none; }
     .collapsible-content[hidden] { display:none; }
     .warning { border-left:5px solid var(--danger); background:#fff8f7; padding:16px 18px; border-radius:6px; color:#3b0d0c; }
+    .instruction-panel { margin-top:14px; padding:16px; border:1px solid #c7d2fe; border-radius:8px; background:#f8faff; }
+    .instruction-panel h4 { margin:0 0 8px; font-size:16px; }
+    .path-box { display:inline-flex; align-items:center; margin:4px 0 10px; padding:8px 10px; border:1px solid var(--line); border-radius:8px; background:#fff; color:var(--ink); font-family:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace; font-size:14px; font-weight:800; }
+    .plain-list { margin:8px 0 0; padding-left:20px; }
+    .plain-list li { margin:4px 0; }
+    .tool-list { display:grid; gap:10px; margin-top:10px; }
+    .tool-link { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 12px; border:1px solid var(--line); border-radius:8px; background:#fff; color:var(--ink); font-weight:850; }
+    .tool-link:hover { border-color:var(--accent); background:#f8f5ff; text-decoration:none; }
+    .tool-link span { color:var(--muted); font-size:13px; font-weight:650; text-align:right; }
     .button { display:inline-flex; align-items:center; min-height:42px; padding:10px 14px; border-radius:8px; border:1px solid var(--accent); background:var(--accent); color:#fff; font-weight:850; text-decoration:none; }
     .button.secondary { background:#fff; color:var(--accent); }
-    pre { margin:12px 0 0; padding:14px; overflow-x:auto; border-radius:8px; border:1px solid #cbd5e1; background:#0f172a; color:#e2e8f0; font-size:13px; line-height:1.55; white-space:pre-wrap; }
+    pre { margin:12px 0 0; padding:14px; overflow-x:auto; border-radius:8px; border:1px solid #cbd5e1; background:#f8fafc; color:var(--ink); font-size:13px; line-height:1.55; white-space:pre-wrap; }
+    .shell-window { flex:1 1 auto; margin-top:12px; overflow:hidden; border:1px solid #1f2937; border-radius:8px; background:#0b1020; box-shadow:0 12px 28px rgba(15,23,42,.18); }
+    .shell-bar { min-height:34px; display:flex; align-items:center; gap:7px; padding:0 12px; border-bottom:1px solid #263244; background:#111827; color:#cbd5e1; font-size:12px; font-weight:800; }
+    .shell-dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+    .shell-dot.red { background:#f87171; }
+    .shell-dot.yellow { background:#fbbf24; }
+    .shell-dot.green { background:#34d399; margin-right:8px; }
+    .command-code { margin:0; border:0; border-radius:0; background:#0b1020; color:#e5e7eb; font-family:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace; }
+    .prompt-code { position:relative; flex:1 1 auto; padding-top:48px; border:1px solid #c4b5fd; border-left:5px solid var(--accent); background:#fff; color:#241047; font-family:inherit; font-size:14px; box-shadow:0 8px 20px rgba(124,58,237,.08); }
+    .prompt-code::before { content:"AI PROMPT - คัดลอกข้อความนี้ไปวางใน AI"; position:absolute; top:0; left:0; right:0; min-height:34px; display:flex; align-items:center; padding:0 12px; border-bottom:1px solid #ddd6fe; background:#f3efff; color:#5b21b6; font-size:12px; font-weight:900; }
+    .prompt-head > .prompt-code { margin-top:0; }
+    .tab-panel .prompt-head > .prompt-actions { margin-top:12px; }
+    .tree-code { background:#f8fafc; color:#334155; border-color:var(--line); font-family:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace; }
     code { background:#eef2f7; padding:2px 5px; border-radius:5px; }
     .small-note { color:var(--muted); font-size:14px; margin:8px 0 0; }
     .footer { border-top:1px solid var(--line); color:var(--muted); padding-top:24px; padding-bottom:34px; margin-top:48px; font-size:14px; }
@@ -66,43 +95,18 @@
       <h2>ติดตั้งและเปิดเครื่องมือ</h2>
       <div class="grid">
         <article class="card">
-          <h3>1. ติดตั้งเครื่องมือที่ใช้</h3>
-          <p>เลือกอย่างใดอย่างหนึ่งตามที่มีสิทธิ์ใช้: Codex, Claude Code หรือ Antigravity แล้วติดตั้งตาม official documentation ของเครื่องมือนั้น</p>
-          <p class="small-note">ถ้าใช้เครื่องมหาวิทยาลัยหรือ account องค์กร ให้ตรวจ policy การใช้ AI และข้อมูลวิจัยก่อนเสมอ</p>
+          <h3>1. เลือกเครื่องมือและติดตั้ง</h3>
+          <p>เลือกอย่างใดอย่างหนึ่งตามสิทธิ์ที่มี แล้วติดตั้งจากเอกสารหรือหน้า download ทางการ</p>
+          <div class="tool-list">
+            <a class="tool-link" href="https://developers.openai.com/codex/cli" target="_blank" rel="noopener">Codex CLI <span>OpenAI Developers</span></a>
+            <a class="tool-link" href="https://code.claude.com/docs/en/quickstart" target="_blank" rel="noopener">Claude Code <span>Anthropic Docs</span></a>
+            <a class="tool-link" href="https://antigravity.google/docs" target="_blank" rel="noopener">Google Antigravity <span>Official Docs</span></a>
+          </div>
         </article>
         <article class="card">
-          <h3>2. เปิด workspace</h3>
-          <p>สร้างโฟลเดอร์งานใหม่ แล้วเปิดโฟลเดอร์นั้นด้วยเครื่องมือ AI ที่เลือก อย่าเปิดทับโฟลเดอร์ thesis ต้นฉบับโดยตรงถ้ายังไม่มี backup</p>
-        </article>
-      </div>
-    </section>
-
-    <section>
-      <h2>เริ่มจาก download และจัด workspace</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>โหลดชุด prompt pack</h3>
-          <p>ถ้าเปิดจาก GitHub ให้ใช้ปุ่ม <code>Code → Download ZIP</code> หรือ clone repository แล้วเข้าโฟลเดอร์ <code>prompt_packs/thesis_review_student_edition/</code></p>
-          <p>ถ้าได้รับ zip จากอาจารย์ ให้แตกไฟล์ไว้ในโฟลเดอร์งานของตนเองก่อนเริ่มใช้</p>
-          <p><a class="button" href="thesis_review_student_edition.zip">ดาวน์โหลด zip สำหรับ workspace</a></p>
-        </article>
-        <article class="card">
-          <h3>โครงโฟลเดอร์ที่แนะนำ</h3>
-          <pre>my_thesis_review/
-  AGENTS.md
-  CLAUDE.md
-  input/
-    v01_original/
-    v02_revised/
-  01_working_text/
-  02_references/
-    bib/
-    pdf/
-    extracted_md/
-    official_pages/
-  03_results/
-  04_review_notes/
-  prompt_pack/</pre>
+          <h3>2. เริ่มจาก Step 1 ด้านล่าง</h3>
+          <p>หลังติดตั้งแล้ว ให้ทำตาม command ใน Step 1 เพื่อสร้าง workspace ใหม่และแยกงานตรวจออกจาก thesis ต้นฉบับ</p>
+          <p class="small-note">ถ้าใช้ account มหาวิทยาลัยหรือองค์กร ให้ตรวจ policy การใช้ AI และข้อมูลวิจัยก่อนเสมอ</p>
         </article>
       </div>
     </section>
@@ -119,99 +123,197 @@
       <h2>Prompt สำหรับ workspace</h2>
       <div class="prompt-block">
         <h3>Step 1: จัดไฟล์ให้ AI อ่านได้</h3>
-        <p>ให้สร้างโฟลเดอร์งานใหม่ แล้วคัดลอกไฟล์เข้าไปตามรายการนี้ อย่าทำงานบนไฟล์ thesis ต้นฉบับเพียงชุดเดียว</p>
-        <pre>1. สร้างโฟลเดอร์ใหม่ชื่อ my_thesis_review/
-   ถ้าใช้ workspace_template/ จะมี AGENTS.md สำหรับ Codex และ CLAUDE.md สำหรับ Claude Code อยู่แล้ว
-
-2. เก็บไฟล์ต้นฉบับเป็นเวอร์ชันใน:
-   input/
-   ตัวอย่าง:
-   - input/v01_original/thesis_draft.docx
-   - input/v01_original/thesis_draft.pdf
-   - input/v02_revised_after_advisor/thesis_draft.docx
-   - input/v02_revised_after_advisor/thesis_draft.pdf
-
-   เวลาใช้งาน ให้ใช้เฉพาะเวอร์ชันล่าสุด เช่น v02_revised_after_advisor
-   ไม่ต้องให้ AI อ่านทุกเวอร์ชันพร้อมกัน เว้นแต่ต้องการเปรียบเทียบ revision
-
-3. ใส่ไฟล์ข้อความที่ให้ AI อ่านและอ้างตำแหน่งได้ใน:
-   01_working_text/
-   ตัวอย่าง:
-   - 01_working_text/thesis_draft.md
-   - 01_working_text/chapter_1_introduction.md
-   - 01_working_text/chapter_2_literature_review.md
-
-4. ใส่ bibliography ใน:
-   02_references/bib/
-   ตัวอย่าง:
-   - 02_references/bib/references.bib
-   - 02_references/bib/references_from_word.txt
-
-   ถ้ายังไม่มี .bib ไม่เป็นไร ให้ข้ามขั้นนี้ แล้วใส่ PDF ของ reference ในข้อ 5
-   จากนั้นสั่ง AI สร้าง references.bib จาก PDF ที่มี โดยห้ามแต่งข้อมูลที่ไม่มีหลักฐาน
-
-5. ใส่ไฟล์ reference ต้นฉบับ เช่น paper PDF ที่อ้างอิง ใน:
-   02_references/pdf/
-   ตัวอย่าง:
-   - 02_references/pdf/Smith_2021_topic.pdf
-   - 02_references/pdf/Wang_2023_method.pdf
-
-6. เวลาสั่ง Codex หรือ Claude Code อ่าน PDF reference ให้ AI เก็บบันทึกผลอ่านไว้ใน:
-   02_references/extracted_md/
-   ตัวอย่าง:
-   - 02_references/extracted_md/Smith_2021_topic.md
-   - 02_references/extracted_md/Wang_2023_method.md
-
-   แต่ละไฟล์ควรบอกว่าอ่านจาก PDF ใด พบ title/authors/year/venue/DOI/abstract อะไร หน้าไหน และอะไรยังต้อง verify
-   ใช้เป็นร่องรอยการตรวจ ไม่ใช่หลักฐานใหม่แทน PDF
-
-7. ถ้ามีหน้าเว็บหรือข้อมูลจากแหล่งทางการของ paper ให้ใส่ใน:
-   02_references/official_pages/
-   ตัวอย่าง:
-   - 02_references/official_pages/doi_pages.md
-   - 02_references/official_pages/publisher_abstracts.md
-   - 02_references/official_pages/acm_ieee_springer_pages.md
-
-8. ใส่ผลทดลอง ตาราง รูป หรือ log ที่เกี่ยวข้องใน:
-   03_results/
-   ตัวอย่าง:
-   - 03_results/result_table.xlsx
-   - 03_results/figures/
-   - 03_results/evaluation_notes.md
-
-9. แตกไฟล์ prompt pack นี้ไว้ใน:
-   prompt_pack/
-
-10. สร้างโฟลเดอร์ว่างให้ AI เขียนผลตรวจ:
-   04_review_notes/</pre>
-        <p class="small-note">ถ้าเอกสารหลักเป็น <code>.docx</code> หรือ <code>.pdf</code> ให้ export เป็น Markdown/text เพิ่มใน <code>01_working_text/</code> ถ้าทำได้ เพื่อให้ AI อ้าง section และ paragraph ได้ง่ายขึ้น</p>
+        <p>เลือกแท็บตามระบบปฏิบัติการ แล้วรัน command ทีละบรรทัดจากโฟลเดอร์ที่ต้องการสร้าง project folder</p>
+        <p class="small-note">ค่าเริ่มต้นคือ <code>my_thesis_review/</code> ถ้าต้องการชื่ออื่น ให้แก้ตัวแปร <code>PROJECT</code> หรือ <code>$Project</code> ใน command ก่อนรัน</p>
+        <div class="tab-list" role="tablist" aria-label="เลือก command ตามระบบปฏิบัติการ">
+          <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="step1-linux-panel" id="step1-linux-tab" data-tab-target="step1-linux-panel">Linux / macOS</button>
+          <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="step1-windows-panel" id="step1-windows-tab" data-tab-target="step1-windows-panel">Windows PowerShell</button>
+        </div>
+        <div class="tab-panel" id="step1-linux-panel" role="tabpanel" aria-labelledby="step1-linux-tab">
+          <div class="prompt-head">
+            <div class="shell-window" aria-label="Linux หรือ macOS shell command">
+              <div class="shell-bar"><span class="shell-dot red"></span><span class="shell-dot yellow"></span><span class="shell-dot green"></span><span>bash / zsh</span></div>
+              <pre class="command-code" id="step1-linux-command">PROJECT="my_thesis_review"
+curl -L -o thesis_review_student_edition.zip https://punpiti.github.io/thesis-review-prompt-pack/thesis_review_student_edition.zip
+unzip -o thesis_review_student_edition.zip
+cd prompt_packs/thesis_review_student_edition
+WORKSPACE="$PWD/../../$PROJECT"
+mkdir -p "$WORKSPACE"
+cp -R workspace_template/. "$WORKSPACE/"
+mkdir -p "$WORKSPACE/prompt_pack"
+cp -R . "$WORKSPACE/prompt_pack/"
+cd "$WORKSPACE"</pre>
+            </div>
+            <div class="prompt-actions">
+              <button class="icon-button copy-button" type="button" aria-label="คัดลอก command Linux Step 1" data-copy-target="step1-linux-command">⧉</button>
+            </div>
+          </div>
+        </div>
+        <div class="tab-panel" id="step1-windows-panel" role="tabpanel" aria-labelledby="step1-windows-tab" hidden>
+          <div class="prompt-head">
+            <div class="shell-window" aria-label="Windows PowerShell command">
+              <div class="shell-bar"><span class="shell-dot red"></span><span class="shell-dot yellow"></span><span class="shell-dot green"></span><span>PowerShell</span></div>
+              <pre class="command-code" id="step1-windows-command">$Project = "my_thesis_review"
+Invoke-WebRequest -Uri "https://punpiti.github.io/thesis-review-prompt-pack/thesis_review_student_edition.zip" -OutFile ".\thesis_review_student_edition.zip"
+Expand-Archive -Path .\thesis_review_student_edition.zip -DestinationPath . -Force
+Set-Location .\prompt_packs\thesis_review_student_edition
+$Workspace = Join-Path (Resolve-Path ..\..).Path $Project
+New-Item -ItemType Directory -Force -Path $Workspace | Out-Null
+Copy-Item -Path .\workspace_template\* -Destination $Workspace -Recurse -Force
+New-Item -ItemType Directory -Force -Path (Join-Path $Workspace "prompt_pack") | Out-Null
+Copy-Item -Path .\* -Destination (Join-Path $Workspace "prompt_pack") -Recurse -Force
+Set-Location $Workspace</pre>
+            </div>
+            <div class="prompt-actions">
+              <button class="icon-button copy-button" type="button" aria-label="คัดลอก command Windows Step 1" data-copy-target="step1-windows-command">⧉</button>
+            </div>
+          </div>
+        </div>
+        <div class="instruction-panel">
+          <h4>หลังรัน command แล้ว ให้ใส่ไฟล์งานไว้ที่นี่</h4>
+          <div class="path-box">my_thesis_review/00_inbox/</div>
+          <p>วางไฟล์รวมทั้งหมดไว้ในโฟลเดอร์นี้ได้เลย ไม่ต้องแยกเองก่อน</p>
+          <ul class="plain-list">
+            <li>ใส่ได้ทั้ง thesis/manuscript, LaTeX, Word, PDF และ BibTeX</li>
+            <li>ใส่ reference PDF, รูป, ตาราง, ผลทดลอง, script, log, metric และ baseline ได้</li>
+            <li>ถ้ามีหลายเวอร์ชัน ใส่รวมไว้ใน <code>00_inbox/</code> ได้ แล้วให้ AI จัดเวอร์ชันใน Step 2</li>
+          </ul>
+          <p class="small-note">ไฟล์ใน <code>00_review_instructions/</code> และ <code>02_references/extracted_md/</code> ให้ AI สร้างเองในขั้นตอนถัดไป</p>
+        </div>
+        <div class="nested-prompt">
+          <div class="prompt-head">
+            <h3>ดูโครงที่จะได้หลังรัน Step 1</h3>
+            <div class="prompt-actions">
+              <button class="icon-button toggle-button" type="button" aria-expanded="false" aria-controls="step1-tree-content" data-toggle-target="step1-tree-content">▸</button>
+            </div>
+          </div>
+          <div class="collapsible-content" id="step1-tree-content" hidden>
+            <pre class="tree-code">my_thesis_review/
+  AGENTS.md
+  CLAUDE.md
+  00_inbox/
+  00_review_instructions/
+  input/
+    v01_original/
+    v02_revised/
+  01_working_text/
+  02_references/
+    bib/
+    pdf/
+    extracted_md/
+    official_pages/
+  03_results/
+  04_review_notes/
+  prompt_pack/</pre>
+          </div>
+        </div>
       </div>
 
       <div class="prompt-block">
-        <h3>Step 2: สั่ง AI ประเมิน</h3>
+        <h3>Step 2: ให้ AI จัดไฟล์จาก 00_inbox</h3>
+        <p class="small-note">ใช้เมื่อวางไฟล์รวมไว้ใน <code>00_inbox/</code> แล้วต้องการให้ Codex หรือ Claude Code จัดเข้าโฟลเดอร์ที่ถูกต้อง</p>
+        <div class="prompt-head">
+          <pre class="prompt-code" id="step2-init-prompt">init workspace จากไฟล์รวม</pre>
+          <div class="prompt-actions">
+            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt init Step 2" data-copy-target="step2-init-prompt">⧉</button>
+          </div>
+        </div>
+
+        <div class="nested-prompt">
+          <div class="prompt-head">
+          <h3>Prompt แบบเต็มสำหรับ init workspace</h3>
+          <div class="prompt-actions">
+            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt เต็ม init Step 2" data-copy-target="step2-init-full-prompt">⧉</button>
+            <button class="icon-button toggle-button" type="button" aria-expanded="false" aria-controls="step2-init-full-content" data-toggle-target="step2-init-full-content">▸</button>
+          </div>
+          </div>
+          <div class="collapsible-content" id="step2-init-full-content" hidden>
+          <pre class="prompt-code" id="step2-init-full-prompt">init workspace จากไฟล์รวม
+
+อ่านไฟล์ทั้งหมดใน 00_inbox/
+สร้างโฟลเดอร์ที่ขาดถ้าจำเป็น
+จัดไฟล์โดย copy จาก 00_inbox/ ไปยังโฟลเดอร์ที่เหมาะสม ห้ามลบไฟล์ต้นฉบับใน 00_inbox/
+
+จัดตามนี้:
+- thesis/manuscript เวอร์ชันล่าสุด -> input/v02_revised/
+- ไฟล์ต้นฉบับก่อนแก้หรือเวอร์ชันเก่า -> input/v01_original/
+- .tex/.md/.txt ที่เป็นเนื้อหางาน -> 01_working_text/
+- .bib/.ris/.enw/reference list -> 02_references/bib/
+- PDF reference -> 02_references/pdf/
+- DOI page / publisher page / official abstract -> 02_references/official_pages/
+- dataset/table/figure/log/script/metric/baseline/result evidence -> 03_results/
+
+ถ้าไม่แน่ใจว่าไฟล์ใดควรอยู่ไหน ให้คงไว้ใน 00_inbox/ และ mark ว่า needs classification
+สร้างหรืออัปเดต 00_review_instructions/file_inventory.md โดยมี source path, target path, file role, uncertainty
+ห้ามแก้เนื้อหา thesis/manuscript/references ในขั้นนี้</pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="prompt-block">
+        <h3>Step 3: สร้าง instruction จากงานปัจจุบัน</h3>
+        <p class="small-note">ใช้ก่อนประเมิน โดยเฉพาะงานที่เป็น LaTeX หลายไฟล์ ให้ AI อ่านงานล่าสุดแล้วจัด context ลง <code>00_review_instructions/</code> แทนการให้นิสิตกรอกเอง</p>
+        <div class="prompt-head">
+          <pre class="prompt-code" id="step2-instruction-prompt">เตรียม instruction จากงานปัจจุบัน</pre>
+          <div class="prompt-actions">
+            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt Step 3" data-copy-target="step2-instruction-prompt">⧉</button>
+          </div>
+        </div>
+
+        <div class="nested-prompt">
+          <div class="prompt-head">
+          <h3>Prompt แบบเต็มสำหรับสร้าง instruction</h3>
+          <div class="prompt-actions">
+            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt เต็ม Step 3" data-copy-target="step2-instruction-full-prompt">⧉</button>
+            <button class="icon-button toggle-button" type="button" aria-expanded="false" aria-controls="step2-instruction-full-content" data-toggle-target="step2-instruction-full-content">▸</button>
+          </div>
+          </div>
+          <div class="collapsible-content" id="step2-instruction-full-content" hidden>
+          <pre class="prompt-code" id="step2-instruction-full-prompt">โหลด instruction folder ที่ 00_review_instructions/
+
+อ่านงานเวอร์ชันล่าสุดจาก input/ และ 01_working_text/ เท่าที่มี
+ถ้าเป็น LaTeX ให้หา root .tex ปัจจุบัน แล้วตาม \input{} และ \include{} เท่าที่จำเป็น
+ให้ระบุ bibliography file, figure/table/result file ที่ถูกอ้างถึงด้วย
+
+สร้างหรืออัปเดต:
+- 00_review_instructions/review_profile.md
+- 00_review_instructions/document_map.md
+- 00_review_instructions/review_scope.md
+- 00_review_instructions/missing_inputs.md
+
+ให้สรุปจากหลักฐานใน workspace เท่านั้น
+ถ้าข้อมูลไม่อยู่ในไฟล์ ให้เขียนว่า missing input
+ห้ามแต่ง citation, DOI, venue ranking, result, IRB/legal requirement หรือ claim เอง
+ห้ามแก้ thesis/manuscript/references ในขั้นนี้</pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="prompt-block">
+        <h3>Step 4: สั่ง AI ประเมิน</h3>
         <p class="small-note">สำหรับนิสิต ให้เริ่มจากคำสั่งสั้นนี้ก่อน ถ้า workspace จัดไฟล์ครบแล้ว AI ควรอ่านสถานะเดิม ประเมินส่วนที่ยังไม่เสร็จ และจดงานค้างไว้ให้กลับมาทำต่อรอบหน้า</p>
         <div class="prompt-head">
-          <pre id="step2-short-prompt">ให้ประเมิน</pre>
+          <pre class="prompt-code" id="step2-short-prompt">ประเมิน</pre>
           <div class="prompt-actions">
-            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt สั้น Step 2" data-copy-target="step2-short-prompt">⧉</button>
+            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt สั้น Step 4" data-copy-target="step2-short-prompt">⧉</button>
           </div>
         </div>
-      </div>
 
-      <div class="prompt-block">
-        <div class="prompt-head">
-          <h3>Step 2: prompt แบบเต็ม</h3>
+        <div class="nested-prompt">
+          <div class="prompt-head">
+          <h3>Prompt แบบเต็ม</h3>
           <div class="prompt-actions">
-            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt เต็ม Step 2" data-copy-target="step2-full-prompt">⧉</button>
+            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt เต็ม Step 4" data-copy-target="step2-full-prompt">⧉</button>
             <button class="icon-button toggle-button" type="button" aria-expanded="false" aria-controls="step2-full-content" data-toggle-target="step2-full-content">▸</button>
           </div>
-        </div>
-        <div class="collapsible-content" id="step2-full-content" hidden>
+          </div>
+          <div class="collapsible-content" id="step2-full-content" hidden>
           <p class="small-note">ถ้าต้องการควบคุมให้ชัด ใช้ prompt แบบเต็มนี้แทน</p>
-          <pre id="step2-full-prompt">ให้ประเมิน workspace นี้แบบ full review จนจบ โดยยังไม่ต้องแก้ thesis ต้นฉบับ
+          <pre class="prompt-code" id="step2-full-prompt">ประเมิน workspace นี้แบบ full review จนจบ โดยยังไม่ต้องแก้ thesis ต้นฉบับ
 
 อ่าน:
 - 00_context_notes.md ถ้ามี
+- 00_review_instructions/ ทุกไฟล์ที่มี ถ้ายังไม่มีหรือเก่า ให้สร้างจากงานปัจจุบันก่อน
 - 01_working_text/thesis_draft.md
 - 01_working_text/ ทุกไฟล์ที่เกี่ยวข้อง
 - 02_references/bib/references.bib ถ้ามี
@@ -223,8 +325,8 @@
 - 04_review_notes/99_review_state.md ถ้ามี
 
 ถ้ามี 04_review_notes/99_review_state.md ให้ดูว่าหัวข้อใดทำเสร็จแล้วและหัวข้อใดค้าง
-ให้ประเมินหัวข้อที่เหลือจนจบ ไม่ต้องทำซ้ำหัวข้อที่เสร็จแล้ว
-ยกเว้นฉันสั่งชัดเจนว่า "ให้ประเมินใหม่ทั้งหมด"
+ประเมินหัวข้อที่เหลือจนจบ ไม่ต้องทำซ้ำหัวข้อที่เสร็จแล้ว
+ยกเว้นฉันสั่งชัดเจนว่า "ประเมินใหม่ทั้งหมด"
 
 ให้สร้างหรืออัปเดตไฟล์เหล่านี้:
 - 04_review_notes/00_inventory.md
@@ -248,26 +350,28 @@
 - รอบนี้ทำอะไรเสร็จแล้ว
 - อะไรยังค้างและค้างเพราะขาดหลักฐานอะไร
 - รอบหน้าควรใช้ prompt อะไรเพื่อทำต่อ
-- หัวข้อใดไม่ควรประเมินซ้ำ เว้นแต่ผู้ใช้สั่งให้ประเมินใหม่ทั้งหมด
+- หัวข้อใดไม่ควรประเมินซ้ำ เว้นแต่ผู้ใช้สั่งว่า "ประเมินใหม่ทั้งหมด"
 
 ห้ามแก้ thesis หรือ references ในรอบนี้</pre>
+          </div>
         </div>
       </div>
 
       <div class="prompt-block">
         <div class="prompt-head">
-          <h3>Step 3: ถ้าต้องการสั่ง full review แยก</h3>
+          <h3>Step 5: ถ้าต้องการสั่ง full review แยก</h3>
           <div class="prompt-actions">
-            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt Step 3" data-copy-target="step3-prompt">⧉</button>
+            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt Step 5" data-copy-target="step3-prompt">⧉</button>
             <button class="icon-button toggle-button" type="button" aria-expanded="false" aria-controls="step3-content" data-toggle-target="step3-content">▸</button>
           </div>
         </div>
         <div class="collapsible-content" id="step3-content" hidden>
           <p class="small-note">ไฟล์ <code>04_review_notes/01_full_review.md</code> เป็นผลตรวจหลักของ workflow นี้ ควรสร้างใน workspace ของนิสิตจาก template ที่ <code>prompt_pack/templates/04_review_notes/01_full_review_TEMPLATE.md</code></p>
-          <pre id="step3-prompt">ใช้ prompt_pack/01_full_thesis_review_prompt.md เป็นเกณฑ์
+          <pre class="prompt-code" id="step3-prompt">ใช้ prompt_pack/01_full_thesis_review_prompt.md เป็นเกณฑ์
 ใช้ prompt_pack/templates/04_review_notes/01_full_review_TEMPLATE.md เป็นโครงรายงาน
 ตรวจ thesis จาก 01_working_text/thesis_draft.md
 ใช้ 00_context_notes.md เป็น context ถ้ามี
+ใช้ 00_review_instructions/ เป็น context หลัก ถ้ามี ถ้ายังไม่มีให้สร้างก่อน
 ใช้ 02_references/bib/references.bib, 02_references/pdf/, 02_references/extracted_md/, 02_references/official_pages/ และ 03_results/ เท่าที่มีเป็นหลักฐาน
 
 สร้างไฟล์ 04_review_notes/01_full_review.md
@@ -302,14 +406,14 @@
 
       <div class="prompt-block">
         <div class="prompt-head">
-          <h3>Step 4: ถ้าต้องการตรวจ references แยก</h3>
+          <h3>Step 6: ถ้าต้องการตรวจ references แยก</h3>
           <div class="prompt-actions">
-            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt Step 4" data-copy-target="step4-prompt">⧉</button>
+            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt Step 6" data-copy-target="step4-prompt">⧉</button>
             <button class="icon-button toggle-button" type="button" aria-expanded="false" aria-controls="step4-content" data-toggle-target="step4-content">▸</button>
           </div>
         </div>
         <div class="collapsible-content" id="step4-content" hidden>
-          <pre id="step4-prompt">ใช้ prompt_pack/02_reference_bibtex_prompt.md เป็นเกณฑ์
+          <pre class="prompt-code" id="step4-prompt">ใช้ prompt_pack/02_reference_bibtex_prompt.md เป็นเกณฑ์
 ถ้ามี 02_references/bib/references.bib ให้ตรวจเทียบกับ 01_working_text/thesis_draft.md
 ถ้าไม่มี references.bib ไม่เป็นไร ให้สร้าง 02_references/bib/references.bib จาก PDF ใน 02_references/pdf/
 ใช้ไฟล์ PDF reference ต้นฉบับใน 02_references/pdf/ และหน้าเว็บ/ข้อมูลจากแหล่งทางการใน 02_references/official_pages/ เป็นหลักฐาน
@@ -338,15 +442,15 @@
 
       <div class="prompt-block">
         <div class="prompt-head">
-          <h3>Step 5: ถ้าต้องการสร้าง action checklist แยก</h3>
+          <h3>Step 7: ถ้าต้องการสร้าง action checklist แยก</h3>
           <div class="prompt-actions">
-            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt Step 5" data-copy-target="step5-prompt">⧉</button>
+            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt Step 7" data-copy-target="step5-prompt">⧉</button>
             <button class="icon-button toggle-button" type="button" aria-expanded="false" aria-controls="step5-content" data-toggle-target="step5-content">▸</button>
           </div>
         </div>
         <div class="collapsible-content" id="step5-content" hidden>
-          <p class="small-note"><code>04_review_notes/03_student_action_checklist.md</code> ไม่ใช่ไฟล์ที่มีมากับ prompt pack แต่เป็นไฟล์ผลลัพธ์ที่ให้ AI สร้างใน workspace ของนิสิตหลังจากทำ Step 3 และ Step 4 แล้ว ถ้าอยากเห็นรูปแบบ ให้ดู template ที่ <code>prompt_pack/templates/04_review_notes/03_student_action_checklist_TEMPLATE.md</code></p>
-          <pre id="step5-prompt">อ่าน 04_review_notes/01_full_review.md และ 04_review_notes/02_reference_audit.md
+          <p class="small-note"><code>04_review_notes/03_student_action_checklist.md</code> ไม่ใช่ไฟล์ที่มีมากับ prompt pack แต่เป็นไฟล์ผลลัพธ์ที่ให้ AI สร้างใน workspace ของนิสิตหลังจากทำ Step 5 และ Step 6 แล้ว ถ้าอยากเห็นรูปแบบ ให้ดู template ที่ <code>prompt_pack/templates/04_review_notes/03_student_action_checklist_TEMPLATE.md</code></p>
+          <pre class="prompt-code" id="step5-prompt">อ่าน 04_review_notes/01_full_review.md และ 04_review_notes/02_reference_audit.md
 
 สร้างไฟล์ 04_review_notes/03_student_action_checklist.md
 อัปเดต 04_review_notes/99_review_state.md ให้บอกว่างานอะไรเสร็จแล้ว อะไรค้าง และ prompt รอบหน้าควรเริ่มจากอะไร
@@ -371,6 +475,20 @@
     <div>สำหรับสนับสนุนการตรวจงานวิชาการ ไม่ใช่ตัวแทนของอาจารย์ที่ปรึกษา reviewer หรือการพิจารณา IRB/legal compliance จริง</div>
   </footer>
   <script>
+    document.querySelectorAll('.tab-button').forEach((button) => {
+      button.addEventListener('click', () => {
+        const list = button.closest('.tab-list');
+        const scope = list ? list.parentElement : document;
+        const target = document.getElementById(button.dataset.tabTarget);
+        scope.querySelectorAll('.tab-button').forEach((tab) => {
+          tab.setAttribute('aria-selected', String(tab === button));
+        });
+        scope.querySelectorAll('.tab-panel').forEach((panel) => {
+          panel.hidden = panel !== target;
+        });
+      });
+    });
+
     document.querySelectorAll('.toggle-button').forEach((button) => {
       button.addEventListener('click', () => {
         const target = document.getElementById(button.dataset.toggleTarget);
