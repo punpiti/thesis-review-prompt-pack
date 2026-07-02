@@ -177,9 +177,25 @@
       <div class="prompt-block">
         <h3>Step 2: สั่ง AI ประเมิน</h3>
         <p class="small-note">สำหรับนิสิต ให้เริ่มจากคำสั่งสั้นนี้ก่อน ถ้า workspace จัดไฟล์ครบแล้ว AI ควรอ่านสถานะเดิม ประเมินส่วนที่ยังไม่เสร็จ และจดงานค้างไว้ให้กลับมาทำต่อรอบหน้า</p>
-        <pre>ให้ประเมิน</pre>
-        <p class="small-note">ถ้าต้องการควบคุมให้ชัด ใช้ prompt แบบเต็มนี้แทน</p>
-        <pre>ให้ประเมิน workspace นี้แบบ full review จนจบ โดยยังไม่ต้องแก้ thesis ต้นฉบับ
+        <div class="prompt-head">
+          <pre id="step2-short-prompt">ให้ประเมิน</pre>
+          <div class="prompt-actions">
+            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt สั้น Step 2" data-copy-target="step2-short-prompt">⧉</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prompt-block">
+        <div class="prompt-head">
+          <h3>Step 2: prompt แบบเต็ม</h3>
+          <div class="prompt-actions">
+            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt เต็ม Step 2" data-copy-target="step2-full-prompt">⧉</button>
+            <button class="icon-button toggle-button" type="button" aria-expanded="false" aria-controls="step2-full-content" data-toggle-target="step2-full-content">▸</button>
+          </div>
+        </div>
+        <div class="collapsible-content" id="step2-full-content" hidden>
+          <p class="small-note">ถ้าต้องการควบคุมให้ชัด ใช้ prompt แบบเต็มนี้แทน</p>
+          <pre id="step2-full-prompt">ให้ประเมิน workspace นี้แบบ full review จนจบ โดยยังไม่ต้องแก้ thesis ต้นฉบับ
 
 อ่าน:
 - 00_context_notes.md ถ้ามี
@@ -221,6 +237,7 @@
 - หัวข้อใดไม่ควรประเมินซ้ำ เว้นแต่ผู้ใช้สั่งให้ประเมินใหม่ทั้งหมด
 
 ห้ามแก้ thesis หรือ references ในรอบนี้</pre>
+        </div>
       </div>
 
       <div class="prompt-block">
