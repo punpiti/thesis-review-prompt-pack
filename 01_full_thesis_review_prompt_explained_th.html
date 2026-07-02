@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>แนวคิดการตรวจงานวิจัย | Thesis Review Prompt Pack</title>
+  <style>
+    :root { --bg:#f7f8fb; --ink:#1f2933; --muted:#5b6776; --line:#d9dee7; --panel:#fff; --accent:#0f766e; --accent-2:#7c3aed; --accent-3:#b45309; --soft:#e7f5f3; --radius:8px; font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); line-height:1.75; }
+    a { color:var(--accent); font-weight:700; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .topbar { position:sticky; top:0; z-index:10; border-bottom:1px solid var(--line); background:rgba(255,255,255,.94); backdrop-filter:blur(10px); }
+    .topbar-inner, main, .footer { max-width:1120px; margin:0 auto; padding-left:20px; padding-right:20px; }
+    .topbar-inner { min-height:58px; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+    .brand { font-weight:900; }
+    .nav { display:flex; flex-wrap:wrap; gap:12px; font-size:14px; }
+    .hero { background:#102a43; color:#fff; }
+    .hero-inner { max-width:1120px; margin:0 auto; padding:42px 20px; }
+    .hero p { color:#d9e2ec; max-width:880px; font-size:18px; }
+    h1 { margin:0; font-size:clamp(32px,5vw,56px); line-height:1.08; }
+    h2 { margin:42px 0 12px; font-size:28px; line-height:1.2; }
+    h3 { margin:0 0 8px; font-size:19px; line-height:1.35; }
+    .lead { color:var(--muted); max-width:900px; font-size:17px; }
+    .notice { border-left:5px solid var(--accent); background:var(--soft); padding:16px 18px; border-radius:6px; margin-top:20px; }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+    .card { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:16px; }
+    .review-list { display:grid; gap:12px; }
+    .review-item { display:grid; grid-template-columns:56px minmax(0,1fr); gap:14px; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px; }
+    .num { width:42px; height:42px; border-radius:8px; background:#102a43; color:#fff; display:grid; place-items:center; font-weight:900; }
+    .review-item p { margin:0; color:var(--muted); }
+    .review-item ul { margin:8px 0 0; padding-left:20px; color:var(--muted); }
+    .review-item h3 { margin-top:1px; }
+    ul { padding-left:24px; }
+    code { background:#eef2f7; padding:2px 5px; border-radius:5px; }
+    .footer { border-top:1px solid var(--line); color:var(--muted); padding-top:24px; padding-bottom:34px; margin-top:48px; font-size:14px; }
+    @media (max-width:860px) { .grid, .review-item { grid-template-columns:1fr; } .nav { display:none; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Thesis Review Prompt Pack</div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">หน้าเริ่มต้น</a>
+        <a href="workspace.html">Workspace</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>แนวคิดการตรวจงานวิจัยโดยทั่วไป</h1>
+      <p>คำอธิบายภาษาไทยของ full thesis review prompt สำหรับให้นิสิตเข้าใจว่าควรตรวจงานวิจัยจากอะไรบ้าง ก่อนใช้ AI ช่วยตรวจจริง</p>
+    </div>
+  </div>
+
+  <main>
+    <section>
+      <h2>ไฟล์นี้ใช้ทำอะไร</h2>
+      <p class="lead">หน้านี้ทำไว้ให้อ่านเพื่อเข้าใจแนวคิดของ prompt หลัก ไม่ใช่ prompt สำหรับ copy ไปใช้ตรง ๆ ถ้าจะสั่ง AI ให้ใช้หน้า <a href="workspace.html">Workspace</a> หรือไฟล์ prompt หลักใน pack</p>
+      <div class="notice">
+        <strong>หลักคิดสำคัญ:</strong>
+        การตรวจวิทยานิพนธ์ที่ดีไม่ใช่การตรวจภาษาอย่างเดียว แต่ต้องตรวจว่าเรื่องทั้งเรื่องต่อกันจริงหรือไม่ ตั้งแต่ปัญหา วัตถุประสงค์ วิธีวิจัย หลักฐาน ผลลัพธ์ reference และข้อจำกัดของงาน
+      </div>
+    </section>
+
+    <section>
+      <h2>หลักคิดของ prompt นี้</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>ตรวจห่วงโซ่งานวิจัย</h3>
+          <p>ปัญหา วัตถุประสงค์ วิธีวิจัย ผลลัพธ์ และ claim ต้องต่อกันจริง ถ้าขาดช่วงใดช่วงหนึ่ง งานยังไม่พร้อม</p>
+        </article>
+        <article class="card">
+          <h3>ตรวจหลักฐาน</h3>
+          <p>ทุก claim สำคัญต้องมีหลักฐานจากเอกสาร reference ผลทดลอง หรือข้อกำหนดจริง ไม่ใช่คำอธิบายที่ AI แต่งเพิ่ม</p>
+        </article>
+        <article class="card">
+          <h3>คิดแบบ reviewer</h3>
+          <p>ประเมินว่างานมีน้ำหนักพอกับสาขา ระดับปริญญา และ venue ที่คาดหวังหรือไม่</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>ข้อมูลตั้งต้นที่ต้องรู้</h2>
+      <p>ก่อนประเมิน AI ต้องรู้หรืออ่านจากเอกสารให้ได้อย่างน้อย:</p>
+      <ul>
+        <li>สาขาและ subfield</li>
+        <li>ระดับงาน เช่น ปริญญาตรี ปริญญาโท ปริญญาเอก หรือ manuscript</li>
+        <li>สถานะเอกสาร เช่น proposal, thesis draft, defense draft, journal manuscript</li>
+        <li>target venue หรือระดับ publication ที่คาดหวัง</li>
+        <li>thesis/manuscript text</li>
+        <li>reference list หรือ BibTeX</li>
+      </ul>
+      <p>ถ้าข้อมูลเหล่านี้มีอยู่ในเอกสารแล้ว ให้ AI สรุปจากเอกสาร ไม่ต้องถามนิสิตซ้ำ</p>
+    </section>
+
+    <section>
+      <h2>สิ่งที่ prompt ให้ AI ตรวจ</h2>
+      <div class="review-list">
+        <article class="review-item">
+          <div class="num">1</div>
+          <div>
+            <h3>สาขา ระดับงาน และ venue</h3>
+            <ul>
+              <li>ระบุ field/subfield ให้ชัด ไม่ใช้คำกว้างเกินไป เช่น AI, education, data science โดยไม่บอกบริบทวิจัย</li>
+              <li>ดูว่างานคาดหวัง contribution ระดับใด และเหมาะกับปริญญาตรี โท เอก หรือ manuscript หรือไม่</li>
+              <li>ประเมินว่า target venue หรือ venue category สอดคล้องกับ scope, method, result และ reference หรือไม่</li>
+              <li>ตรวจว่ามี paper จาก target venue ใช้เป็น scope anchor จริง ไม่ใช่อ้างเพื่อให้ดูดีเฉย ๆ</li>
+              <li>ถ้า target สูงเกินไป ให้บอกว่าต้องเพิ่ม baseline, experiment, theory, dataset, validation หรือ writing standard อะไร</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">2</div>
+          <div>
+            <h3>Title และ abstract</h3>
+            <ul>
+              <li>ตรวจว่า title กับ abstract พูดเรื่องเดียวกันหรือไม่</li>
+              <li>ดูว่า title เฉพาะเจาะจงพอหรือไม่ และไม่ overclaim เกินสิ่งที่งานทำจริง</li>
+              <li>ตรวจว่า abstract มี problem, gap, method, data, result และ contribution ครบหรือไม่</li>
+              <li>จับ placeholder เช่น ยังไม่มี result, dataset, baseline, metric หรือค่าตัวเลขจริง</li>
+              <li>flag คำแรง เช่น robust, significant, state-of-the-art, solves หากไม่มีหลักฐานรองรับใน manuscript</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">3</div>
+          <div>
+            <h3>น้ำหนักของปัญหาวิจัย</h3>
+            <ul>
+              <li>ระบุปัญหาวิจัยจริงให้ได้ ไม่ใช่แค่บอกว่าจะพัฒนาระบบหรือประยุกต์เครื่องมือ</li>
+              <li>ประเมินว่าปัญหามีน้ำหนักทางวิชาการหรือ practical value เพียงพอหรือไม่</li>
+              <li>ดูว่าปัญหาถูก justify ด้วย evidence, literature, gap, limitation ของงานเดิม หรือข้อมูลจริงหรือไม่</li>
+              <li>ตรวจว่าปัญหากว้างเกินไป แคบเกินไป ซ้ำกับงานที่แก้ไปแล้ว หรือเป็นเพียงความสะดวกของผู้ทำวิจัยหรือไม่</li>
+              <li>บอกว่าควรเพิ่ม evidence แบบใดเพื่อทำให้ปัญหาแข็งแรงขึ้น</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">4</div>
+          <div>
+            <h3>คุณภาพของ literature review</h3>
+            <ul>
+              <li>ตรวจว่า literature review สร้าง problem, gap และ positioning ของงานได้จริงหรือไม่</li>
+              <li>แยกว่าข้อความเป็น synthesis หรือเป็นเพียง summary paper ทีละเรื่อง</li>
+              <li>หา reference ที่อยู่ใน bibliography แต่ไม่ได้ cite ในเนื้อหา</li>
+              <li>หา claim, definition, dataset, method หรือ background statement ที่ควร cite แต่ไม่มี citation</li>
+              <li>จับ citation ที่ใช้กว้างเกินไป ใช้ผิด claim หรือใช้แบบ decorative citation</li>
+              <li>ดูว่า Introduction กับ Related Work ทำหน้าที่ต่างกันหรือเล่า literature ซ้ำกัน</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">5</div>
+          <div>
+            <h3>การจัดกลุ่มและคุณภาพ reference</h3>
+            <ul>
+              <li>จัดกลุ่ม reference ตามบทบาท ไม่ใช่แค่ keyword เช่น direct prior work, method foundation, dataset/benchmark, evaluation method, theory, target-venue anchor, background, weak citation</li>
+              <li>ประเมินแต่ละกลุ่มว่า coverage, quality, recency และ relevance เพียงพอหรือไม่</li>
+              <li>ดูว่าขาดงานสำคัญ งานล่าสุด งานใน venue เป้าหมาย หรือ baseline ที่ reviewer คาดหวังหรือไม่</li>
+              <li>แยก cross-domain support ว่าสนับสนุน concept ใด และไม่สามารถ support claim ใด</li>
+              <li>ระบุ reference ที่ควร verify, demote, remove หรือหาแหล่งที่เหมาะสมกว่า</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">6</div>
+          <div>
+            <h3>ความสอดคล้องของวัตถุประสงค์กับปัญหา</h3>
+            <ul>
+              <li>ระบุ objective หรือ research question ทุกข้อออกมาให้ครบ</li>
+              <li>โยงแต่ละ objective กลับไปยัง problem/gap ที่ตั้งไว้</li>
+              <li>หา objective ที่ไม่เกิดจากปัญหา หรือเป็นเพียงกิจกรรม เช่น ศึกษา พัฒนา ออกแบบ โดยไม่มีคำถามวิจัย</li>
+              <li>หาปัญหาที่เอกสารพูดไว้ แต่ไม่มี objective ใดตั้งใจแก้</li>
+              <li>ตรวจว่า objective วัดผลได้หรือไม่ และมีผลลัพธ์รองรับในภายหลังหรือไม่</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">7</div>
+          <div>
+            <h3>ผลลัพธ์และ contribution</h3>
+            <ul>
+              <li>ตรวจว่าผลที่ได้หรือ expected result แสดงว่าปัญหาลดลงหรือถูกแก้จริงหรือไม่</li>
+              <li>ดูว่าผลลัพธ์ตรงกับ objective หรือมี objective ที่ไม่มีผลลัพธ์รองรับ</li>
+              <li>แยก implementation output ออกจาก research evidence เช่น มีระบบแล้วไม่ได้แปลว่าพิสูจน์ contribution แล้ว</li>
+              <li>ตรวจ quantitative result ว่ามี dataset/testbed, baseline, metric definition, raw result และวิธีคำนวณครบหรือไม่</li>
+              <li>หา missing error analysis, failure cases, runtime/cost trade-off หรือ statistical/qualitative evidence ที่ venue คาดหวัง</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">8</div>
+          <div>
+            <h3>ความสัมพันธ์โดยรวมของงาน</h3>
+            <ul>
+              <li>สร้าง traceability table จาก <code>Problem/gap -> Objective/RQ -> Method -> Data/evidence -> Result -> Claim</code></li>
+              <li>ดูว่าทุก problem มี objective ทุก objective มี method และทุก method มี evidence หรือไม่</li>
+              <li>หา broken chain เช่น มี claim แต่ไม่มี result หรือมี result แต่ไม่ตอบ problem</li>
+              <li>ระบุ claim ที่เกิน evidence หรืออธิบายเกินสิ่งที่ experiment พิสูจน์ได้</li>
+              <li>สรุปว่าทั้งเรื่อง coherent หรือยังเป็นชิ้นส่วนแยกกัน</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">9</div>
+          <div>
+            <h3>แนวคิดการแก้ปัญหาและทางเลือกอื่น</h3>
+            <ul>
+              <li>ประเมินว่าวิธีแก้ปัญหา make sense ในเชิงวิชาการหรือเป็นเพียงวิธีที่ทำสะดวก</li>
+              <li>ระบุทางเลือกมาตรฐานหรือ popular approach ในปัญหาเดียวกันที่เอกสารยังไม่กล่าวถึง</li>
+              <li>ตรวจว่ามี baseline ที่ควรเทียบหรือไม่ เช่น keyword/BM25, embedding, plain LLM, structured prompt หรือ classical method</li>
+              <li>ดูว่าเหตุผลที่เลือก method น่าเชื่อถือหรือไม่</li>
+              <li>ถามว่า novelty ยังเหลืออยู่หรือไม่ ถ้า baseline ที่แข็งแรงทำได้ใกล้เคียงกัน</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">10</div>
+          <div>
+            <h3>ข้อมูล ความเป็นไปได้ และเวอร์ชันที่ defend ได้</h3>
+            <ul>
+              <li>ตรวจว่าข้อมูลที่ต้องใช้มีอยู่จริง เข้าถึงได้ และใช้ได้ตามข้อกำหนดหรือไม่</li>
+              <li>ดูความสะอาดของข้อมูล ground truth labeling missing data และ data cleaning risk</li>
+              <li>ประเมิน privacy, permission, consent, ownership และ confidentiality risk</li>
+              <li>ดูว่า evaluation plan ทำได้ทันเวลาและใช้ทรัพยากรพอหรือไม่</li>
+              <li>เสนอ narrowest defensible version หากแผนเดิมใหญ่เกินไปหรือข้อมูลไม่พร้อม</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">11</div>
+          <div>
+            <h3>Ethics, IRB และข้อกฎหมาย/ข้อบังคับ</h3>
+            <ul>
+              <li>ตรวจว่างานเกี่ยวข้องกับ human subjects, students, users, experts, patients หรือ vulnerable groups หรือไม่</li>
+              <li>ดูว่ามี personal data, sensitive data, image, voice, chat log, behavioral log หรือข้อมูลระบุตัวตนได้หรือไม่</li>
+              <li>ตรวจว่าควรมี IRB approval, exemption, consent form, participant information sheet หรือ institutional permission หรือไม่</li>
+              <li>ดูประเด็น scraping, platform Terms of Service, dataset license, copyright, NDA และ data ownership</li>
+              <li>ห้าม AI ฟันธงแทนว่าไม่ต้องขอ IRB ต้องบอกให้ตรวจสอบกับอาจารย์ หน่วย IRB สถาบัน หรือ venue instruction</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">12</div>
+          <div>
+            <h3>Scope และ limitation</h3>
+            <ul>
+              <li>แยก scope ซึ่งเป็นขอบเขตที่ตั้งใจจำกัด ออกจาก limitation ซึ่งเป็นข้อจำกัดที่กระทบการตีความผล</li>
+              <li>ตรวจว่าเอกสารสับสนสองคำนี้หรือใช้แทนกันผิดหรือไม่</li>
+              <li>ดูว่า scope แคบพอให้ทำสำเร็จ แต่ไม่แคบจน contribution หายหรือไม่</li>
+              <li>หา limitation สำคัญที่ควรบอก เช่น dataset bias, generalizability, sample size, evaluation weakness หรือ measurement error</li>
+              <li>ดูว่า limitation เขียนอย่างรับผิดชอบ ไม่ใช่ลดความน่าเชื่อถือของงานเกินจำเป็น</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">13</div>
+          <div>
+            <h3>การใช้ LLM และความรับผิดชอบทางวิจัย</h3>
+            <ul>
+              <li>ระบุว่าใช้ LLM เพื่อเขียน แปล สรุป สกัดข้อมูล generate data evaluate หรือเป็น method หลักหรือไม่</li>
+              <li>ถ้า LLM มีผลต่อ evidence ต้องมี prompt, output, model name, date, setting และ verification procedure</li>
+              <li>ตรวจ citation, DOI, venue ranking, dataset และ factual claim ที่อาจมาจาก LLM แต่ยังไม่ได้ verify</li>
+              <li>แยกว่า LLM เป็น tool, baseline, evaluator หรือ contribution จริง</li>
+              <li>จับ generic AI writing ที่อ่านลื่นแต่ไม่เพิ่ม reasoning evidence หรือ concrete claim</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">14</div>
+          <div>
+            <h3>Acknowledgement และความเสี่ยงของเอกสารอายุยาว</h3>
+            <ul>
+              <li>ตรวจว่า acknowledgement เหมาะสม เฉพาะเจาะจง และไม่ยาวหรือส่วนตัวเกินไป</li>
+              <li>ระวัง wording เรื่องความสัมพันธ์ ตำแหน่ง affiliation funding หรือ support ที่อาจเปลี่ยนในอนาคต</li>
+              <li>ดูว่ามี conflict, dependency หรือ support ที่ควรกล่าวอย่างเป็นกลางหรือไม่</li>
+              <li>ตรวจว่าไม่ใช้ถ้อยคำที่อาจทำให้เอกสารทางวิชาการดูไม่เป็นทางการเมื่อเวลาผ่านไป</li>
+              <li>เสนอหลักการเขียน acknowledgement ที่ปลอดภัยกว่า หากพบความเสี่ยง</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">15</div>
+          <div>
+            <h3>ภาษาและ document hygiene</h3>
+            <ul>
+              <li>ตรวจ typo, spelling, punctuation และความผิดซ้ำที่มากเกินระดับเอกสารปัจจุบัน</li>
+              <li>ดูการปนภาษาไทย/อังกฤษว่าเกินจำเป็นหรือไม่ และใช้คำเทคนิคสม่ำเสมอหรือไม่</li>
+              <li>ตรวจ abbreviation/acronym ว่านิยามก่อนใช้ และใช้สม่ำเสมอหรือไม่</li>
+              <li>จับ forward reference เช่น อ้างถึงสิ่งที่จะอธิบายด้านหลังโดยยังไม่ให้ context เพียงพอ</li>
+              <li>แยกปัญหาภาษาแบบ minor polish ออกจากปัญหาที่ทำให้ scientific meaning เสีย</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">16</div>
+          <div>
+            <h3>ตารางและรูปภาพ</h3>
+            <ul>
+              <li>ตรวจว่าตารางและรูปภาพจำเป็นต่อ claim หรือเป็นเพียง decoration</li>
+              <li>ดูความคมชัด ขนาดตัวอักษร label legend หน่วย และคำย่อในภาพ</li>
+              <li>ตรวจ caption ว่าอธิบายว่าผู้อ่านควรเห็นอะไร ไม่ใช่แค่ตั้งชื่อรูป</li>
+              <li>ดูว่ามีการอ้าง table/figure ในเนื้อหาใกล้ตำแหน่งที่เหมาะสมหรือไม่</li>
+              <li>ตรวจว่าภาพหรือตารางรองรับ claim จริง และไม่ชวนตีความเกินหลักฐาน</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">17</div>
+          <div>
+            <h3>Verdict แบบ reviewer</h3>
+            <ul>
+              <li>สรุประดับความพร้อม เช่น not ready, early promising, thesis-draft ready, defense-review ready, manuscript-ready หรือ venue-ready</li>
+              <li>ให้ top blocking issues ที่ต้องแก้ก่อน ไม่ใช่รวมทุกเรื่องเป็นรายการยาวเท่ากันหมด</li>
+              <li>แยก high-impact fixes ออกจาก minor issues</li>
+              <li>ระบุคำถามที่ผู้เขียนต้องตอบเองหรือถามอาจารย์ที่ปรึกษา</li>
+              <li>เสนอ next review pass ว่ารอบต่อไปควรตรวจอะไรต่อ หลังแก้ blocking issues แล้ว</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>ทำไมต้องมี Review State</h2>
+      <p>การตรวจทั้งเล่มมักทำไม่จบในรอบเดียว จึงให้ AI บันทึก <code>04_review_notes/99_review_state.md</code> ว่ารอบนี้ตรวจอะไรเสร็จแล้ว อะไรยังค้าง ค้างเพราะขาดหลักฐานอะไร และรอบหน้าควรใช้ prompt อะไรทำต่อ</p>
+      <p>วิธีนี้ช่วยให้นิสิตกลับมาทำต่อได้โดยไม่ต้องเริ่มใหม่ทุกครั้ง และช่วยเลี่ยงการให้ AI ประเมินซ้ำในหัวข้อที่ทำเสร็จแล้ว เว้นแต่ผู้ใช้สั่งว่าให้ประเมินใหม่ทั้งหมด</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>สำหรับสนับสนุนการตรวจงานวิชาการ ไม่ใช่ตัวแทนของอาจารย์ที่ปรึกษา reviewer หรือการพิจารณา IRB/legal compliance จริง</div>
+  </footer>
+</body>
+</html>

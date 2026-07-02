@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workspace AI Guide | Thesis Review Prompt Pack</title>
+  <style>
+    :root { --bg:#f7f8fb; --ink:#1f2933; --muted:#5b6776; --line:#d9dee7; --panel:#fff; --accent:#7c3aed; --danger:#b42318; --radius:8px; font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); line-height:1.65; }
+    a { color:var(--accent); font-weight:700; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .topbar { position:sticky; top:0; z-index:10; border-bottom:1px solid var(--line); background:rgba(255,255,255,.94); backdrop-filter:blur(10px); }
+    .topbar-inner, main, .footer { max-width:1120px; margin:0 auto; padding-left:20px; padding-right:20px; }
+    .topbar-inner { min-height:58px; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+    .brand { font-weight:900; }
+    .nav { display:flex; flex-wrap:wrap; gap:12px; font-size:14px; }
+    .hero { background:#241047; color:#fff; }
+    .hero-inner { max-width:1120px; margin:0 auto; padding:42px 20px; }
+    .hero p { color:#e9ddff; max-width:850px; font-size:18px; }
+    h1 { margin:0; font-size:clamp(32px,5vw,56px); line-height:1.08; }
+    h2 { margin:42px 0 12px; font-size:28px; line-height:1.2; }
+    h3 { margin:0 0 8px; font-size:18px; }
+    .lead { color:var(--muted); max-width:850px; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+    .card, .prompt-block { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:16px; }
+    .prompt-block { margin-top:14px; }
+    .warning { border-left:5px solid var(--danger); background:#fff8f7; padding:16px 18px; border-radius:6px; color:#3b0d0c; }
+    .button { display:inline-flex; align-items:center; min-height:42px; padding:10px 14px; border-radius:8px; border:1px solid var(--accent); background:var(--accent); color:#fff; font-weight:850; text-decoration:none; }
+    .button.secondary { background:#fff; color:var(--accent); }
+    pre { margin:12px 0 0; padding:14px; overflow-x:auto; border-radius:8px; border:1px solid #cbd5e1; background:#0f172a; color:#e2e8f0; font-size:13px; line-height:1.55; white-space:pre-wrap; }
+    code { background:#eef2f7; padding:2px 5px; border-radius:5px; }
+    .small-note { color:var(--muted); font-size:14px; margin:8px 0 0; }
+    .footer { border-top:1px solid var(--line); color:var(--muted); padding-top:24px; padding-bottom:34px; margin-top:48px; font-size:14px; }
+    @media (max-width:860px) { .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Thesis Review Prompt Pack</div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">หน้าเริ่มต้น</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>ใช้กับ Codex / Claude Code / Antigravity</h1>
+      <p>นี่คือเส้นทางหลักที่แนะนำสำหรับ prompt pack นี้ เพราะการตรวจวิทยานิพนธ์ต้องให้ AI อ่านหลายไฟล์ ถามกลับ จัด missing inputs และสร้าง review notes เป็นรอบ ๆ ก่อนแก้ต้นฉบับ</p>
+      <p><a class="button secondary" href="index.html">กลับหน้าเริ่มต้น</a></p>
+    </div>
+  </div>
+
+  <main>
+    <section>
+      <h2>ติดตั้งและเปิดเครื่องมือ</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>1. ติดตั้งเครื่องมือที่ใช้</h3>
+          <p>เลือกอย่างใดอย่างหนึ่งตามที่มีสิทธิ์ใช้: Codex, Claude Code หรือ Antigravity แล้วติดตั้งตาม official documentation ของเครื่องมือนั้น</p>
+          <p class="small-note">ถ้าใช้เครื่องมหาวิทยาลัยหรือ account องค์กร ให้ตรวจ policy การใช้ AI และข้อมูลวิจัยก่อนเสมอ</p>
+        </article>
+        <article class="card">
+          <h3>2. เปิด workspace</h3>
+          <p>สร้างโฟลเดอร์งานใหม่ แล้วเปิดโฟลเดอร์นั้นด้วยเครื่องมือ AI ที่เลือก อย่าเปิดทับโฟลเดอร์ thesis ต้นฉบับโดยตรงถ้ายังไม่มี backup</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>เริ่มจาก download และจัด workspace</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>โหลดชุด prompt pack</h3>
+          <p>ถ้าเปิดจาก GitHub ให้ใช้ปุ่ม <code>Code → Download ZIP</code> หรือ clone repository แล้วเข้าโฟลเดอร์ <code>prompt_packs/thesis_review_student_edition/</code></p>
+          <p>ถ้าได้รับ zip จากอาจารย์ ให้แตกไฟล์ไว้ในโฟลเดอร์งานของตนเองก่อนเริ่มใช้</p>
+          <p><a class="button" href="../../thesis_review_student_edition.zip">ดาวน์โหลด zip สำหรับ workspace</a></p>
+        </article>
+        <article class="card">
+          <h3>โครงโฟลเดอร์ที่แนะนำ</h3>
+          <pre>my_thesis_review/
+  input/
+    v01_original/
+    v02_revised/
+  01_working_text/
+  02_references/
+    bib/
+    pdf/
+    official_pages/
+  03_results/
+  04_review_notes/
+  prompt_pack/</pre>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>กติกา</h2>
+      <div class="warning">
+        <strong>ให้ AI สร้าง review notes ก่อน ห้ามแก้ต้นฉบับทันที</strong>
+        <p>ห้ามให้ AI แต่งข้อมูลเกินหลักฐานที่ให้ไว้ เช่น citation, DOI, venue ranking, metric, result, IRB/legal requirement หรือข้อกฎหมายเอง</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Prompt สำหรับ workspace</h2>
+      <div class="prompt-block">
+        <h3>Step 1: จัดไฟล์ให้ AI อ่านได้</h3>
+        <p>ให้สร้างโฟลเดอร์งานใหม่ แล้วคัดลอกไฟล์เข้าไปตามรายการนี้ อย่าทำงานบนไฟล์ thesis ต้นฉบับเพียงชุดเดียว</p>
+        <pre>1. สร้างโฟลเดอร์ใหม่ชื่อ my_thesis_review/
+
+2. เก็บไฟล์ต้นฉบับเป็นเวอร์ชันใน:
+   input/
+   ตัวอย่าง:
+   - input/v01_original/thesis_draft.docx
+   - input/v01_original/thesis_draft.pdf
+   - input/v02_revised_after_advisor/thesis_draft.docx
+   - input/v02_revised_after_advisor/thesis_draft.pdf
+
+   เวลาใช้งาน ให้ใช้เฉพาะเวอร์ชันล่าสุด เช่น v02_revised_after_advisor
+   ไม่ต้องให้ AI อ่านทุกเวอร์ชันพร้อมกัน เว้นแต่ต้องการเปรียบเทียบ revision
+
+3. ใส่ไฟล์ข้อความที่ให้ AI อ่านและอ้างตำแหน่งได้ใน:
+   01_working_text/
+   ตัวอย่าง:
+   - 01_working_text/thesis_draft.md
+   - 01_working_text/chapter_1_introduction.md
+   - 01_working_text/chapter_2_literature_review.md
+
+4. ใส่ bibliography ใน:
+   02_references/bib/
+   ตัวอย่าง:
+   - 02_references/bib/references.bib
+   - 02_references/bib/references_from_word.txt
+
+   ถ้ายังไม่มี .bib ไม่เป็นไร ให้ข้ามขั้นนี้ แล้วใส่ PDF ของ reference ในข้อ 5
+   จากนั้นสั่ง AI สร้าง references.bib จาก PDF ที่มี โดยห้ามแต่งข้อมูลที่ไม่มีหลักฐาน
+
+5. ใส่ไฟล์ reference ต้นฉบับ เช่น paper PDF ที่อ้างอิง ใน:
+   02_references/pdf/
+   ตัวอย่าง:
+   - 02_references/pdf/Smith_2021_topic.pdf
+   - 02_references/pdf/Wang_2023_method.pdf
+
+6. ถ้ามีหน้าเว็บหรือข้อมูลจากแหล่งทางการของ paper ให้ใส่ใน:
+   02_references/official_pages/
+   ตัวอย่าง:
+   - 02_references/official_pages/doi_pages.md
+   - 02_references/official_pages/publisher_abstracts.md
+   - 02_references/official_pages/acm_ieee_springer_pages.md
+
+7. ใส่ผลทดลอง ตาราง รูป หรือ log ที่เกี่ยวข้องใน:
+   03_results/
+   ตัวอย่าง:
+   - 03_results/result_table.xlsx
+   - 03_results/figures/
+   - 03_results/evaluation_notes.md
+
+8. แตกไฟล์ prompt pack นี้ไว้ใน:
+   prompt_pack/
+
+9. สร้างโฟลเดอร์ว่างให้ AI เขียนผลตรวจ:
+   04_review_notes/</pre>
+        <p class="small-note">ถ้าเอกสารหลักเป็น <code>.docx</code> หรือ <code>.pdf</code> ให้ export เป็น Markdown/text เพิ่มใน <code>01_working_text/</code> ถ้าทำได้ เพื่อให้ AI อ้าง section และ paragraph ได้ง่ายขึ้น</p>
+      </div>
+
+      <div class="prompt-block">
+        <h3>Step 2: สั่ง AI ประเมิน</h3>
+        <p class="small-note">สำหรับนิสิต ให้เริ่มจากคำสั่งสั้นนี้ก่อน ถ้า workspace จัดไฟล์ครบแล้ว AI ควรอ่านสถานะเดิม ประเมินส่วนที่ยังไม่เสร็จ และจดงานค้างไว้ให้กลับมาทำต่อรอบหน้า</p>
+        <pre>ให้ประเมิน</pre>
+        <p class="small-note">ถ้าต้องการควบคุมให้ชัด ใช้ prompt แบบเต็มนี้แทน</p>
+        <pre>ให้ประเมิน workspace นี้แบบ full review จนจบ โดยยังไม่ต้องแก้ thesis ต้นฉบับ
+
+อ่าน:
+- 00_context_notes.md ถ้ามี
+- 01_working_text/thesis_draft.md
+- 01_working_text/ ทุกไฟล์ที่เกี่ยวข้อง
+- 02_references/bib/references.bib ถ้ามี
+- 02_references/pdf/ รายชื่อไฟล์ PDF reference ทั้งหมด
+- 02_references/official_pages/ ถ้ามี
+- 03_results/ ถ้ามี
+- prompt_pack/README.md และ prompt_pack/*.md
+- 04_review_notes/99_review_state.md ถ้ามี
+
+ถ้ามี 04_review_notes/99_review_state.md ให้ดูว่าหัวข้อใดทำเสร็จแล้วและหัวข้อใดค้าง
+ให้ประเมินหัวข้อที่เหลือจนจบ ไม่ต้องทำซ้ำหัวข้อที่เสร็จแล้ว
+ยกเว้นฉันสั่งชัดเจนว่า "ให้ประเมินใหม่ทั้งหมด"
+
+ให้สร้างหรืออัปเดตไฟล์เหล่านี้:
+- 04_review_notes/00_inventory.md
+- 04_review_notes/01_full_review.md
+- 04_review_notes/02_reference_audit.md
+- 04_review_notes/03_student_action_checklist.md
+- 04_review_notes/99_review_state.md
+
+ใช้ template ถ้ามี:
+- prompt_pack/templates/04_review_notes/01_full_review_TEMPLATE.md
+- prompt_pack/templates/04_review_notes/03_student_action_checklist_TEMPLATE.md
+- prompt_pack/templates/04_review_notes/99_review_state_TEMPLATE.md
+
+ต้องประเมินตาม prompt_pack/01_full_thesis_review_prompt.md ให้ครบทุกหัวข้อที่ทำได้จากหลักฐาน
+ต้องตรวจ reference ตาม prompt_pack/02_reference_bibtex_prompt.md เท่าที่มีหลักฐาน
+
+ถ้าข้อมูลใดมีอยู่แล้วในเอกสาร ให้สรุปจากเอกสาร ไม่ต้องถามฉันซ้ำ
+ถ้าข้อมูลไม่พอ ให้เขียนว่า missing input และแยกเป็น จำเป็นมาก / ควรมี / ไม่จำเป็นในรอบนี้
+
+ใน 04_review_notes/99_review_state.md ให้จดว่า:
+- รอบนี้ทำอะไรเสร็จแล้ว
+- อะไรยังค้างและค้างเพราะขาดหลักฐานอะไร
+- รอบหน้าควรใช้ prompt อะไรเพื่อทำต่อ
+- หัวข้อใดไม่ควรประเมินซ้ำ เว้นแต่ผู้ใช้สั่งให้ประเมินใหม่ทั้งหมด
+
+ห้ามแก้ thesis หรือ references ในรอบนี้</pre>
+      </div>
+
+      <div class="prompt-block">
+        <h3>Step 3: ถ้าต้องการสั่ง full review แยก</h3>
+        <p class="small-note">ไฟล์ <code>04_review_notes/01_full_review.md</code> เป็นผลตรวจหลักของ workflow นี้ ควรสร้างใน workspace ของนิสิตจาก template ที่ <code>prompt_pack/templates/04_review_notes/01_full_review_TEMPLATE.md</code></p>
+        <pre>ใช้ prompt_pack/01_full_thesis_review_prompt.md เป็นเกณฑ์
+ใช้ prompt_pack/templates/04_review_notes/01_full_review_TEMPLATE.md เป็นโครงรายงาน
+ตรวจ thesis จาก 01_working_text/thesis_draft.md
+ใช้ 00_context_notes.md เป็น context ถ้ามี
+ใช้ 02_references/bib/references.bib, 02_references/pdf/, 02_references/official_pages/ และ 03_results/ เท่าที่มีเป็นหลักฐาน
+
+สร้างไฟล์ 04_review_notes/01_full_review.md
+อัปเดต 04_review_notes/99_review_state.md ว่าทำ full review ถึงหัวข้อใดแล้ว และยังค้างอะไร
+
+ต้องมีหัวข้อ:
+- Executive Summary
+- Required Missing Inputs
+- Field-Level-Venue Calibration
+- Title and Abstract
+- Problem Significance
+- Literature Review and Reference Quality
+- Objective-Problem-Result Traceability
+- Method and Alternative Approaches
+- Data, Baselines, Evaluation, and Feasibility
+- Ethics, IRB, and Legal/Regulatory Compliance
+- LLM Use and Research Responsibility
+- Writing, Language, and Document Hygiene
+- Tables and Figures
+- Blocking Issues
+- Action Plan
+- Review State For Next Round
+
+กฎ:
+- ห้ามแต่งข้อมูลเกินหลักฐานที่ให้ไว้
+- ห้ามแต่ง citation, DOI, venue ranking, result, law, IRB requirement เอง
+- ทุก criticism สำคัญต้องอ้าง section/page/paragraph/table/figure ถ้าระบุได้
+- ถ้าข้อมูลไม่พอ ให้เขียนว่า missing input
+- ห้ามแก้ thesis ต้นฉบับ</pre>
+      </div>
+
+      <div class="prompt-block">
+        <h3>Step 4: ถ้าต้องการตรวจ references แยก</h3>
+        <pre>ใช้ prompt_pack/02_reference_bibtex_prompt.md เป็นเกณฑ์
+ถ้ามี 02_references/bib/references.bib ให้ตรวจเทียบกับ 01_working_text/thesis_draft.md
+ถ้าไม่มี references.bib ไม่เป็นไร ให้สร้าง 02_references/bib/references.bib จาก PDF ใน 02_references/pdf/
+ใช้ไฟล์ PDF reference ต้นฉบับใน 02_references/pdf/ และหน้าเว็บ/ข้อมูลจากแหล่งทางการใน 02_references/official_pages/ เป็นหลักฐาน
+
+สร้างไฟล์ 04_review_notes/02_reference_audit.md
+อัปเดต 04_review_notes/99_review_state.md ว่าตรวจ reference เสร็จหรือยัง และยังต้องขอ PDF/official page อะไรเพิ่ม
+
+ให้ตรวจ:
+- uncited references
+- cited keys missing from bibliography
+- ข้อมูลบรรณานุกรมที่ยังเป็น placeholder หรือยังต้องตรวจจากแหล่งจริง
+- missing abstracts
+- DOI/URL/venue/year ที่น่าสงสัย
+- direct prior work vs cross-domain support
+- target-venue anchors
+- citation ที่ไม่ support claim
+- references ที่ควร demote/remove/verify
+- รายการที่ต้องขอ PDF หรือหน้าเว็บจากแหล่งทางการเพิ่ม
+- รายการที่ควรเติม abstract field จาก PDF/official source ที่มีอยู่
+
+ห้ามสร้าง reference ใหม่เองถ้าไม่มีแหล่งตรวจสอบ</pre>
+      </div>
+
+      <div class="prompt-block">
+        <h3>Step 5: ถ้าต้องการสร้าง action checklist แยก</h3>
+        <p class="small-note"><code>04_review_notes/03_student_action_checklist.md</code> ไม่ใช่ไฟล์ที่มีมากับ prompt pack แต่เป็นไฟล์ผลลัพธ์ที่ให้ AI สร้างใน workspace ของนิสิตหลังจากทำ Step 3 และ Step 4 แล้ว ถ้าอยากเห็นรูปแบบ ให้ดู template ที่ <code>prompt_pack/templates/04_review_notes/03_student_action_checklist_TEMPLATE.md</code></p>
+        <pre>อ่าน 04_review_notes/01_full_review.md และ 04_review_notes/02_reference_audit.md
+
+สร้างไฟล์ 04_review_notes/03_student_action_checklist.md
+อัปเดต 04_review_notes/99_review_state.md ให้บอกว่างานอะไรเสร็จแล้ว อะไรค้าง และ prompt รอบหน้าควรเริ่มจากอะไร
+
+แยกงานเป็น:
+- ต้องถามอาจารย์
+- ต้องแก้ problem/objectives
+- ต้องแก้ literature/references
+- ต้องเพิ่ม baseline/evaluation
+- ต้องตรวจ ethics/IRB/legal
+- ต้องแก้ language/document hygiene
+- งานที่ทำได้ใน 1 วัน
+- งานที่ทำได้ใน 1 สัปดาห์
+- งานที่ต้องใช้ข้อมูลเพิ่ม</pre>
+        <p class="small-note">หลังจากนี้ให้ผู้ใช้ไปทำต่อใน workspace ของตนเอง ถ้าจะให้ AI แก้ไฟล์ ให้สร้าง working copy และตรวจ diff ก่อนรับเสมอ</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>สำหรับสนับสนุนการตรวจงานวิชาการ ไม่ใช่ตัวแทนของอาจารย์ที่ปรึกษา reviewer หรือการพิจารณา IRB/legal compliance จริง</div>
+  </footer>
+</body>
+</html>

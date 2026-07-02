@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Webapp Guide | Thesis Review Prompt Pack</title>
+  <style>
+    :root { --bg:#f7f8fb; --ink:#1f2933; --muted:#5b6776; --line:#d9dee7; --panel:#fff; --accent:#0f766e; --danger:#b42318; --radius:8px; font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); line-height:1.65; }
+    a { color:var(--accent); font-weight:700; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .topbar { position:sticky; top:0; z-index:10; border-bottom:1px solid var(--line); background:rgba(255,255,255,.94); backdrop-filter:blur(10px); }
+    .topbar-inner, main, .footer { max-width:1120px; margin:0 auto; padding-left:20px; padding-right:20px; }
+    .topbar-inner { min-height:58px; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+    .brand { font-weight:900; }
+    .nav { display:flex; flex-wrap:wrap; gap:12px; font-size:14px; }
+    .hero { background:#102a43; color:#fff; }
+    .hero-inner { max-width:1120px; margin:0 auto; padding:42px 20px; }
+    .hero p { color:#d9e2ec; max-width:850px; font-size:18px; }
+    h1 { margin:0; font-size:clamp(32px,5vw,56px); line-height:1.08; }
+    h2 { margin:42px 0 12px; font-size:28px; line-height:1.2; }
+    h3 { margin:0 0 8px; font-size:18px; }
+    .lead { color:var(--muted); max-width:850px; }
+    .warning { border-left:5px solid var(--danger); background:#fff8f7; padding:16px 18px; border-radius:6px; color:#3b0d0c; }
+    .prompt-block { margin-top:14px; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:16px; }
+    .button { display:inline-flex; align-items:center; min-height:42px; padding:10px 14px; border-radius:8px; border:1px solid var(--accent); background:var(--accent); color:#fff; font-weight:850; text-decoration:none; }
+    .button.secondary { background:#fff; color:var(--accent); }
+    pre { margin:12px 0 0; padding:14px; overflow-x:auto; border-radius:8px; border:1px solid #cbd5e1; background:#0f172a; color:#e2e8f0; font-size:13px; line-height:1.55; white-space:pre-wrap; }
+    code { background:#eef2f7; padding:2px 5px; border-radius:5px; }
+    .small-note { color:var(--muted); font-size:14px; margin:8px 0 0; }
+    .footer { border-top:1px solid var(--line); color:var(--muted); padding-top:24px; padding-bottom:34px; margin-top:48px; font-size:14px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Thesis Review Prompt Pack</div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">หน้าเริ่มต้น</a>
+        <a href="workspace.html">Codex / Claude Code</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>AI Webapp Fallback</h1>
+      <p>หน้านี้เป็นทางเลือกสำรองสำหรับ Gemini / ChatGPT / Claude แบบ webapp เท่านั้น ไม่แนะนำสำหรับตรวจทั้งเล่ม เพราะต้อง copy ข้อความเองหลายรอบและทำให้ผู้ใช้สับสนง่าย</p>
+      <p><a class="button secondary" href="workspace.html">ใช้เส้นทางหลักแบบ Workspace AI</a></p>
+    </div>
+  </div>
+
+  <main>
+    <section>
+      <h2>กติกาก่อนเริ่ม</h2>
+      <div class="warning">
+        <strong>ไม่แนะนำสำหรับ full thesis review</strong>
+        <p>ถ้ามี Codex, Claude Code หรือ Antigravity ให้ใช้ <a href="workspace.html">หน้า Workspace AI</a> แทน หน้า webapp เหมาะกับการตรวจส่วนสั้น ๆ เท่านั้น</p>
+      </div>
+      <div class="warning">
+        <strong>อย่าส่งทั้งเล่มแล้วถามว่า "ดีไหม"</strong>
+        <p>ให้เริ่มจาก title, abstract, problem, objectives ก่อน แล้วค่อยตรวจ literature, method/results, ethics และภาษา</p>
+      </div>
+      <div class="warning">
+        <strong>ห้ามให้ AI แต่งข้อมูลเกินหลักฐาน</strong>
+        <p>ห้ามแต่ง citation, DOI, venue ranking, metric, result, IRB/legal requirement หรือข้อกฎหมายเอง ถ้าข้อมูลไม่พอให้ AI ถามกลับ</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>รายการ prompt ที่ควรมี</h2>
+      <p class="lead">ไม่ต้องใช้ทุก prompt ในครั้งเดียว ให้เลือกตามปัญหาที่ต้องตรวจ แล้วแทนช่อง <code>[วาง...]</code> ด้วยข้อความจากตำแหน่งที่ระบุ</p>
+
+      <div class="prompt-block">
+        <h3>Prompt 1: ตรวจว่าเอกสารขาดอะไรและจำเป็นแค่ไหน</h3>
+        <pre>ฉันต้องการให้ช่วยตรวจร่างวิทยานิพนธ์/manuscript แบบ reviewer
+
+งานแรก:
+- อ่านข้อความจากเอกสารที่ฉันวางให้
+- บอกว่าข้อมูลอะไรขาด
+- แยกว่าข้อมูลที่ขาดนั้น จำเป็นมาก / ควรมี / ไม่จำเป็นในรอบนี้
+- ถ้าข้อมูลอยู่ในเอกสารแล้ว ให้สรุปจากเอกสาร ไม่ต้องถามให้ฉันกรอกซ้ำ
+- ถ้าข้อมูลไม่พอและจำเป็นต่อการตรวจจริง ให้ถามกลับเฉพาะสิ่งนั้น
+
+กฎ:
+- ห้ามแต่งข้อมูลเกินหลักฐานที่ให้ไว้
+- ห้ามแต่ง citation, DOI, venue ranking, metric, result, IRB/legal requirement หรือข้อกฎหมายเอง
+- ถ้าข้อมูลไม่พอ ให้ถามกลับ
+- ขอ feedback ภาษาไทย แต่คง technical terms ภาษาอังกฤษได้
+- ทุกประเด็นสำคัญต้องบอกว่าดูจากข้อมูลส่วนไหน เช่น section, paragraph, table หรือ figure
+
+[วางข้อความจากเอกสารเท่าที่ส่งได้ในรอบแรก:
+- Title page
+- Abstract
+- Introduction หรือ Problem statement
+- Objectives/RQs
+- Table of contents ถ้ามี
+- Methodology summary ถ้ามี]</pre>
+      </div>
+
+      <div class="prompt-block">
+        <h3>Prompt 2: ตรวจ title, abstract, problem, objectives</h3>
+        <pre>ช่วยตรวจเฉพาะ title, abstract, problem statement และ objectives/RQs ต่อไปนี้
+
+ขอ output เป็น:
+1. title กับ abstract สอดคล้องกันหรือไม่
+2. problem มีน้ำหนักพอหรือไม่
+3. objectives/RQs มาจาก problem หรือไม่
+4. มี claim ใดแรงเกินหลักฐานหรือไม่
+5. top 5 fixes ก่อนส่งอาจารย์
+
+ห้าม rewrite ทั้งหมด ให้เสนอเฉพาะจุดที่ควรแก้และเหตุผล
+
+[วางจาก manuscript/thesis:
+- Title page: title
+- Abstract section: abstract ทั้งหมด
+- Introduction / Problem statement: ย่อหน้าที่อธิบายปัญหาและ research gap
+- Objectives / Research questions section: objective หรือ RQ ทุกข้อ]</pre>
+      </div>
+
+      <div class="prompt-block">
+        <h3>Prompt 3: ตรวจ literature review แบบประหยัด quota</h3>
+        <p class="small-note">ส่งเฉพาะหัวข้อย่อยของ related work, 1-2 ย่อหน้าสำคัญต่อหัวข้อ และ reference list/BibTeX เฉพาะรายการหลัก</p>
+        <pre>ช่วยตรวจ literature review ส่วนนี้แบบ reviewer
+
+ขอให้เน้น:
+1. literature review เป็น synthesis หรือแค่ summary ทีละ paper
+2. มี claim ที่ควร cite แต่ยังไม่มี citation หรือไม่
+3. citation ใดดูไม่ตรง claim
+4. reference ควร cluster เป็นกลุ่มอะไรบ้าง
+5. ควรมี comparison matrix แบบใด
+6. มี direct prior work, cross-domain support, foundational support, target-venue anchor แยกชัดหรือไม่
+
+ตอบแบบสั้นเป็นตารางและ bullet
+
+[วางจาก manuscript/thesis:
+- Related Work / Literature Review section: หัวข้อย่อยทั้งหมด และย่อหน้าสำคัญ 1-2 ย่อหน้าต่อหัวข้อ
+- Reference list หรือ BibTeX เฉพาะรายการที่ถูก cite ใน section นี้
+- ถ้ามี comparison table เดิม ให้วางด้วย]</pre>
+      </div>
+
+      <div class="prompt-block">
+        <h3>Prompt 4: ตรวจ method, data, baseline, results</h3>
+        <pre>ช่วยตรวจ methodology และ results ต่อไปนี้
+
+ขอให้ตอบ:
+1. method แก้ problem/objective จริงหรือไม่
+2. baseline พอหรือไม่ ถ้าไม่พอควรมีอะไร
+3. metrics เหมาะสมหรือไม่
+4. results ตอบ objectives/RQs หรือไม่
+5. มี result claim ใดที่ยังไม่มี raw result/script/error analysis รองรับ
+6. top 5 blocking issues
+
+ห้ามแต่งผลทดลองเพิ่ม
+
+[วางจาก manuscript/thesis:
+- Methodology / Proposed Method section
+- Dataset / Data Collection section
+- Baseline / Comparative Methods section
+- Evaluation Metrics section
+- Results section เฉพาะตาราง/รูป/ย่อหน้าที่รายงานผล
+- ถ้ามี appendix หรือ supplementary result ที่เกี่ยวข้อง ให้วางสรุปสั้น ๆ]</pre>
+      </div>
+
+      <div class="prompt-block">
+        <h3>Prompt 5: ตรวจ ethics / IRB / legal compliance</h3>
+        <pre>ช่วย flag ประเด็น ethics/IRB/legal compliance จากข้อมูลนี้
+
+กฎ:
+- ห้ามให้ legal advice
+- ห้ามสรุปแทนว่าไม่ต้องขอ IRB ถ้าไม่มีหลักฐานจากสถาบัน
+- ให้บอกว่าควรถามอาจารย์/IRB office/venue/institution เรื่องใด
+
+ข้อมูล:
+[วางจาก manuscript/thesis หรือเอกสารประกอบ:
+- Data Collection / Participants / User Study section
+- Consent / anonymization / de-identification description
+- Dataset source, license, Terms of Service หรือ scraping/platform details
+- Ethics statement / IRB approval / exemption ถ้ามี]
+
+ขอ output:
+1. ประเด็นที่อาจต้องมี IRB/ethics approval หรือ exemption
+2. consent/anonymization/de-identification ที่ควรมี
+3. license/copyright/Terms of Service/data ownership ที่ต้องตรวจ
+4. ข้อความที่ manuscript ควรมี เช่น ethics statement, data availability, consent statement</pre>
+      </div>
+
+      <div class="prompt-block">
+        <h3>Prompt 6: ตรวจภาษาและ document hygiene</h3>
+        <pre>ช่วยตรวจ document hygiene ของข้อความนี้
+
+เน้น:
+1. สะกดผิดหรือ typo มากเกินเหตุ
+2. ใช้ชื่อย่อโดยไม่ define
+3. ปนภาษาไทย/อังกฤษเกินจำเป็น
+4. อ้างถึงสิ่งที่อยู่ด้านหลังที่ผู้อ่านยังไม่เห็น
+5. มีร่องรอยใช้ AI แบบ generic, claim ลอย, คำแปลแปลก หรือ terminology ไม่สม่ำเสมอ
+
+ห้าม rewrite ทั้งหมด ให้ list ปัญหาและตัวอย่างเท่านั้น
+
+[วาง section ที่ต้องการตรวจ โดยระบุชื่อ section ก่อนข้อความ เช่น "Section 1 Introduction" หรือ "Section 3 Methodology"]</pre>
+      </div>
+
+      <div class="prompt-block">
+        <h3>Prompt 7: ถ้า quota เหลือน้อยมาก</h3>
+        <pre>ตรวจเฉพาะ blocking issues 5 ข้อแรกจากข้อความนี้
+ต้องอ้างตำแหน่งจากหัวข้อ/ย่อหน้า
+ห้าม rewrite ทั้งบท
+ห้ามแต่งข้อมูลเกินหลักฐานที่ให้ไว้
+ห้ามแต่ง citation, DOI, result, venue ranking, หรือ IRB/legal requirement เอง
+
+[วาง section ที่กังวลที่สุด 1 section เท่านั้น พร้อมชื่อ section และเลขหน้า/หัวข้อถ้ามี]</pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>สำหรับสนับสนุนการตรวจงานวิชาการ ไม่ใช่ตัวแทนของอาจารย์ที่ปรึกษา reviewer หรือการพิจารณา IRB/legal compliance จริง</div>
+  </footer>
+</body>
+</html>

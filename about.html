@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About | Thesis Review Prompt Pack</title>
+  <style>
+    :root { --bg:#f7f8fb; --ink:#1f2933; --muted:#5b6776; --line:#d9dee7; --panel:#fff; --accent:#0f766e; --danger:#b42318; --radius:8px; font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); line-height:1.65; }
+    a { color:var(--accent); font-weight:700; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .topbar { position:sticky; top:0; z-index:10; border-bottom:1px solid var(--line); background:rgba(255,255,255,.94); backdrop-filter:blur(10px); }
+    .topbar-inner, main, .footer { max-width:1120px; margin:0 auto; padding-left:20px; padding-right:20px; }
+    .topbar-inner { min-height:58px; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+    .brand { font-weight:900; }
+    .nav { display:flex; flex-wrap:wrap; gap:12px; font-size:14px; }
+    .hero { background:#102a43; color:#fff; }
+    .hero-inner { max-width:1120px; margin:0 auto; padding:42px 20px; }
+    .hero p { color:#d9e2ec; max-width:850px; font-size:18px; }
+    h1 { margin:0; font-size:clamp(32px,5vw,56px); line-height:1.08; }
+    h2 { margin:42px 0 12px; font-size:28px; line-height:1.2; }
+    h3 { margin:0 0 8px; font-size:18px; }
+    .lead { color:var(--muted); max-width:850px; }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+    .card { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:16px; }
+    .file-list { display:grid; gap:10px; }
+    .file-row { display:grid; grid-template-columns:minmax(230px,.7fr) minmax(0,1fr); gap:12px; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:12px 14px; }
+    .warning { border-left:5px solid var(--danger); background:#fff8f7; padding:16px 18px; border-radius:6px; color:#3b0d0c; }
+    .footer { border-top:1px solid var(--line); color:var(--muted); padding-top:24px; padding-bottom:34px; margin-top:48px; font-size:14px; }
+    code { background:#eef2f7; padding:2px 5px; border-radius:5px; }
+    @media (max-width:860px) { .grid, .file-row { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Thesis Review Prompt Pack</div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">หน้าเริ่มต้น</a>
+        <a href="workspace.html">Workspace</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>About</h1>
+      <p>รายละเอียดของระบบ ขอบเขตการใช้ ข้อจำกัด และรายการไฟล์ในชุด prompt pack</p>
+    </div>
+  </div>
+
+  <main>
+    <section>
+      <h2>เว็บนี้ช่วยตรวจอะไร</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Research Logic</h3>
+          <p>ตรวจว่า problem, objective, method และ result ต่อกันจริงหรือไม่</p>
+        </article>
+        <article class="card">
+          <h3>References</h3>
+          <p>ตรวจ reference quality, missing citations, uncited entries, abstract fields และ citation ที่ไม่ support claim</p>
+        </article>
+        <article class="card">
+          <h3>Evidence</h3>
+          <p>ตรวจ dataset, baseline, metric, raw result, script และ error analysis ที่รองรับ claim</p>
+        </article>
+        <article class="card">
+          <h3>Ethics / IRB / Legal</h3>
+          <p>ช่วย flag human subjects, personal data, consent, scraping, dataset license, copyright, ToS และ NDA</p>
+        </article>
+        <article class="card">
+          <h3>AI Use</h3>
+          <p>ตรวจว่า AI อาจทำให้เกิด claim/citation/result ลอยหรือไม่ และผู้เขียนตรวจจากแหล่งจริงแล้วหรือยัง</p>
+        </article>
+        <article class="card">
+          <h3>Writing Hygiene</h3>
+          <p>ตรวจ typo, ชื่อย่อ, การปนไทย/อังกฤษ, forward references และ generic AI writing</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Privacy และข้อจำกัด</h2>
+      <div class="warning">
+        <strong>เว็บนี้ไม่รับข้อมูลวิจัยจากผู้ใช้</strong>
+        <p>หน้า HTML ชุดนี้เป็น static prompt list ไม่มีฟอร์มรับข้อมูล ไม่มีระบบอัปโหลด และไม่ได้เก็บข้อมูลงานวิจัยของผู้ใช้ไว้บน server ใด ๆ</p>
+      </div>
+      <p>AI เป็นผู้ช่วยตรวจ ไม่ใช่เจ้าของงาน ไม่ใช่อาจารย์ที่ปรึกษา ไม่ใช่ reviewer จริง และไม่ใช่ผู้พิจารณา IRB/legal compliance ผู้เขียนต้องตรวจทุก claim จากแหล่งจริงเอง</p>
+      <p>ห้ามให้ AI แต่งข้อมูลเกินหลักฐาน เช่น citation, DOI, venue ranking, metric, result, IRB/legal requirement หรือข้อกฎหมายเอง</p>
+    </section>
+
+    <section id="credits">
+      <h2>Credits</h2>
+      <p class="lead">จัดทำโดย พันธุ์ปิติ เปี่ยมสง่า</p>
+    </section>
+
+    <section>
+      <h2>ไฟล์ทั้งหมด</h2>
+      <div class="file-list">
+        <div class="file-row"><a href="README.md">README.md</a><span>ภาพรวม วิธีใช้ และรายการไฟล์</span></div>
+        <div class="file-row"><a href="index.html">index.html</a><span>หน้าเริ่มต้นและตัวเลือก workflow</span></div>
+        <div class="file-row"><a href="workspace.html">workspace.html</a><span>เส้นทางหลักสำหรับ Codex / Claude Code / Antigravity</span></div>
+        <div class="file-row"><a href="webapp.html">webapp.html</a><span>fallback สำหรับ Gemini / ChatGPT / Claude เฉพาะตรวจข้อความสั้น ๆ</span></div>
+        <div class="file-row"><span>input/v.../</span><span>โฟลเดอร์เก็บเอกสารต้นฉบับเป็นเวอร์ชัน เช่น v01_original, v02_revised โดย workflow ใช้เฉพาะเวอร์ชันล่าสุด</span></div>
+        <div class="file-row"><span>02_references/pdf/</span><span>โฟลเดอร์ที่นิสิตควรใส่ PDF ของ reference ต้นฉบับ ถ้าไม่มี BibTeX ให้ AI สร้าง BibTeX จาก PDF เหล่านี้ได้โดยห้ามแต่งข้อมูลเอง</span></div>
+        <div class="file-row"><span>02_references/official_pages/</span><span>โฟลเดอร์สำหรับหน้า DOI, publisher page หรือข้อมูลจากแหล่งทางการของ paper ถ้ามี</span></div>
+        <div class="file-row"><a href="00_intake_checklist.md">00_intake_checklist.md</a><span>checklist อ้างอิงแบบ Markdown สำหรับคนที่อยากเตรียม context เอง</span></div>
+        <div class="file-row"><a href="01_full_thesis_review_prompt.md">01_full_thesis_review_prompt.md</a><span>prompt หลักสำหรับตรวจทั้งเล่มหรือทั้ง manuscript</span></div>
+        <div class="file-row"><a href="01_full_thesis_review_prompt_explained_th.html">แนวคิดการตรวจงานวิจัยโดยทั่วไป</a><span>หน้า HTML อธิบาย prompt หลักเป็นภาษาไทย สำหรับอ่านเพื่อเข้าใจแนวคิดก่อนใช้</span></div>
+        <div class="file-row"><a href="02_reference_bibtex_prompt.md">02_reference_bibtex_prompt.md</a><span>prompt สำหรับตรวจ reference, citation use และ BibTeX</span></div>
+        <div class="file-row"><a href="03_review_rubric.md">03_review_rubric.md</a><span>rubric สำหรับ self-review และ peer review</span></div>
+        <div class="file-row"><a href="04_common_review_patterns.md">04_common_review_patterns.md</a><span>ข้อผิดพลาดที่พบบ่อยก่อนส่งงาน</span></div>
+        <div class="file-row"><a href="05_choose_your_ai_workflow.md">05_choose_your_ai_workflow.md</a><span>เริ่มเลือกว่าจะใช้ AI แบบ chat หรือ workspace</span></div>
+        <div class="file-row"><a href="05a_chat_ai_quota_limited_guide.md">05a_chat_ai_quota_limited_guide.md</a><span>คู่มือ Gemini / ChatGPT / Claude สำหรับ quota จำกัด</span></div>
+        <div class="file-row"><a href="05b_workspace_ai_codex_claude_code_guide.md">05b_workspace_ai_codex_claude_code_guide.md</a><span>คู่มือ Codex / Claude Code / Antigravity</span></div>
+        <div class="file-row"><a href="STUDENT_HANDOUT.md">STUDENT_HANDOUT.md</a><span>ข้อความสั้นสำหรับส่งให้นิสิต</span></div>
+        <div class="file-row"><a href="LICENSE.md">LICENSE.md</a><span>เงื่อนไขการนำไปใช้และเผยแพร่ต่อ</span></div>
+        <div class="file-row"><a href="templates/04_review_notes/01_full_review_TEMPLATE.md">01_full_review_TEMPLATE.md</a><span>template โครงรายงานสำหรับไฟล์ผลตรวจเต็มที่ AI จะสร้างเป็น 04_review_notes/01_full_review.md</span></div>
+        <div class="file-row"><a href="templates/04_review_notes/03_student_action_checklist_TEMPLATE.md">03_student_action_checklist_TEMPLATE.md</a><span>template ตัวอย่างของไฟล์ action checklist ที่ AI จะสร้างใน workspace หลังตรวจเสร็จ</span></div>
+        <div class="file-row"><a href="templates/04_review_notes/99_review_state_TEMPLATE.md">99_review_state_TEMPLATE.md</a><span>template สำหรับบันทึกว่าเคยตรวจอะไรแล้ว อะไรค้าง และรอบหน้าควรใช้ prompt อะไรทำต่อ</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>สำหรับสนับสนุนการตรวจงานวิชาการ ไม่ใช่ตัวแทนของอาจารย์ที่ปรึกษา reviewer หรือการพิจารณา IRB/legal compliance จริง</div>
+  </footer>
+</body>
+</html>
