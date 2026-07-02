@@ -25,6 +25,13 @@
     .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
     .card, .prompt-block { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:16px; }
     .prompt-block { margin-top:14px; }
+    .prompt-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+    .prompt-head h3 { margin:0; }
+    .prompt-actions { display:flex; gap:8px; flex:0 0 auto; }
+    .icon-button { width:38px; height:38px; display:grid; place-items:center; border:1px solid var(--line); border-radius:8px; background:#fff; color:var(--accent); font-size:18px; font-weight:900; cursor:pointer; }
+    .icon-button:hover { border-color:var(--accent); background:#f5f3ff; }
+    .icon-button.copied { background:#ecfdf3; border-color:#16a34a; color:#166534; }
+    .collapsible-content[hidden] { display:none; }
     .warning { border-left:5px solid var(--danger); background:#fff8f7; padding:16px 18px; border-radius:6px; color:#3b0d0c; }
     .button { display:inline-flex; align-items:center; min-height:42px; padding:10px 14px; border-radius:8px; border:1px solid var(--accent); background:var(--accent); color:#fff; font-weight:850; text-decoration:none; }
     .button.secondary { background:#fff; color:var(--accent); }
@@ -217,9 +224,16 @@
       </div>
 
       <div class="prompt-block">
-        <h3>Step 3: ถ้าต้องการสั่ง full review แยก</h3>
-        <p class="small-note">ไฟล์ <code>04_review_notes/01_full_review.md</code> เป็นผลตรวจหลักของ workflow นี้ ควรสร้างใน workspace ของนิสิตจาก template ที่ <code>prompt_pack/templates/04_review_notes/01_full_review_TEMPLATE.md</code></p>
-        <pre>ใช้ prompt_pack/01_full_thesis_review_prompt.md เป็นเกณฑ์
+        <div class="prompt-head">
+          <h3>Step 3: ถ้าต้องการสั่ง full review แยก</h3>
+          <div class="prompt-actions">
+            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt Step 3" data-copy-target="step3-prompt">⧉</button>
+            <button class="icon-button toggle-button" type="button" aria-expanded="false" aria-controls="step3-content" data-toggle-target="step3-content">▸</button>
+          </div>
+        </div>
+        <div class="collapsible-content" id="step3-content" hidden>
+          <p class="small-note">ไฟล์ <code>04_review_notes/01_full_review.md</code> เป็นผลตรวจหลักของ workflow นี้ ควรสร้างใน workspace ของนิสิตจาก template ที่ <code>prompt_pack/templates/04_review_notes/01_full_review_TEMPLATE.md</code></p>
+          <pre id="step3-prompt">ใช้ prompt_pack/01_full_thesis_review_prompt.md เป็นเกณฑ์
 ใช้ prompt_pack/templates/04_review_notes/01_full_review_TEMPLATE.md เป็นโครงรายงาน
 ตรวจ thesis จาก 01_working_text/thesis_draft.md
 ใช้ 00_context_notes.md เป็น context ถ้ามี
@@ -252,11 +266,19 @@
 - ทุก criticism สำคัญต้องอ้าง section/page/paragraph/table/figure ถ้าระบุได้
 - ถ้าข้อมูลไม่พอ ให้เขียนว่า missing input
 - ห้ามแก้ thesis ต้นฉบับ</pre>
+        </div>
       </div>
 
       <div class="prompt-block">
-        <h3>Step 4: ถ้าต้องการตรวจ references แยก</h3>
-        <pre>ใช้ prompt_pack/02_reference_bibtex_prompt.md เป็นเกณฑ์
+        <div class="prompt-head">
+          <h3>Step 4: ถ้าต้องการตรวจ references แยก</h3>
+          <div class="prompt-actions">
+            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt Step 4" data-copy-target="step4-prompt">⧉</button>
+            <button class="icon-button toggle-button" type="button" aria-expanded="false" aria-controls="step4-content" data-toggle-target="step4-content">▸</button>
+          </div>
+        </div>
+        <div class="collapsible-content" id="step4-content" hidden>
+          <pre id="step4-prompt">ใช้ prompt_pack/02_reference_bibtex_prompt.md เป็นเกณฑ์
 ถ้ามี 02_references/bib/references.bib ให้ตรวจเทียบกับ 01_working_text/thesis_draft.md
 ถ้าไม่มี references.bib ไม่เป็นไร ให้สร้าง 02_references/bib/references.bib จาก PDF ใน 02_references/pdf/
 ใช้ไฟล์ PDF reference ต้นฉบับใน 02_references/pdf/ และหน้าเว็บ/ข้อมูลจากแหล่งทางการใน 02_references/official_pages/ เป็นหลักฐาน
@@ -278,12 +300,20 @@
 - รายการที่ควรเติม abstract field จาก PDF/official source ที่มีอยู่
 
 ห้ามสร้าง reference ใหม่เองถ้าไม่มีแหล่งตรวจสอบ</pre>
+        </div>
       </div>
 
       <div class="prompt-block">
-        <h3>Step 5: ถ้าต้องการสร้าง action checklist แยก</h3>
-        <p class="small-note"><code>04_review_notes/03_student_action_checklist.md</code> ไม่ใช่ไฟล์ที่มีมากับ prompt pack แต่เป็นไฟล์ผลลัพธ์ที่ให้ AI สร้างใน workspace ของนิสิตหลังจากทำ Step 3 และ Step 4 แล้ว ถ้าอยากเห็นรูปแบบ ให้ดู template ที่ <code>prompt_pack/templates/04_review_notes/03_student_action_checklist_TEMPLATE.md</code></p>
-        <pre>อ่าน 04_review_notes/01_full_review.md และ 04_review_notes/02_reference_audit.md
+        <div class="prompt-head">
+          <h3>Step 5: ถ้าต้องการสร้าง action checklist แยก</h3>
+          <div class="prompt-actions">
+            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt Step 5" data-copy-target="step5-prompt">⧉</button>
+            <button class="icon-button toggle-button" type="button" aria-expanded="false" aria-controls="step5-content" data-toggle-target="step5-content">▸</button>
+          </div>
+        </div>
+        <div class="collapsible-content" id="step5-content" hidden>
+          <p class="small-note"><code>04_review_notes/03_student_action_checklist.md</code> ไม่ใช่ไฟล์ที่มีมากับ prompt pack แต่เป็นไฟล์ผลลัพธ์ที่ให้ AI สร้างใน workspace ของนิสิตหลังจากทำ Step 3 และ Step 4 แล้ว ถ้าอยากเห็นรูปแบบ ให้ดู template ที่ <code>prompt_pack/templates/04_review_notes/03_student_action_checklist_TEMPLATE.md</code></p>
+          <pre id="step5-prompt">อ่าน 04_review_notes/01_full_review.md และ 04_review_notes/02_reference_audit.md
 
 สร้างไฟล์ 04_review_notes/03_student_action_checklist.md
 อัปเดต 04_review_notes/99_review_state.md ให้บอกว่างานอะไรเสร็จแล้ว อะไรค้าง และ prompt รอบหน้าควรเริ่มจากอะไร
@@ -298,7 +328,8 @@
 - งานที่ทำได้ใน 1 วัน
 - งานที่ทำได้ใน 1 สัปดาห์
 - งานที่ต้องใช้ข้อมูลเพิ่ม</pre>
-        <p class="small-note">หลังจากนี้ให้ผู้ใช้ไปทำต่อใน workspace ของตนเอง ถ้าจะให้ AI แก้ไฟล์ ให้สร้าง working copy และตรวจ diff ก่อนรับเสมอ</p>
+          <p class="small-note">หลังจากนี้ให้ผู้ใช้ไปทำต่อใน workspace ของตนเอง ถ้าจะให้ AI แก้ไฟล์ ให้สร้าง working copy และตรวจ diff ก่อนรับเสมอ</p>
+        </div>
       </div>
     </section>
   </main>
@@ -306,5 +337,43 @@
   <footer class="footer">
     <div>สำหรับสนับสนุนการตรวจงานวิชาการ ไม่ใช่ตัวแทนของอาจารย์ที่ปรึกษา reviewer หรือการพิจารณา IRB/legal compliance จริง</div>
   </footer>
+  <script>
+    document.querySelectorAll('.toggle-button').forEach((button) => {
+      button.addEventListener('click', () => {
+        const target = document.getElementById(button.dataset.toggleTarget);
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        target.hidden = expanded;
+        button.setAttribute('aria-expanded', String(!expanded));
+        button.textContent = expanded ? '▸' : '▾';
+      });
+    });
+
+    document.querySelectorAll('.copy-button').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const target = document.getElementById(button.dataset.copyTarget);
+        const text = target ? target.textContent : '';
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch (error) {
+          const textarea = document.createElement('textarea');
+          textarea.value = text;
+          textarea.setAttribute('readonly', '');
+          textarea.style.position = 'fixed';
+          textarea.style.left = '-9999px';
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textarea);
+        }
+        const original = button.textContent;
+        button.textContent = '✓';
+        button.classList.add('copied');
+        window.setTimeout(() => {
+          button.textContent = original;
+          button.classList.remove('copied');
+        }, 1200);
+      });
+    });
+  </script>
 </body>
 </html>
