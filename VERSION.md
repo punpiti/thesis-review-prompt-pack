@@ -9,6 +9,7 @@ Release label: Thesis Review Prompt Pack: Student Edition v1.2
 - Integrated research-methodology teaching concepts from the AI-Assisted Thesis Review materials.
 - Added five research-logic stress tests: problem survival, genuine failure, mandatory gates, measurement ceiling, and no-new-problem guardrails.
 - Updated the full review prompt, rubric, common patterns, review templates, Codex skill reference, README, and student handout so review notes flag logic failures before language polishing.
+- Added bilingual public website pages in Thai and English: home, workspace guide, webapp fallback, and about/privacy.
 
 ## v1.1
 

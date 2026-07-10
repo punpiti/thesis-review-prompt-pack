@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workspace AI Guide | Thesis Review Prompt Pack v1.2</title>
+  <style>
+    :root { --bg:#f7f8fb; --ink:#1f2933; --muted:#5b6776; --line:#d9dee7; --panel:#fff; --accent:#7c3aed; --danger:#b42318; --radius:8px; font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); line-height:1.65; }
+    a { color:var(--accent); font-weight:700; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .topbar { position:sticky; top:0; z-index:10; border-bottom:1px solid var(--line); background:rgba(255,255,255,.94); backdrop-filter:blur(10px); }
+    .topbar-inner, main, .footer { max-width:1120px; margin:0 auto; padding-left:20px; padding-right:20px; }
+    .topbar-inner { min-height:58px; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+    .brand { font-weight:900; }
+    .nav { display:flex; flex-wrap:wrap; gap:12px; font-size:14px; }
+    .hero { background:#241047; color:#fff; }
+    .hero-inner { max-width:1120px; margin:0 auto; padding:42px 20px; }
+    .hero p { color:#e9ddff; max-width:850px; font-size:18px; }
+    h1 { margin:0; font-size:clamp(32px,5vw,56px); line-height:1.08; }
+    h2 { margin:42px 0 12px; font-size:28px; line-height:1.2; }
+    h3 { margin:0 0 8px; font-size:18px; }
+    .lead { color:var(--muted); max-width:850px; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+    .card,.prompt-block { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:16px; }
+    .prompt-block { margin-top:14px; }
+    .warning { border-left:5px solid var(--danger); background:#fff8f7; padding:16px 18px; border-radius:6px; color:#3b0d0c; }
+    .info-panel { margin-top:14px; padding:16px 18px; border-left:5px solid var(--accent); border-radius:6px; background:#f8f5ff; color:#241047; }
+    .button { display:inline-flex; align-items:center; min-height:42px; padding:10px 14px; border-radius:8px; border:1px solid var(--accent); background:var(--accent); color:#fff; font-weight:850; text-decoration:none; }
+    .button.secondary { background:#fff; color:var(--accent); }
+    pre { margin:12px 0 0; padding:14px; overflow-x:auto; border-radius:8px; border:1px solid #cbd5e1; background:#f8fafc; color:var(--ink); font-size:13px; line-height:1.55; white-space:pre-wrap; }
+    .command-code { background:#0b1020; color:#e5e7eb; }
+    .prompt-code { border-left:5px solid var(--accent); background:#fff; color:#241047; font-family:inherit; font-size:14px; }
+    code { background:#eef2f7; padding:2px 5px; border-radius:5px; }
+    .small-note { color:var(--muted); font-size:14px; }
+    .footer { border-top:1px solid var(--line); color:var(--muted); padding-top:24px; padding-bottom:34px; margin-top:48px; font-size:14px; }
+    @media (max-width:860px) { .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Thesis Review Prompt Pack</div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index-en.html">Home</a>
+        <a href="about-en.html">About</a>
+        <a href="workspace.html" lang="th">ไทย</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>Use With Codex / Claude Code / Antigravity</h1>
+      <p>This is the recommended path because a thesis review needs file access, missing-input tracking, reference evidence, and persistent review notes before editing the source manuscript.</p>
+      <p><a class="button secondary" href="index-en.html">Back to Home</a> <a class="button secondary" href="workspace.html" lang="th">ไทย</a></p>
+    </div>
+  </div>
+
+  <main>
+    <section>
+      <h2>Install and Start</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>1. Choose a workspace AI tool</h3>
+          <p>Use Codex CLI, Claude Code, Antigravity, or another AI tool that can read and write files in a local workspace.</p>
+        </article>
+        <article class="card">
+          <h3>2. Create a review workspace</h3>
+          <p>Run one of the setup command blocks below. The default project folder is <code>my_thesis_review/</code>.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Ground Rules</h2>
+      <div class="warning">
+        <strong>Create review notes first. Do not edit the thesis source immediately.</strong>
+        <p>Do not let AI invent citations, DOI, venue rankings, metrics, results, IRB/legal requirements, or legal statements.</p>
+      </div>
+      <div class="info-panel">
+        <strong>Why this saves tokens</strong>
+        <p>Do not ask the AI to read the whole LaTeX folder or every file at once. Put mixed files in <code>00_inbox/</code>, let the AI organize them, then use <code>00_review_instructions/</code> as the selected context for later review rounds.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Step 1: Create the Workspace</h2>
+      <div class="prompt-block">
+        <h3>Linux / macOS</h3>
+        <pre class="command-code">PROJECT="my_thesis_review"
+curl -L -o thesis_review_student_edition.zip https://punpiti.github.io/thesis-review-prompt-pack/thesis_review_student_edition.zip
+unzip -o thesis_review_student_edition.zip
+cd prompt_packs/thesis_review_student_edition
+WORKSPACE="$PWD/../../$PROJECT"
+mkdir -p "$WORKSPACE"
+cp -R workspace_template/. "$WORKSPACE/"
+mkdir -p "$WORKSPACE/prompt_pack"
+cp -R . "$WORKSPACE/prompt_pack/"
+cd "$WORKSPACE"</pre>
+      </div>
+      <div class="prompt-block">
+        <h3>Windows PowerShell</h3>
+        <pre class="command-code">$Project = "my_thesis_review"
+Invoke-WebRequest -Uri "https://punpiti.github.io/thesis-review-prompt-pack/thesis_review_student_edition.zip" -OutFile ".\thesis_review_student_edition.zip"
+Expand-Archive -Path .\thesis_review_student_edition.zip -DestinationPath . -Force
+Set-Location .\prompt_packs\thesis_review_student_edition
+$Workspace = Join-Path (Resolve-Path ..\..).Path $Project
+New-Item -ItemType Directory -Force -Path $Workspace | Out-Null
+Copy-Item -Path .\workspace_template\* -Destination $Workspace -Recurse -Force
+New-Item -ItemType Directory -Force -Path (Join-Path $Workspace "prompt_pack") | Out-Null
+Copy-Item -Path .\* -Destination (Join-Path $Workspace "prompt_pack") -Recurse -Force
+Set-Location $Workspace</pre>
+      </div>
+      <p>Put all mixed input files in <code>my_thesis_review/00_inbox/</code>: thesis drafts, LaTeX, Word, PDF, BibTeX, reference PDFs, figures, tables, results, scripts, logs, metrics, and baselines.</p>
+    </section>
+
+    <section>
+      <h2>Step 2: Ask AI to Organize the Inbox</h2>
+      <div class="prompt-block">
+        <pre class="prompt-code">init workspace จากไฟล์รวม</pre>
+        <p class="small-note">This Thai trigger is intentionally short. Workspace instructions in <code>AGENTS.md</code> and <code>CLAUDE.md</code> define what it means.</p>
+      </div>
+      <div class="prompt-block">
+        <h3>Full English version</h3>
+        <pre class="prompt-code">Initialize this thesis review workspace from the mixed files in 00_inbox/.
+
+Create missing folders if needed. Copy files from 00_inbox/ to the appropriate target folders, but do not delete the original inbox files.
+
+Use this classification:
+- latest thesis/manuscript drafts -> input/v02_revised/
+- older/original drafts -> input/v01_original/
+- readable .tex/.md/.txt thesis text -> 01_working_text/
+- .bib/.ris/.enw/reference lists -> 02_references/bib/
+- reference PDFs -> 02_references/pdf/
+- DOI pages, publisher pages, official abstracts -> 02_references/official_pages/
+- datasets, tables, figures, logs, scripts, metrics, baselines, result evidence -> 03_results/
+
+If classification is uncertain, leave the file in 00_inbox/ and mark it as needs classification.
+Create or update 00_review_instructions/file_inventory.md with source path, target path, file role, and uncertainty.
+Do not edit thesis/manuscript/reference content in this step.</pre>
+      </div>
+    </section>
+
+    <section>
+      <h2>Step 3: Build Review Instructions</h2>
+      <div class="prompt-block">
+        <pre class="prompt-code">เตรียม instruction จากงานปัจจุบัน</pre>
+      </div>
+      <div class="prompt-block">
+        <h3>Full English version</h3>
+        <pre class="prompt-code">Prepare review instructions from the current work.
+
+Load 00_review_instructions/.
+Read the latest thesis/manuscript files from input/ and 01_working_text/.
+If the work is LaTeX, identify the current root .tex file and follow \input{} and \include{} only as needed. Identify bibliography, figure, table, and result files referenced by the manuscript.
+
+Create or update:
+- 00_review_instructions/review_profile.md
+- 00_review_instructions/document_map.md
+- 00_review_instructions/review_scope.md
+- 00_review_instructions/missing_inputs.md
+
+Use workspace evidence only. Mark unavailable facts as missing input.
+Do not invent citations, DOI, venue rankings, results, IRB/legal requirements, or claims.
+Do not edit thesis/manuscript/reference files.</pre>
+      </div>
+    </section>
+
+    <section>
+      <h2>Step 4: Run the Review</h2>
+      <div class="prompt-block">
+        <pre class="prompt-code">ประเมิน</pre>
+        <p class="small-note">This short trigger asks the workspace AI to continue from prior review state if available, create review notes, and avoid editing the source thesis.</p>
+      </div>
+      <div class="prompt-block">
+        <h3>Full English version</h3>
+        <pre class="prompt-code">Review this workspace as a full thesis/manuscript review, but do not edit the source thesis yet.
+
+Read available context from 00_review_instructions/, 01_working_text/, 02_references/, 03_results/, prompt_pack/, and 04_review_notes/99_review_state.md if it exists.
+
+Create or update:
+- 04_review_notes/00_inventory.md
+- 04_review_notes/01_full_review.md
+- 04_review_notes/02_reference_audit.md
+- 04_review_notes/03_student_action_checklist.md
+- 04_review_notes/99_review_state.md
+
+Use prompt_pack/01_full_thesis_review_prompt.md and prompt_pack/02_reference_bibtex_prompt.md as the review criteria.
+Use templates from prompt_pack/templates/04_review_notes/ when helpful.
+
+Check research logic before language polishing: problem survival, genuine failure, mandatory gates, measurement ceiling, and no-new-problem guardrails.
+Do not invent unsupported facts. If evidence is missing, write missing input.
+Record what was reviewed, what remains unfinished, and the next prompt to continue.</pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>For academic review support only. This is not a substitute for an advisor, reviewer, IRB office, or qualified legal/compliance source.</div>
+  </footer>
+</body>
+</html>

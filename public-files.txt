@@ -1,9 +1,13 @@
 # Explicit allowlist for the GitHub Pages artifact.
 # Add a path here only after confirming that it is intended to be public.
 index.html
+index-en.html
 workspace.html
+workspace-en.html
 webapp.html
+webapp-en.html
 about.html
+about-en.html
 01_full_thesis_review_prompt_explained_th.html
 00_intake_checklist.md
 01_full_thesis_review_prompt.md

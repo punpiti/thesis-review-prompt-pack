@@ -13,9 +13,13 @@ Current version: `v1.2`
 เปิดหน้าเริ่มต้นที่ [index.html](index.html) ก่อนเสมอ ชุดนี้แนะนำให้ใช้แบบ workspace เป็นหลัก:
 
 - [index.html](index.html) - หน้าเริ่มต้นและตัวเลือก workflow
+- [index-en.html](index-en.html) - English start page and workflow selection
 - [workspace.html](workspace.html) - เส้นทางหลักสำหรับ Codex / Claude Code / Antigravity มีแนวทางติดตั้ง จัด workspace และสั่ง AI ตรวจไฟล์
+- [workspace-en.html](workspace-en.html) - English workspace guide for Codex / Claude Code / Antigravity
 - [webapp.html](webapp.html) - fallback สำหรับ Gemini / ChatGPT / Claude เฉพาะกรณีตรวจส่วนสั้น ๆ ไม่แนะนำสำหรับตรวจทั้งเล่ม
+- [webapp-en.html](webapp-en.html) - English webapp fallback guide for short-section review
 - [about.html](about.html) - รายละเอียดระบบ privacy ข้อจำกัด และรายการไฟล์
+- [about-en.html](about-en.html) - English privacy, limits, and file list
 - [VERSION.md](VERSION.md) - เลขเวอร์ชันและสรุปการเปลี่ยนแปลงของชุดนี้
 
 1. เปิด [index.html](index.html)
@@ -26,9 +30,13 @@ Current version: `v1.2`
 ## Files
 
 - [index.html](index.html) - หน้าเริ่มต้นแบบ HTML สำหรับ GitHub Pages หรือเปิดใน browser
+- [index-en.html](index-en.html) - English start page
 - [workspace.html](workspace.html) - คู่มือ HTML หลักสำหรับ Codex / Claude Code / Antigravity
+- [workspace-en.html](workspace-en.html) - English workspace guide
 - [webapp.html](webapp.html) - fallback สำหรับ Gemini / ChatGPT / Claude แบบ quota จำกัด
+- [webapp-en.html](webapp-en.html) - English webapp fallback guide
 - [about.html](about.html) - รายละเอียดระบบ privacy ข้อจำกัด และรายการไฟล์
+- [about-en.html](about-en.html) - English privacy, limits, and file list
 - [00_intake_checklist.md](00_intake_checklist.md) - checklist อ้างอิงแบบ Markdown สำหรับคนที่อยากเตรียม context เอง
 - [01_full_thesis_review_prompt.md](01_full_thesis_review_prompt.md) - prompt หลักสำหรับตรวจทั้งเล่มหรือทั้ง manuscript
 - [01_full_thesis_review_prompt_explained_th.html](01_full_thesis_review_prompt_explained_th.html) - หน้า HTML อธิบาย prompt หลักเป็นภาษาไทย สำหรับอ่านเพื่อเข้าใจแนวคิดก่อนใช้

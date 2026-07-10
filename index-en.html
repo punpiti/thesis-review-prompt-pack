@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thesis Review Prompt Pack: Student Edition v1.2</title>
+  <meta name="description" content="A bilingual prompt pack for systematic thesis and manuscript review.">
+  <style>
+    :root { --bg:#f7f8fb; --ink:#1f2933; --muted:#5b6776; --line:#d9dee7; --panel:#fff; --accent:#0f766e; --accent-2:#7c3aed; --accent-3:#b45309; --danger:#b42318; --radius:8px; font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); line-height:1.65; }
+    a { color:var(--accent); font-weight:700; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .topbar { position:sticky; top:0; z-index:10; border-bottom:1px solid var(--line); background:rgba(255,255,255,.94); backdrop-filter:blur(10px); }
+    .topbar-inner, main, .footer { max-width:1120px; margin:0 auto; padding-left:20px; padding-right:20px; }
+    .topbar-inner { min-height:58px; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+    .brand { font-weight:900; }
+    .nav { display:flex; flex-wrap:wrap; gap:12px; font-size:14px; }
+    .hero { background:#102a43; color:#fff; border-bottom:1px solid #0b1d2e; }
+    .hero-inner { max-width:1120px; margin:0 auto; padding:54px 20px 46px; display:grid; grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr); gap:34px; align-items:center; }
+    .eyebrow { margin:0 0 12px; color:#a7f3d0; font-weight:800; text-transform:uppercase; font-size:13px; }
+    h1 { margin:0; font-size:clamp(34px,6vw,62px); line-height:1.08; }
+    h2 { margin:42px 0 14px; font-size:28px; line-height:1.2; }
+    h3 { margin:0 0 8px; font-size:18px; }
+    .hero p { color:#d9e2ec; font-size:18px; max-width:720px; }
+    .hero-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:24px; }
+    .button { display:inline-flex; align-items:center; min-height:42px; padding:10px 14px; border-radius:8px; border:1px solid transparent; font-weight:800; text-decoration:none; }
+    .button.primary { background:#fff; color:#102a43; }
+    .button.secondary { color:#fff; border-color:rgba(255,255,255,.42); }
+    .button.workspace-button { background:var(--accent); color:#fff; border-color:var(--accent); }
+    .button:hover { text-decoration:none; transform:translateY(-1px); }
+    .visual { min-height:310px; border:1px solid rgba(255,255,255,.22); border-radius:var(--radius); background:#173b57; padding:18px; }
+    .paper { height:274px; border-radius:6px; background:#fff; color:#243b53; padding:18px; display:grid; gap:11px; align-content:start; }
+    .paper-line { height:10px; background:#d9e2ec; border-radius:999px; }
+    .paper-line.title { height:16px; width:78%; background:#0f766e; }
+    .paper-line.short { width:55%; }
+    .paper-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:6px; }
+    .mini-panel { border:1px solid #d9e2ec; border-radius:6px; padding:10px; min-height:76px; background:#f8fafc; }
+    .mini-label { font-size:11px; color:#627d98; margin-bottom:8px; font-weight:800; }
+    .check { display:flex; gap:7px; align-items:center; font-size:12px; margin:5px 0; }
+    .check span:first-child { width:14px; height:14px; border-radius:4px; background:#0f766e; display:inline-block; }
+    main { padding-top:34px; padding-bottom:58px; }
+    .lead { color:var(--muted); max-width:850px; }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+    .two { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .card { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:18px; box-shadow:0 8px 20px rgba(30,41,59,.05); }
+    .tag { display:inline-flex; min-height:24px; padding:2px 8px; border-radius:6px; font-size:12px; font-weight:800; color:#134e4a; background:#e7f5f3; margin-bottom:10px; }
+    .tag.purple { color:#4c1d95; background:#f0ecff; }
+    .tag.amber { color:#78350f; background:#fff4df; }
+    .small-note { color:var(--muted); font-size:14px; }
+    .footer { border-top:1px solid var(--line); color:var(--muted); padding-top:24px; padding-bottom:34px; font-size:14px; }
+    @media (max-width:860px) { .hero-inner,.grid,.grid.two { grid-template-columns:1fr; } .visual { min-height:260px; } .paper { height:auto; min-height:240px; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Thesis Review Prompt Pack</div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#research-review-concept">Review concept</a>
+        <a href="workspace-en.html">Workspace</a>
+        <a href="about-en.html">About</a>
+        <a href="index.html" lang="th">ไทย</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div>
+        <p class="eyebrow">Student Edition v1.2</p>
+        <h1>Thesis Review Prompt Pack</h1>
+        <p>A bilingual workflow for using workspace AI tools such as Codex, Claude Code, or Antigravity to review a thesis or manuscript before the next advisor or committee round.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="workspace-en.html">Start With Workspace AI</a>
+          <a class="button secondary" href="about-en.html">Read Limits</a>
+          <a class="button secondary" href="index.html" lang="th">ไทย</a>
+        </div>
+      </div>
+      <div class="visual" aria-label="Illustration of manuscript review checklist">
+        <div class="paper">
+          <div class="paper-line title"></div>
+          <div class="paper-line"></div>
+          <div class="paper-line short"></div>
+          <div class="paper-grid">
+            <div class="mini-panel">
+              <div class="mini-label">Traceability</div>
+              <div class="check"><span></span><em>Problem</em></div>
+              <div class="check"><span></span><em>Objective</em></div>
+              <div class="check"><span></span><em>Result</em></div>
+            </div>
+            <div class="mini-panel">
+              <div class="mini-label">Review Flags</div>
+              <div class="check"><span></span><em>References</em></div>
+              <div class="check"><span></span><em>Ethics</em></div>
+              <div class="check"><span></span><em>Language</em></div>
+            </div>
+          </div>
+          <div class="paper-line"></div>
+          <div class="paper-line short"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section id="research-review-concept">
+      <h2>Research Review Concept</h2>
+      <p class="lead">A thesis review is not just language editing. It must test whether the whole research argument holds together: problem, objectives, method, evidence, results, references, scope, and limitations.</p>
+      <div class="grid">
+        <article class="card">
+          <span class="tag">Logic</span>
+          <h3>Check the research chain</h3>
+          <p>Start from the problem or gap, then trace objectives, method, data/evidence, results, and claims. If the chain breaks, fluent writing will not make the work ready.</p>
+        </article>
+        <article class="card">
+          <span class="tag amber">Evidence</span>
+          <h3>Read evidence before opinion</h3>
+          <p>Every important claim needs support from manuscript evidence, precise citations, datasets, baselines, metrics, raw results, or verified compliance sources.</p>
+        </article>
+        <article class="card">
+          <span class="tag purple">Reviewer View</span>
+          <h3>Think like a field reviewer</h3>
+          <p>Ask whether the work fits the degree level and target venue, whether key references or baselines are missing, and whether claims exceed the evidence.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="workflows">
+      <h2>Choose a Workflow</h2>
+      <div class="grid two">
+        <article class="card">
+          <span class="tag purple">Workspace AI</span>
+          <h3>Codex / Claude Code / Antigravity</h3>
+          <p>The recommended path for a full thesis review. Let the AI read files in a workspace, organize missing inputs, and create review notes without editing the source thesis first.</p>
+          <p><a class="button workspace-button" href="workspace-en.html">Open Workspace Guide</a></p>
+        </article>
+        <article class="card">
+          <span class="tag amber">Fallback</span>
+          <h3>AI webapps are for short sections</h3>
+          <p>Use Gemini, ChatGPT, or Claude webapps only for short checks such as title/abstract, a few literature paragraphs, or one method/results section.</p>
+          <p><a href="webapp-en.html">Open webapp prompts</a></p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>Thesis Review Prompt Pack: Student Edition v1.2</div>
+    <div><a href="about-en.html#credits">Credits</a> · <a href="about-en.html">About / privacy / files</a> · <a href="index.html" lang="th">ไทย</a></div>
+  </footer>
+</body>
+</html>

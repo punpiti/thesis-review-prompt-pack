@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About | Thesis Review Prompt Pack v1.2</title>
+  <style>
+    :root { --bg:#f7f8fb; --ink:#1f2933; --muted:#5b6776; --line:#d9dee7; --panel:#fff; --accent:#0f766e; --danger:#b42318; --radius:8px; font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); line-height:1.65; }
+    a { color:var(--accent); font-weight:700; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .topbar { position:sticky; top:0; z-index:10; border-bottom:1px solid var(--line); background:rgba(255,255,255,.94); backdrop-filter:blur(10px); }
+    .topbar-inner, main, .footer { max-width:1120px; margin:0 auto; padding-left:20px; padding-right:20px; }
+    .topbar-inner { min-height:58px; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+    .brand { font-weight:900; }
+    .nav { display:flex; flex-wrap:wrap; gap:12px; font-size:14px; }
+    .hero { background:#102a43; color:#fff; }
+    .hero-inner { max-width:1120px; margin:0 auto; padding:42px 20px; }
+    .hero p { color:#d9e2ec; max-width:850px; font-size:18px; }
+    h1 { margin:0; font-size:clamp(32px,5vw,56px); line-height:1.08; }
+    h2 { margin:42px 0 12px; font-size:28px; line-height:1.2; }
+    h3 { margin:0 0 8px; font-size:18px; }
+    .lead { color:var(--muted); max-width:850px; }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+    .card { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:16px; }
+    .file-list { display:grid; gap:10px; }
+    .file-row { display:grid; grid-template-columns:minmax(230px,.7fr) minmax(0,1fr); gap:12px; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:12px 14px; }
+    .warning { border-left:5px solid var(--danger); background:#fff8f7; padding:16px 18px; border-radius:6px; color:#3b0d0c; }
+    .footer { border-top:1px solid var(--line); color:var(--muted); padding-top:24px; padding-bottom:34px; margin-top:48px; font-size:14px; }
+    code { background:#eef2f7; padding:2px 5px; border-radius:5px; }
+    @media (max-width:860px) { .grid,.file-row { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Thesis Review Prompt Pack</div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index-en.html">Home</a>
+        <a href="workspace-en.html">Workspace</a>
+        <a href="about.html" lang="th">ไทย</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>About</h1>
+      <p>Scope, privacy notes, limitations, and public files for Thesis Review Prompt Pack v1.2.</p>
+      <p><a href="about.html" lang="th">อ่านหน้านี้ภาษาไทย</a></p>
+    </div>
+  </div>
+
+  <main>
+    <section>
+      <h2>What This Site Reviews</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Research Logic</h3>
+          <p>Checks whether problem, objectives, method, and results actually connect.</p>
+        </article>
+        <article class="card">
+          <h3>References</h3>
+          <p>Checks reference quality, missing citations, uncited entries, metadata, and citations that do not support claims.</p>
+        </article>
+        <article class="card">
+          <h3>Evidence</h3>
+          <p>Checks dataset, baseline, metric, raw result, script, error analysis, and measurement support behind claims.</p>
+        </article>
+        <article class="card">
+          <h3>Ethics / IRB / Legal</h3>
+          <p>Flags human subjects, personal data, consent, scraping, dataset license, copyright, Terms of Service, and NDA issues.</p>
+        </article>
+        <article class="card">
+          <h3>AI Use</h3>
+          <p>Checks whether AI use may have introduced unsupported claims, suspicious citations, or unverified results.</p>
+        </article>
+        <article class="card">
+          <h3>Writing Hygiene</h3>
+          <p>Checks typos, acronyms, Thai/English mixing, forward references, and generic AI writing.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Privacy and Limits</h2>
+      <div class="warning">
+        <strong>This static site does not collect research files.</strong>
+        <p>These HTML pages are a public prompt list. They have no upload form, no database, and no server-side storage for user research content.</p>
+      </div>
+      <p>AI is a review assistant, not the thesis author, advisor, real reviewer, IRB office, or legal/compliance authority. Authors must verify every claim from real sources.</p>
+      <p>Do not let AI invent citations, DOI, venue rankings, metrics, results, IRB/legal requirements, or legal statements.</p>
+    </section>
+
+    <section id="credits">
+      <h2>Credits</h2>
+      <p class="lead">Created by Punpiti Piamsa-nga.</p>
+    </section>
+
+    <section>
+      <h2>Public Files</h2>
+      <div class="file-list">
+        <div class="file-row"><a href="index-en.html">index-en.html</a><span>English start page.</span></div>
+        <div class="file-row"><a href="workspace-en.html">workspace-en.html</a><span>English workspace AI guide.</span></div>
+        <div class="file-row"><a href="webapp-en.html">webapp-en.html</a><span>English fallback prompts for chat webapps.</span></div>
+        <div class="file-row"><a href="index.html">index.html</a><span>Thai start page.</span></div>
+        <div class="file-row"><a href="workspace.html">workspace.html</a><span>Thai workspace AI guide.</span></div>
+        <div class="file-row"><a href="webapp.html">webapp.html</a><span>Thai fallback prompts for chat webapps.</span></div>
+        <div class="file-row"><a href="01_full_thesis_review_prompt.md">01_full_thesis_review_prompt.md</a><span>Main full review prompt.</span></div>
+        <div class="file-row"><a href="02_reference_bibtex_prompt.md">02_reference_bibtex_prompt.md</a><span>Reference, citation, and BibTeX review prompt.</span></div>
+        <div class="file-row"><a href="03_review_rubric.md">03_review_rubric.md</a><span>Self-review and peer-review rubric.</span></div>
+        <div class="file-row"><a href="04_common_review_patterns.md">04_common_review_patterns.md</a><span>Common review patterns and blocking issues.</span></div>
+        <div class="file-row"><a href="thesis_review_student_edition.zip">thesis_review_student_edition.zip</a><span>Downloadable student edition package.</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>For academic review support only. This is not a substitute for an advisor, reviewer, IRB office, or qualified legal/compliance source.</div>
+  </footer>
+</body>
+</html>

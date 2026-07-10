@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Webapp Guide | Thesis Review Prompt Pack v1.2</title>
+  <style>
+    :root { --bg:#f7f8fb; --ink:#1f2933; --muted:#5b6776; --line:#d9dee7; --panel:#fff; --accent:#0f766e; --danger:#b42318; --radius:8px; font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); line-height:1.65; }
+    a { color:var(--accent); font-weight:700; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .topbar { position:sticky; top:0; z-index:10; border-bottom:1px solid var(--line); background:rgba(255,255,255,.94); backdrop-filter:blur(10px); }
+    .topbar-inner, main, .footer { max-width:1120px; margin:0 auto; padding-left:20px; padding-right:20px; }
+    .topbar-inner { min-height:58px; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+    .brand { font-weight:900; }
+    .nav { display:flex; flex-wrap:wrap; gap:12px; font-size:14px; }
+    .hero { background:#102a43; color:#fff; }
+    .hero-inner { max-width:1120px; margin:0 auto; padding:42px 20px; }
+    .hero p { color:#d9e2ec; max-width:850px; font-size:18px; }
+    h1 { margin:0; font-size:clamp(32px,5vw,56px); line-height:1.08; }
+    h2 { margin:42px 0 12px; font-size:28px; line-height:1.2; }
+    h3 { margin:0 0 8px; font-size:18px; }
+    .lead { color:var(--muted); max-width:850px; }
+    .warning { border-left:5px solid var(--danger); background:#fff8f7; padding:16px 18px; border-radius:6px; color:#3b0d0c; }
+    .warning + .warning { margin-top:12px; }
+    .prompt-block { margin-top:14px; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:16px; }
+    .button { display:inline-flex; align-items:center; min-height:42px; padding:10px 14px; border-radius:8px; border:1px solid var(--accent); background:var(--accent); color:#fff; font-weight:850; text-decoration:none; }
+    .button.secondary { background:#fff; color:var(--accent); }
+    pre { margin:12px 0 0; padding:14px; overflow-x:auto; border-radius:8px; border:1px solid #cbd5e1; background:#0f172a; color:#e2e8f0; font-size:13px; line-height:1.55; white-space:pre-wrap; }
+    code { background:#eef2f7; padding:2px 5px; border-radius:5px; }
+    .small-note { color:var(--muted); font-size:14px; }
+    .footer { border-top:1px solid var(--line); color:var(--muted); padding-top:24px; padding-bottom:34px; margin-top:48px; font-size:14px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Thesis Review Prompt Pack</div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index-en.html">Home</a>
+        <a href="workspace-en.html">Codex / Claude Code</a>
+        <a href="about-en.html">About</a>
+        <a href="webapp.html" lang="th">ไทย</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>AI Webapp Fallback</h1>
+      <p>This page is only a fallback for Gemini, ChatGPT, or Claude webapps. It is not recommended for a full thesis review because users must copy sections manually across many turns.</p>
+      <p><a class="button secondary" href="workspace-en.html">Use Workspace AI Instead</a> <a class="button secondary" href="webapp.html" lang="th">ไทย</a></p>
+    </div>
+  </div>
+
+  <main>
+    <section>
+      <h2>Rules Before You Start</h2>
+      <div class="warning">
+        <strong>Not recommended for a full thesis review</strong>
+        <p>If you have Codex, Claude Code, or Antigravity, use the <a href="workspace-en.html">Workspace AI guide</a>. Webapps are suitable only for short sections.</p>
+      </div>
+      <div class="warning">
+        <strong>Do not paste the whole thesis and ask "is it good?"</strong>
+        <p>Start with the title, abstract, problem, and objectives. Then review literature, method/results, ethics, and writing hygiene in separate rounds.</p>
+      </div>
+      <div class="warning">
+        <strong>Do not let AI invent evidence</strong>
+        <p>Do not invent citations, DOI, venue rankings, metrics, results, IRB/legal requirements, or legal statements. If evidence is missing, the AI must say so.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Copyable Prompts</h2>
+      <p class="lead">Use one prompt at a time. Replace the bracketed placeholders with text from the manuscript.</p>
+
+      <div class="prompt-block">
+        <h3>Prompt 1: Missing input check</h3>
+        <pre>I want you to review this thesis/manuscript draft as an academic reviewer.
+
+First task:
+- Read only the text I provide.
+- Identify what information is missing.
+- Classify each missing item as critical / useful / not needed in this round.
+- If information is already in the document, summarize it from the document instead of asking me to fill it again.
+- Ask follow-up questions only when the missing information is necessary for review.
+
+Rules:
+- Do not invent citations, DOI, venue rankings, metrics, results, IRB/legal requirements, or legal statements.
+- If evidence is insufficient, say so.
+- Cite manuscript locations when possible: section, paragraph, table, or figure.
+
+[Paste title page, abstract, introduction/problem statement, objectives/RQs, table of contents, and methodology summary if available.]</pre>
+      </div>
+
+      <div class="prompt-block">
+        <h3>Prompt 2: Title, abstract, problem, objectives</h3>
+        <pre>Review only the title, abstract, problem statement, and objectives/RQs below.
+
+Output:
+1. Whether title and abstract align.
+2. Whether the problem has enough academic or practical weight.
+3. Whether objectives/RQs come from the problem.
+4. Claims that are stronger than the evidence.
+5. Top 5 fixes before sending to an advisor.
+
+Do not rewrite everything. Give specific issues and reasons.
+
+[Paste title, abstract, problem/gap paragraphs, and objectives/RQs.]</pre>
+      </div>
+
+      <div class="prompt-block">
+        <h3>Prompt 3: Literature review with limited quota</h3>
+        <pre>Review this literature review section as a field reviewer.
+
+Focus on:
+1. Synthesis vs paper-by-paper summary.
+2. Claims that need citations.
+3. Citations that do not support the claim.
+4. Reference role clusters.
+5. Comparison matrix needed.
+6. Direct prior work vs cross-domain support vs foundational support vs target-venue anchors.
+
+Respond concisely with tables and bullets.
+
+[Paste related work headings, 1-2 key paragraphs per heading, cited references/BibTeX, and any existing comparison table.]</pre>
+      </div>
+
+      <div class="prompt-block">
+        <h3>Prompt 4: Method, data, baseline, results</h3>
+        <pre>Review the methodology and results below.
+
+Answer:
+1. Does the method address the problem/objectives?
+2. Are baselines sufficient? If not, what is missing?
+3. Are metrics appropriate?
+4. Do results answer the objectives/RQs?
+5. Which result claims lack raw results, scripts, error analysis, or measurement support?
+6. What are the top 5 blocking issues?
+
+Also check problem survival, genuine failure, mandatory gates, measurement ceiling, and no-new-problem guardrails.
+Do not invent experimental results.
+
+[Paste methodology, data collection, baselines, evaluation metrics, results tables/figures, and relevant appendix summaries.]</pre>
+      </div>
+
+      <div class="prompt-block">
+        <h3>Prompt 5: Ethics / IRB / legal flags</h3>
+        <pre>Flag possible ethics, IRB, and legal/compliance issues from the text below.
+
+Rules:
+- Do not provide legal advice.
+- Do not conclude that IRB is unnecessary unless institutional evidence is provided.
+- State what should be checked with the advisor, IRB office, institution, venue, or qualified compliance source.
+
+Output:
+1. Possible IRB/ethics approval or exemption issues.
+2. Consent, anonymization, or de-identification needs.
+3. Dataset license, copyright, Terms of Service, ownership, or confidentiality issues.
+4. Statements the manuscript may need: ethics, data availability, consent, AI use, or limitations.
+
+[Paste participants/data collection/user study/data source/license/scraping/ethics statement sections.]</pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>For academic review support only. This is not a substitute for an advisor, reviewer, IRB office, or qualified legal/compliance source.</div>
+  </footer>
+</body>
+</html>
