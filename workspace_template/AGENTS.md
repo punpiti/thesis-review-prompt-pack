@@ -50,6 +50,18 @@ Create or update:
 - `04_review_notes/03_student_action_checklist.md`
 - `04_review_notes/99_review_state.md`
 
+## Review Priorities
+
+Check research logic before polishing language:
+
+- problem survival: the problem exists, matters, remains unresolved, and is not already solved adequately by simpler existing approaches
+- objective/RQ alignment
+- genuine failure: the study has possible evidence that would make the answer "No"
+- mandatory gates: correctness, safety, security, legal/ethical compliance, capacity, or maximum-error gates pass before optimization metrics matter
+- measurement ceiling: constructs, proxies/indicators, instruments/ground truth, procedures, and claims are aligned
+- no-new-problem guardrail: the solution does not create or transfer unacceptable privacy, security, cost, fairness, accessibility, maintenance, energy, or stakeholder burden
+- reference support, ethics/IRB/legal risks, scope/limitations, LLM use, and document hygiene
+
 ## Rules
 
 - Do not invent citations, DOI, venue ranking, paper metadata, results, IRB/legal requirements, or claims.

@@ -1,6 +1,6 @@
 # ข้อความสำหรับส่งให้นิสิต
 
-Thesis Review Prompt Pack: Student Edition v1.1
+Thesis Review Prompt Pack: Student Edition v1.2
 
 ใช้ข้อความนี้ส่งให้นิสิตใน LINE, Google Classroom, LMS หรืออีเมลได้
 
@@ -29,6 +29,7 @@ Thesis Review Prompt Pack: Student Edition v1.1
 - ทุก claim ที่อยู่ในรายงานต้องตรวจจากแหล่งจริง
 - ถ้างานเกี่ยวกับคน ผู้ใช้ ข้อมูลส่วนบุคคล scraping หรือ dataset ที่มี license/ข้อบังคับ ต้องเช็ค IRB/ethics/legal compliance ก่อน ไม่ใช่รอใกล้ส่ง
 - ถ้าใช้ LLM ช่วยเขียนหรือช่วยทดลอง ต้องบอกว่าใช้ตรงไหน และเก็บ prompt/output ที่เกี่ยวข้องไว้
+- ก่อนขัดภาษา ให้ตรวจ 5 ด่านก่อน: ปัญหายังมีจริงไหม, งาน fail ได้ไหม, gate ที่ต้องผ่านผ่านครบไหม, metric วัดสิ่งที่ claim จริงไหม, และ solution สร้างปัญหาใหม่หรือไม่
 - ตรวจภาษาและ document hygiene ด้วย เช่น สะกดผิดมากไปไหม ใช้ชื่อย่อโดยไม่ define ไหม ปนไทย/อังกฤษเกินจำเป็นไหม หรือเขียนอ้างไปยังส่วนที่ผู้อ่านยังไม่เจอหรือไม่
 - ก่อนส่งงาน ให้แก้ blocking issues ก่อนแก้ภาษา เช่น problem ไม่ชัด objective ไม่ตรง result ไม่มี baseline หรือ reference รองรับ claim ไม่ได้
 ```

@@ -30,8 +30,9 @@ Review rules:
 5. Evaluate the work relative to the stated field, degree level, and expected venue.
 6. If the target venue is too ambitious, say so directly and explain what would be required.
 7. If prior review notes or 04_review_notes/99_review_state.md are provided, check what has already been completed. Continue with unfinished items unless the user explicitly asks for a full reassessment.
-8. At the end, record what was reviewed, what remains unfinished, and the suggested next prompt for continuing later.
-9. Write the final review in Thai. Keep technical terms, paper titles, venue names, dataset names, and metric names in English where appropriate.
+8. Run research-logic stress tests before language polishing: problem survival, genuine failure, mandatory gates, measurement ceiling, and no-new-problem guardrails.
+9. At the end, record what was reviewed, what remains unfinished, and the suggested next prompt for continuing later.
+10. Write the final review in Thai. Keep technical terms, paper titles, venue names, dataset names, and metric names in English where appropriate.
 
 Tasks:
 
@@ -54,6 +55,12 @@ Tasks:
 - Judge whether the problem has enough academic weight.
 - Judge whether the problem has practical or scientific value.
 - Identify whether the problem is too broad, too narrow, already solved, or weakly justified.
+- Test problem survival:
+  - Does the undesirable or unresolved condition actually exist in the manuscript evidence?
+  - Is it important enough for a thesis/manuscript at this level?
+  - Is it still unresolved in the stated context?
+  - Has a simpler, safer, cheaper, or established solution already solved it adequately?
+  - Would the stated output or result demonstrate that the problem is gone or reduced?
 - State what evidence would make the problem stronger.
 
 4. Literature review quality
@@ -88,12 +95,18 @@ Tasks:
 - Identify results that are only implementation outputs but not research evidence.
 - Verify that every quantitative result has dataset/testbed, baseline, metric definition, raw result or output, and reproducible calculation path.
 - Identify missing error analysis, failure cases, runtime/cost trade-off, or statistical/qualitative evidence expected by the venue.
+- Test whether the study can genuinely fail:
+  - What possible evidence would make the answer "No"?
+  - What result would show that the chosen method did not solve the problem?
+  - Are realistic unfavorable conditions and failure cases included?
+  - Does the manuscript avoid treating every possible result as success?
 
 8. Overall coherence
 - Build a traceability table with columns:
   Problem/gap | Objective/RQ | Method | Data/evidence | Result | Claim supported? | Weak point
 - Judge whether the relationship among problem, objectives, method, and results is coherent.
 - Identify broken chains, unsupported claims, and claims that exceed the evidence.
+- For each chain, mark the stress-test status: pass / fail / missing for problem survival, genuine failure, mandatory gates, measurement ceiling, and no-new-problem.
 
 9. Proposed solution and academic sense
 - Evaluate whether the solution concept makes academic sense.
@@ -102,12 +115,20 @@ Tasks:
 - Judge whether the choice of method is justified or only convenient.
 - If the task involves text, review, recommendation, semantic matching, or generation, check whether plain LLM, keyword/BM25, embedding, and structured-prompt baselines are needed.
 - Judge whether the claimed novelty remains if a strong baseline performs similarly.
+- Identify mandatory gates that must pass before optimization metrics matter, such as correctness, safety, security, legal/ethical compliance, maximum error, or minimum capacity.
+- Check whether a weighted score or average hides a failure on a mandatory gate.
+- Check whether the proposed solution creates or transfers a new unacceptable problem in safety, privacy, security, accessibility, cost, energy, maintainability, fairness, or stakeholder burden.
 
 10. Data, feasibility, and narrowest defensible version
 - Assess whether the data needed for the thesis exists, can be obtained ethically, and is clean enough.
 - Identify privacy, permission, labeling, ground-truth, and data-cleaning risks.
 - Identify the narrowest version of the thesis that can still be defended academically.
 - Identify fallback formulations if the main data/evaluation plan fails.
+- Check measurement quality:
+  - What construct is each key claim trying to measure?
+  - What operational indicator, instrument, ground truth, data procedure, and analysis support it?
+  - Does the indicator really represent the construct, or is it only a convenient proxy?
+  - Is the claim stronger than the weakest justified measurement link?
 
 11. Ethics, IRB, and legal/regulatory compliance
 - Identify whether the study involves human subjects, participants, students, users, experts, patients, vulnerable groups, or data about identifiable people.
@@ -174,6 +195,7 @@ Output format:
 ## Field-Level-Venue Calibration
 ## Title and Abstract
 ## Problem Significance
+## Research Logic Stress Tests
 ## Literature Review and Reference Quality
 ## Objective-Problem-Result Traceability
 ## Method and Alternative Approaches

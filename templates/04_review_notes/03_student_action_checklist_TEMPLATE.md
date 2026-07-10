@@ -19,6 +19,14 @@
 
 - 
 
+## ต้องแก้ research logic stress tests
+
+- Problem survival:
+- Genuine failure:
+- Mandatory gates:
+- Measurement ceiling:
+- No-new-problem guardrail:
+
 ## ต้องแก้ literature/references
 
 - 

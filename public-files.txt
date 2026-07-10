@@ -1,0 +1,26 @@
+# Explicit allowlist for the GitHub Pages artifact.
+# Add a path here only after confirming that it is intended to be public.
+index.html
+workspace.html
+webapp.html
+about.html
+01_full_thesis_review_prompt_explained_th.html
+00_intake_checklist.md
+01_full_thesis_review_prompt.md
+01_full_thesis_review_prompt_explained_th.md
+02_reference_bibtex_prompt.md
+03_review_rubric.md
+04_common_review_patterns.md
+05_choose_your_ai_workflow.md
+05a_chat_ai_quota_limited_guide.md
+05b_workspace_ai_codex_claude_code_guide.md
+AGENTS.md
+CLAUDE.md
+LICENSE.md
+README.md
+STUDENT_HANDOUT.md
+VERSION.md
+thesis_review_student_edition.zip
+codex_skill
+templates
+workspace_template

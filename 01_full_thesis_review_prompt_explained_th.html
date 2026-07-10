@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>แนวคิดการตรวจงานวิจัย | Thesis Review Prompt Pack v1.1</title>
+  <title>แนวคิดการตรวจงานวิจัย | Thesis Review Prompt Pack v1.2</title>
   <style>
     :root { --bg:#f7f8fb; --ink:#1f2933; --muted:#5b6776; --line:#d9dee7; --panel:#fff; --accent:#0f766e; --accent-2:#7c3aed; --accent-3:#b45309; --soft:#e7f5f3; --radius:8px; font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
     * { box-sizing:border-box; }
@@ -81,6 +81,10 @@
           <h3>คิดแบบ reviewer</h3>
           <p>ประเมินว่างานมีน้ำหนักพอกับสาขา ระดับปริญญา และ venue ที่คาดหวังหรือไม่</p>
         </article>
+        <article class="card">
+          <h3>ทดสอบ logic ก่อน polish</h3>
+          <p>ตรวจ 5 ด่านก่อนแก้ภาษา: problem survival, genuine failure, mandatory gates, measurement ceiling และ no-new-problem guardrail</p>
+        </article>
       </div>
     </section>
 
@@ -136,6 +140,7 @@
               <li>ประเมินว่าปัญหามีน้ำหนักทางวิชาการหรือ practical value เพียงพอหรือไม่</li>
               <li>ดูว่าปัญหาถูก justify ด้วย evidence, literature, gap, limitation ของงานเดิม หรือข้อมูลจริงหรือไม่</li>
               <li>ตรวจว่าปัญหากว้างเกินไป แคบเกินไป ซ้ำกับงานที่แก้ไปแล้ว หรือเป็นเพียงความสะดวกของผู้ทำวิจัยหรือไม่</li>
+              <li>ตรวจ problem survival: ปัญหายังมีอยู่จริง สำคัญ ยัง unresolved และยังไม่ถูกแก้ได้พอแล้วด้วยวิธีที่ง่ายกว่า ปลอดภัยกว่า หรือเป็นมาตรฐานกว่า</li>
               <li>บอกว่าควรเพิ่ม evidence แบบใดเพื่อทำให้ปัญหาแข็งแรงขึ้น</li>
             </ul>
           </div>
@@ -190,6 +195,7 @@
               <li>แยก implementation output ออกจาก research evidence เช่น มีระบบแล้วไม่ได้แปลว่าพิสูจน์ contribution แล้ว</li>
               <li>ตรวจ quantitative result ว่ามี dataset/testbed, baseline, metric definition, raw result และวิธีคำนวณครบหรือไม่</li>
               <li>หา missing error analysis, failure cases, runtime/cost trade-off หรือ statistical/qualitative evidence ที่ venue คาดหวัง</li>
+              <li>ตรวจ genuine failure: มีผลแบบใดที่จะทำให้ตอบว่า method ไม่ได้แก้ปัญหาหรือ claim ไม่ถูก support หรือไม่</li>
             </ul>
           </div>
         </article>
@@ -202,6 +208,7 @@
               <li>ดูว่าทุก problem มี objective ทุก objective มี method และทุก method มี evidence หรือไม่</li>
               <li>หา broken chain เช่น มี claim แต่ไม่มี result หรือมี result แต่ไม่ตอบ problem</li>
               <li>ระบุ claim ที่เกิน evidence หรืออธิบายเกินสิ่งที่ experiment พิสูจน์ได้</li>
+              <li>ตรวจ measurement ceiling: claim ต้องไม่แรงกว่า construct, proxy/indicator, instrument/ground truth, data procedure และ analysis ที่รองรับจริง</li>
               <li>สรุปว่าทั้งเรื่อง coherent หรือยังเป็นชิ้นส่วนแยกกัน</li>
             </ul>
           </div>
@@ -216,6 +223,8 @@
               <li>ตรวจว่ามี baseline ที่ควรเทียบหรือไม่ เช่น keyword/BM25, embedding, plain LLM, structured prompt หรือ classical method</li>
               <li>ดูว่าเหตุผลที่เลือก method น่าเชื่อถือหรือไม่</li>
               <li>ถามว่า novelty ยังเหลืออยู่หรือไม่ ถ้า baseline ที่แข็งแรงทำได้ใกล้เคียงกัน</li>
+              <li>ตรวจ mandatory gates เช่น correctness, safety, security, ethics/legal compliance, capacity หรือ maximum error ก่อนเปรียบเทียบ optimization metrics</li>
+              <li>ตรวจ no-new-problem guardrail ว่า solution ไม่สร้างภาระใหม่ที่ยอมรับไม่ได้ด้าน privacy, security, cost, fairness, accessibility, maintenance, energy หรือ stakeholder burden</li>
             </ul>
           </div>
         </article>

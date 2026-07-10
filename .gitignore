@@ -1,0 +1,15 @@
+# Project-local AI state and machine-specific adapters are not release content.
+.ai/
+ANTIGRAVITY.md
+
+# Local material that must never be committed to this public repository.
+.private/
+private/
+
+# Generated public-site staging directory.
+public/
+
+# Common local/editor artifacts.
+.DS_Store
+Thumbs.db
+*~

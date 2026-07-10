@@ -52,6 +52,12 @@ my_thesis_review/00_inbox/
 
 ถ้ามีหลายเวอร์ชัน ใส่รวมไว้ใน `00_inbox/` ได้ แล้วให้ AI จัดเวอร์ชันใน Step 2
 
+## ทำไมไม่ให้ AI อ่านทั้งโฟลเดอร์ทันที
+
+การโยนทั้งโฟลเดอร์ LaTeX หรือไฟล์ทั้งหมดให้ Claude Code/Codex อ่านตั้งแต่แรกทำได้ แต่ใช้ token มากและอาจทำให้ AI อ่านไฟล์ที่ไม่เกี่ยวกับการตรวจ เช่น auxiliary files, build output, รูปจำนวนมาก หรือ source เก่าที่ไม่ใช่เวอร์ชันปัจจุบัน
+
+workflow นี้จึงให้เริ่มจาก `00_inbox/` แล้วให้ AI จัดไฟล์และสร้าง `00_review_instructions/` ก่อน เมื่อสั่ง `ประเมิน` รอบถัดไป AI จะใช้ context ที่คัดแล้วเป็นหลัก และอ่านไฟล์ต้นฉบับเฉพาะเท่าที่จำเป็นต่อหลักฐาน
+
 ## Step 2: ให้ AI จัดไฟล์จาก 00_inbox
 
 ใช้เมื่อวางไฟล์รวมไว้ใน `00_inbox/`
@@ -153,6 +159,7 @@ init workspace จากไฟล์รวม
 - prompt_pack/templates/04_review_notes/99_review_state_TEMPLATE.md
 
 ต้องประเมินตาม prompt_pack/01_full_thesis_review_prompt.md ให้ครบทุกหัวข้อที่ทำได้จากหลักฐาน
+ต้องตรวจ problem survival, genuine failure, mandatory gates, measurement ceiling และ no-new-problem guardrail ก่อนแนะนำแก้ภาษา
 ต้องตรวจ reference ตาม prompt_pack/02_reference_bibtex_prompt.md เท่าที่มีหลักฐาน
 
 ถ้าข้อมูลใดมีอยู่แล้วในเอกสาร ให้สรุปจากเอกสาร ไม่ต้องถามฉันซ้ำ
@@ -189,6 +196,7 @@ init workspace จากไฟล์รวม
 - ห้ามแต่ง citation, DOI, venue ranking, result, law, IRB requirement เอง
 - ทุก criticism สำคัญต้องอ้าง section/page/paragraph/table/figure ถ้าระบุได้
 - ถ้าข้อมูลไม่พอ ให้เขียนว่า missing input
+- ต้องตรวจ problem survival, genuine failure, mandatory gates, measurement ceiling และ no-new-problem guardrail ก่อนแนะนำแก้ภาษา
 - ห้ามแก้ thesis ต้นฉบับ
 ```
 

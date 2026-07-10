@@ -41,6 +41,16 @@
 - Research gap:
 - Value / weight of the problem:
 
+## Research Logic Stress Tests
+
+| Test | Pass / Fail / Missing | Evidence location | Impact | Required fix |
+|---|---|---|---|---|
+| Problem survival |  |  |  |  |
+| Genuine failure |  |  |  |  |
+| Mandatory gates |  |  |  |  |
+| Measurement ceiling |  |  |  |  |
+| No-new-problem guardrail |  |  |  |  |
+
 ## Literature Review and Reference Quality
 
 - Synthesis quality:
@@ -67,6 +77,8 @@
 - Dataset/data source:
 - Baselines:
 - Metrics:
+- Construct / indicator / ground truth fit:
+- Mandatory pass/fail gates:
 - Raw results / scripts / reproducibility:
 - Feasibility risks:
 

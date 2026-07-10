@@ -1,10 +1,12 @@
-# Thesis Review Prompt Pack: Student Edition v1.1
+# Thesis Review Prompt Pack: Student Edition v1.2
 
-Current version: `v1.1`
+Current version: `v1.2`
 
 ชุด prompt นี้ทำไว้สำหรับให้นิสิตใช้ตรวจวิทยานิพนธ์ บทความจากวิทยานิพนธ์ หรือ manuscript ของตนเองและของเพื่อนอย่างเป็นระบบ ก่อนส่งให้อาจารย์หรือกรรมการตรวจรอบถัดไป
 
 เป้าหมายคือช่วยให้เห็นว่าเอกสารมีปัญหาอะไรที่ควรแก้ก่อน เช่น ปัญหาวิจัยไม่ชัด วัตถุประสงค์ไม่ตรงกับผล literature review ยังไม่สังเคราะห์ reference ไม่พอ baseline ขาด หรือ claim แรงเกินหลักฐาน ไม่ใช่ให้ AI ตัดสินแทนผู้วิจัยหรือแทน reviewer จริง
+
+รุ่นนี้เพิ่มแนวคิดจากบทเรียน AI-assisted thesis review ให้ตรวจ research logic ก่อน polish ภาษา โดยใช้ 5 stress tests: problem survival, genuine failure, mandatory gates, measurement ceiling และ no-new-problem guardrail
 
 ## Quick Start
 
@@ -58,6 +60,12 @@ Current version: `v1.1`
 
 `00_review_instructions/` และ `02_references/extracted_md/` ให้ AI สร้างเอง
 
+## Why This Saves Tokens
+
+อย่าให้ AI อ่านทั้งโฟลเดอร์ LaTeX หรือไฟล์ทั้งหมดแบบเหมารวมตั้งแต่แรก เพราะจะใช้ token มากและอาจทำให้ AI อ่านไฟล์ที่ไม่เกี่ยวกับการตรวจ
+
+workflow นี้ให้ AI เริ่มจาก `00_inbox/` เพื่อจัดไฟล์และสร้าง `00_review_instructions/` ก่อน จากนั้นตอนสั่ง `ประเมิน` ให้ใช้ context ที่คัดแล้วเป็นหลัก แทนการอ่านทุกไฟล์ซ้ำทุกรอบ
+
 ## Ground Rules
 
 - AI ช่วยอ่านและจัดระบบ feedback ได้ แต่ผู้เขียนต้องรับผิดชอบทุก claim เอง
@@ -66,6 +74,7 @@ Current version: `v1.1`
 - citation ทุกตัวควรตรวจจาก paper หรือหน้าเว็บ/ข้อมูลจากแหล่งทางการ
 - ถ้าใช้ Codex หรือ Claude Code อ่าน PDF reference ให้ AI เก็บบันทึกผลอ่านเป็น Markdown ใน `02_references/extracted_md/` หนึ่งไฟล์ต่อหนึ่ง PDF ก่อนนำไปเติม `abstract` หรือ metadata ใน BibTeX
 - claim เชิงผลทดลองต้องมี dataset, baseline, metric, raw result และวิธีคำนวณรองรับ
+- ก่อนแก้ภาษา ให้ตรวจว่า problem ยังรอด, งานมีโอกาส fail ได้จริง, mandatory gates ผ่านก่อน optimization, metric วัด construct ที่ claim จริง และ solution ไม่สร้างปัญหาใหม่ที่ยอมรับไม่ได้
 - ถ้างานเกี่ยวข้องกับคน ผู้ใช้ ข้อมูลส่วนบุคคล scraping dataset license หรือข้อมูลที่มีข้อบังคับ ต้องตรวจ IRB/ethics/legal compliance ตั้งแต่ต้น
 - ถ้างานใช้ LLM ต้องบอกให้ชัดว่าใช้ทำอะไร และตรวจผลจากแหล่งจริงอย่างไร
 - ตรวจคุณภาพการเขียนด้วย เช่น ใช้ AI แบบ generic หรือไม่ สะกดผิดมากเกินเหตุหรือไม่ ใช้ชื่อย่อเหมาะสมหรือไม่ ปนไทย/อังกฤษเกินจำเป็นหรือไม่ และลำดับการอธิบายทำให้ผู้อ่านต้องไปรู้สิ่งที่อยู่ด้านหลังก่อนหรือไม่

@@ -17,9 +17,14 @@
 | Method justification | วิธีแก้ปัญหา make sense และเทียบกับทางเลือก/วิธีนิยมใน field แล้ว | 0-5 |
 | Baseline and alternatives | มี baseline หรือ alternative methods ที่ reviewer คาดหวัง | 0-5 |
 | Results evidence | ผลหรือ expected results แสดงว่าปัญหาลดลง/ถูกแก้ตาม objective | 0-5 |
+| Genuine failure test | งานมีเงื่อนไขที่ทำให้ตอบได้ว่าไม่สำเร็จ ไม่ตีความทุกผลเป็น success | 0-5 |
 | Reproducible evidence | มี dataset/testbed, raw results, metric definitions, scripts, และ error cases เท่าที่จำเป็น | 0-5 |
 | Traceability | problem-objective-method-result-contribution ต่อกันครบ | 0-5 |
+| Problem survival | ปัญหายังมีอยู่จริง สำคัญ ยังไม่ถูกแก้พอแล้ว และ output ที่เสนอพิสูจน์ได้ว่าปัญหาลดลง | 0-5 |
+| Mandatory gates | correctness, safety, security, ethics/legal หรือเกณฑ์ต้องผ่านอื่น ๆ ไม่ถูกกลบด้วยคะแนนเฉลี่ย/optimization metric | 0-5 |
+| Measurement validity | construct, proxy/indicator, instrument/ground truth, procedure และ claim ต่อกันสมเหตุสมผล | 0-5 |
 | Claim discipline | ไม่มี placeholder หรือ claim แรงเกินหลักฐาน เช่น significant/robust/verified/state-of-the-art | 0-5 |
+| No-new-problem guardrail | solution ไม่สร้างหรือโยนภาระใหม่ที่ยอมรับไม่ได้ด้าน privacy, security, cost, fairness, maintainability หรือ stakeholder burden | 0-5 |
 | Data feasibility | data หาได้จริง มี ground truth หรือ expert judgment และจัดการ privacy/permission ได้ | 0-5 |
 | Ethics and IRB readiness | งานที่เกี่ยวข้องกับคน/ผู้ใช้/ข้อมูลส่วนบุคคลมี IRB, consent, de-identification, risk plan หรือ exemption ชัด | 0-5 |
 | Legal and data compliance | ใช้ข้อมูล, dataset, scraping, license, copyright, privacy, ToS, NDA, หรือกฎ domain เฉพาะอย่างถูกต้องและระบุในเนื้อหาเมื่อจำเป็น | 0-5 |
@@ -45,8 +50,13 @@
 ## Blocking Issues ที่ต้องแก้ก่อนเรื่องภาษา
 
 - ระบุปัญหาไม่ชัด
+- ปัญหาไม่รอด stress test เช่น ไม่มีหลักฐานว่ามีปัญหาจริง หรือมีวิธีเดิมที่แก้ได้พอแล้ว
 - objective ไม่ได้แก้ปัญหาที่ตั้งไว้
 - result ไม่ตอบ objective
+- งานไม่มีเงื่อนไขที่ทำให้ fail ได้ จึงพิสูจน์ success ไม่ได้
+- ใช้ proxy/metric ที่วัดไม่ตรง construct แต่สรุป claim ใหญ่เกิน measurement
+- mandatory gate ล้มเหลว แต่ถูกกลบด้วยค่าเฉลี่ยหรือ optimization metric
+- solution สร้างปัญหาใหม่ที่รุนแรงกว่า เช่น privacy/security/fairness/stakeholder burden
 - ไม่มี baseline หรือทางเลือกที่ reviewer ใน field คาดหวัง
 - ไม่มี raw result/script/metric definition รองรับผลลัพธ์หลัก
 - งานเกี่ยวข้องกับคนหรือข้อมูลส่วนบุคคลแต่ไม่กล่าวถึง IRB/ethics approval/exemption, consent, anonymization หรือ risk management

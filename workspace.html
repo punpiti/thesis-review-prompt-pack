@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Workspace AI Guide | Thesis Review Prompt Pack v1.1</title>
+  <title>Workspace AI Guide | Thesis Review Prompt Pack v1.2</title>
   <style>
     :root { --bg:#f7f8fb; --ink:#1f2933; --muted:#5b6776; --line:#d9dee7; --panel:#fff; --accent:#7c3aed; --danger:#b42318; --radius:8px; font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
     * { box-sizing:border-box; }
@@ -41,6 +41,8 @@
     .tab-panel[hidden] { display:none; }
     .collapsible-content[hidden] { display:none; }
     .warning { border-left:5px solid var(--danger); background:#fff8f7; padding:16px 18px; border-radius:6px; color:#3b0d0c; }
+    .info-panel { margin-top:14px; padding:16px 18px; border-left:5px solid var(--accent); border-radius:6px; background:#f8f5ff; color:#241047; }
+    .info-panel strong { display:block; margin-bottom:6px; }
     .instruction-panel { margin-top:14px; padding:16px; border:1px solid #c7d2fe; border-radius:8px; background:#f8faff; }
     .instruction-panel h4 { margin:0 0 8px; font-size:16px; }
     .path-box { display:inline-flex; align-items:center; margin:4px 0 10px; padding:8px 10px; border:1px solid var(--line); border-radius:8px; background:#fff; color:var(--ink); font-family:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace; font-size:14px; font-weight:800; }
@@ -116,6 +118,11 @@
       <div class="warning">
         <strong>ให้ AI สร้าง review notes ก่อน ห้ามแก้ต้นฉบับทันที</strong>
         <p>ห้ามให้ AI แต่งข้อมูลเกินหลักฐานที่ให้ไว้ เช่น citation, DOI, venue ranking, metric, result, IRB/legal requirement หรือข้อกฎหมายเอง</p>
+      </div>
+      <div class="info-panel">
+        <strong>workflow นี้ช่วยลดการใช้ token อย่างไร</strong>
+        <p>อย่าโยนทั้งโฟลเดอร์ LaTeX หรือไฟล์ทั้งหมดให้ AI อ่านแบบเหมารวมตั้งแต่แรก เพราะจะใช้ token มากและ AI อาจเสียเวลาอ่านไฟล์ที่ไม่เกี่ยวกับการตรวจ</p>
+        <p>ขั้นตอนนี้ให้วางไฟล์รวมไว้ใน <code>00_inbox/</code> ก่อน แล้วให้ AI จัดไฟล์ สร้าง <code>00_review_instructions/</code> และสรุปว่าไฟล์ใดจำเป็นต่อการประเมิน จากนั้นตอนสั่ง <code>ประเมิน</code> AI จะใช้ context ที่คัดแล้วเป็นหลัก แทนการอ่านทุกไฟล์ซ้ำทุกครั้ง</p>
       </div>
     </section>
 
@@ -383,6 +390,7 @@ Set-Location $Workspace</pre>
 - Field-Level-Venue Calibration
 - Title and Abstract
 - Problem Significance
+- Research Logic Stress Tests
 - Literature Review and Reference Quality
 - Objective-Problem-Result Traceability
 - Method and Alternative Approaches
@@ -400,6 +408,7 @@ Set-Location $Workspace</pre>
 - ห้ามแต่ง citation, DOI, venue ranking, result, law, IRB requirement เอง
 - ทุก criticism สำคัญต้องอ้าง section/page/paragraph/table/figure ถ้าระบุได้
 - ถ้าข้อมูลไม่พอ ให้เขียนว่า missing input
+- ต้องตรวจ problem survival, genuine failure, mandatory gates, measurement ceiling และ no-new-problem guardrail ก่อนแนะนำแก้ภาษา
 - ห้ามแก้ thesis ต้นฉบับ</pre>
         </div>
       </div>

@@ -90,11 +90,16 @@ Read the latest thesis/manuscript files, including LaTeX roots and included file
 Check research logic before polishing language:
 
 - problem/gap
+- problem survival: the problem exists, matters, remains unresolved, and is not already solved adequately by simpler existing approaches
 - objective/RQ
 - method
+- genuine failure: the study has possible evidence that would make the answer "No"
+- mandatory gates: correctness, safety, security, legal/ethical compliance, capacity, or maximum-error gates pass before optimization metrics matter
 - data/evidence
+- measurement ceiling: constructs, proxies/indicators, instruments/ground truth, procedures, and claims are aligned
 - result
 - claim
+- no-new-problem guardrail: the solution does not create or transfer unacceptable privacy, security, cost, fairness, accessibility, maintenance, energy, or stakeholder burden
 - reference support
 - ethics/IRB/legal risks
 - scope and limitations
