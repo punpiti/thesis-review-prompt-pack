@@ -1,6 +1,6 @@
 # ข้อความสำหรับส่งให้นิสิต
 
-Thesis Review Prompt Pack: Student Edition v1.2
+Thesis Review Prompt Pack: Student Edition v1.3
 
 ใช้ข้อความนี้ส่งให้นิสิตใน LINE, Google Classroom, LMS หรืออีเมลได้
 
@@ -9,17 +9,18 @@ Thesis Review Prompt Pack: Student Edition v1.2
 
 ลำดับการใช้:
 1. เปิด index.html ก่อน
-2. ให้ใช้ workspace.html เป็นหลัก ถ้ามี Codex/Claude Code/Antigravity
-3. copy command ใน workspace.html ไปรันทีละบรรทัด command จะดาวน์โหลด zip และสร้าง my_thesis_review/ ให้เอง
-4. ถ้ายังไม่รู้ว่าไฟล์ไหนควรอยู่ไหน ให้วางไฟล์รวมทั้งหมดใน my_thesis_review/00_inbox/
-5. ถ้าวางไฟล์ใน 00_inbox/ ให้สั่ง AI ว่า "init workspace จากไฟล์รวม"
-6. ใน workspace AI ให้สั่งว่า "เตรียม instruction จากงานปัจจุบัน"
-7. จากนั้นสั่งสั้น ๆ ว่า "ประเมิน"
-8. ให้ AI ตรวจจากเอกสารก่อนว่าขาดอะไรและจำเป็นแค่ไหน ไม่ต้องกรอกข้อมูลซ้ำในเว็บ
-9. ให้ AI สร้าง 04_review_notes/99_review_state.md เพื่อจดว่าอะไรเสร็จแล้ว อะไรค้าง และรอบหน้าควรทำอะไรต่อ
-10. ใช้ webapp.html เฉพาะกรณีไม่มี workspace AI และต้องตรวจข้อความสั้น ๆ เท่านั้น
-11. ถ้าต้องการดูรายละเอียดระบบ privacy หรือรายการไฟล์ ให้เปิด about.html
-12. ตรวจ blocking issues ก่อนแก้ภาษา
+2. แนะนำให้อ่านเอกสารประกอบ Research Methodology for AI-Assisted Thesis Review ก่อนเริ่มใช้ prompt pack เพื่อเข้าใจเกณฑ์ตรวจ: https://punpiti.github.io/ai-assisted-thesis-review-handout/
+3. ให้ใช้ workspace.html เป็นหลัก ถ้ามี Codex/Claude Code/Antigravity
+4. copy command ใน workspace.html ไปรันทีละบรรทัด command จะดาวน์โหลด zip และสร้าง my_thesis_review/ ให้เอง
+5. ถ้ายังไม่รู้ว่าไฟล์ไหนควรอยู่ไหน ให้วางไฟล์รวมทั้งหมดใน my_thesis_review/00_inbox/
+6. ถ้าวางไฟล์ใน 00_inbox/ ให้สั่ง AI ว่า "init workspace จากไฟล์รวม"
+7. ใน workspace AI ให้สั่งว่า "เตรียม instruction จากงานปัจจุบัน"
+8. จากนั้นสั่งสั้น ๆ ว่า "ประเมิน"
+9. ให้ AI ตรวจจากเอกสารก่อนว่าขาดอะไรและจำเป็นแค่ไหน ไม่ต้องกรอกข้อมูลซ้ำในเว็บ
+10. ให้ AI สร้าง 04_review_notes/99_review_state.md เพื่อจดว่าอะไรเสร็จแล้ว อะไรค้าง และรอบหน้าควรทำอะไรต่อ
+11. ใช้ webapp.html เฉพาะกรณีไม่มี workspace AI และต้องตรวจข้อความสั้น ๆ เท่านั้น
+12. ถ้าต้องการดูรายละเอียดระบบ privacy หรือรายการไฟล์ ให้เปิด about.html
+13. ตรวจ blocking issues ก่อนแก้ภาษา
 
 ข้อสำคัญ:
 - AI เป็นผู้ช่วยตรวจ ไม่ใช่ผู้รับผิดชอบงานแทนเรา
@@ -30,6 +31,8 @@ Thesis Review Prompt Pack: Student Edition v1.2
 - ถ้างานเกี่ยวกับคน ผู้ใช้ ข้อมูลส่วนบุคคล scraping หรือ dataset ที่มี license/ข้อบังคับ ต้องเช็ค IRB/ethics/legal compliance ก่อน ไม่ใช่รอใกล้ส่ง
 - ถ้าใช้ LLM ช่วยเขียนหรือช่วยทดลอง ต้องบอกว่าใช้ตรงไหน และเก็บ prompt/output ที่เกี่ยวข้องไว้
 - ก่อนขัดภาษา ให้ตรวจ 5 ด่านก่อน: ปัญหายังมีจริงไหม, งาน fail ได้ไหม, gate ที่ต้องผ่านผ่านครบไหม, metric วัดสิ่งที่ claim จริงไหม, และ solution สร้างปัญหาใหม่หรือไม่
+- แยก output กับ outcome ให้ชัด: output คือหลักฐานตรงว่าปัญหาถูกแก้ตาม objective; outcome คือผลต่อเนื่องหลังจากนั้น และ claim ได้เมื่อมีการวัดจริง
+- contribution ต้องไล่รอยได้จากปัญหา งานเดิม/ช่องว่าง ทางเลือกและเหตุผลเลือกวิธี หลักฐาน output outcome/ผลพลอยได้ และข้อจำกัด
 - ตรวจภาษาและ document hygiene ด้วย เช่น สะกดผิดมากไปไหม ใช้ชื่อย่อโดยไม่ define ไหม ปนไทย/อังกฤษเกินจำเป็นไหม หรือเขียนอ้างไปยังส่วนที่ผู้อ่านยังไม่เจอหรือไม่
 - ก่อนส่งงาน ให้แก้ blocking issues ก่อนแก้ภาษา เช่น problem ไม่ชัด objective ไม่ตรง result ไม่มี baseline หรือ reference รองรับ claim ไม่ได้
 ```

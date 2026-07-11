@@ -31,8 +31,10 @@ Review rules:
 6. If the target venue is too ambitious, say so directly and explain what would be required.
 7. If prior review notes or 04_review_notes/99_review_state.md are provided, check what has already been completed. Continue with unfinished items unless the user explicitly asks for a full reassessment.
 8. Run research-logic stress tests before language polishing: problem survival, genuine failure, mandatory gates, measurement ceiling, and no-new-problem guardrails.
-9. At the end, record what was reviewed, what remains unfinished, and the suggested next prompt for continuing later.
-10. Write the final review in Thai. Keep technical terms, paper titles, venue names, dataset names, and metric names in English where appropriate.
+9. Use the Research Methodology for AI-Assisted Thesis Review handout if provided, especially its distinction between output and outcome, but do not treat the handout as evidence about the student's study.
+10. Separate output from outcome. Output is direct evidence that the defined problem was solved according to the objective. Outcome is what follows after the problem is solved and must be measured before it is claimed.
+11. At the end, record what was reviewed, what remains unfinished, and the suggested next prompt for continuing later.
+12. Write the final review in Thai. Keep technical terms, paper titles, venue names, dataset names, and metric names in English where appropriate.
 
 Tasks:
 
@@ -52,6 +54,8 @@ Tasks:
 
 3. Problem significance
 - Identify the stated research problem.
+- Check whether the problem statement is a clear declarative statement of one central undesirable, unresolved, uncertain, missing, or insufficient condition.
+- Flag problem statements that are only a topic, research area, preferred method, system deliverable, or question.
 - Judge whether the problem has enough academic weight.
 - Judge whether the problem has practical or scientific value.
 - Identify whether the problem is too broad, too narrow, already solved, or weakly justified.
@@ -62,6 +66,7 @@ Tasks:
   - Has a simpler, safer, cheaper, or established solution already solved it adequately?
   - Would the stated output or result demonstrate that the problem is gone or reduced?
 - State what evidence would make the problem stronger.
+- Identify prior attempts or existing evidence: what already works, what does not work, under which conditions, and what unresolved need remains.
 
 4. Literature review quality
 - Assess whether the literature review establishes the problem, gap, and research positioning.
@@ -87,6 +92,8 @@ Tasks:
 - Identify objectives that do not come from the problem.
 - Identify problems that are stated but not addressed by any objective.
 - Identify objectives that are activities or deliverables rather than research objectives.
+- For each objective, identify the expected output that would directly show the objective resolved the problem.
+- Identify any claimed outcome and state whether it is measured, merely expected, or unsupported.
 
 7. Results, expected results, and contribution
 - Check whether the expected/obtained results demonstrate that the problem is reduced or solved.
@@ -103,7 +110,7 @@ Tasks:
 
 8. Overall coherence
 - Build a traceability table with columns:
-  Problem/gap | Objective/RQ | Method | Data/evidence | Result | Claim supported? | Weak point
+  Problem/gap | Prior attempts/evidence | Unresolved need | Objective/RQ | Alternatives/selection rationale | Method | Data/evidence | Result | Output | Outcome/by-product | Claim supported? | Weak point
 - Judge whether the relationship among problem, objectives, method, and results is coherent.
 - Identify broken chains, unsupported claims, and claims that exceed the evidence.
 - For each chain, mark the stress-test status: pass / fail / missing for problem survival, genuine failure, mandatory gates, measurement ceiling, and no-new-problem.
@@ -113,6 +120,7 @@ Tasks:
 - Identify standard or popular alternatives for the same problem that the manuscript ignores.
 - Identify baselines that should be included.
 - Judge whether the choice of method is justified or only convenient.
+- Check whether the manuscript explains the alternatives considered and gives a defensible selection rationale rather than locking the preferred method into the problem statement.
 - If the task involves text, review, recommendation, semantic matching, or generation, check whether plain LLM, keyword/BM25, embedding, and structured-prompt baselines are needed.
 - Judge whether the claimed novelty remains if a strong baseline performs similarly.
 - Identify mandatory gates that must pass before optimization metrics matter, such as correctness, safety, security, legal/ethical compliance, maximum error, or minimum capacity.
@@ -195,9 +203,11 @@ Output format:
 ## Field-Level-Venue Calibration
 ## Title and Abstract
 ## Problem Significance
+## Prior Evidence, Unresolved Need, and Alternatives
 ## Research Logic Stress Tests
 ## Literature Review and Reference Quality
 ## Objective-Problem-Result Traceability
+## Output, Outcome, By-Product, and Claim Discipline
 ## Method and Alternative Approaches
 ## Data, Baselines, Evaluation, and Feasibility
 ## Ethics, IRB, and Legal/Regulatory Compliance

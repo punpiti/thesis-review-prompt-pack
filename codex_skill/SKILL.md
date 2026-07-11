@@ -112,3 +112,15 @@ When the user says `ประเมิน`:
 ## Output Style
 
 Write review notes in Thai. Keep technical terms, paper titles, venue names, datasets, metrics, and method names in English where clearer.
+
+## Companion Research Methodology Frame
+
+If the prompt pack includes the public Research Methodology for AI-Assisted Thesis Review handout, use it as a review-question frame only. Do not treat it as evidence about the student's study.
+
+Apply this minimum argument chain:
+
+```text
+Problem -> Prior attempts/evidence -> Unresolved need/gap -> Objective/RQ -> Alternatives/selection rationale -> Method -> Result/evidence -> Output -> Outcome/by-product -> Conclusion
+```
+
+Separate `output` from `outcome`: output is direct evidence that the defined problem was solved according to the objective; outcome is what follows after problem resolution and must be measured before it is claimed.

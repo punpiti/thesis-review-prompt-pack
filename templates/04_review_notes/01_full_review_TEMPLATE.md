@@ -38,6 +38,9 @@
 ## Problem Significance
 
 - Problem clarity:
+- Problem statement discipline:
+- Prior attempts / existing evidence:
+- Unresolved need:
 - Research gap:
 - Value / weight of the problem:
 
@@ -61,15 +64,23 @@
 
 ## Objective-Problem-Result Traceability
 
-| Problem | Objective/RQ | Method/Evidence | Result | Gap |
-|---|---|---|---|---|
-|  |  |  |  |  |
+| Problem/gap | Prior attempts/evidence | Unresolved need | Objective/RQ | Alternatives/selection rationale | Method | Result/evidence | Output | Outcome/by-product | Gap |
+|---|---|---|---|---|---|---|---|---|---|
+|  |  |  |  |  |  |  |  |  |  |
+
+## Output, Outcome, By-Product, and Claim Discipline
+
+- Output that demonstrates problem resolution:
+- Claimed outcome and whether it was measured:
+- By-products / side effects / cost / burden:
+- Claims that exceed output or measured outcome:
 
 ## Method and Alternative Approaches
 
 - Does the method make academic sense:
 - Missing baseline / comparison:
 - Alternative approaches commonly used:
+- Selection rationale:
 - Reasonableness for target venue:
 
 ## Data, Baselines, Evaluation, and Feasibility

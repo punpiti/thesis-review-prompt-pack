@@ -19,9 +19,11 @@ Use this when creating `04_review_notes/01_full_review.md`.
 
 3. Problem significance
    - stated research problem
+   - problem statement as a clear declarative statement, not a topic, question, deliverable, or preferred method
    - academic and practical value
    - too broad, too narrow, already solved, or weakly justified
    - problem survival: real condition, importance, unresolved context, simpler existing solutions, and whether the output would show problem reduction
+   - prior attempts/evidence: what works, what does not, where, and what unresolved need remains
    - evidence needed to strengthen the problem
 
 4. Literature review
@@ -45,6 +47,8 @@ Use this when creating `04_review_notes/01_full_review.md`.
    - objectives not derived from the problem
    - problems with no objective
    - activities mislabeled as research objectives
+   - expected output that directly demonstrates problem resolution
+   - claimed outcomes marked as measured, expected, or unsupported
 
 7. Results and contribution
    - results reduce or solve the problem
@@ -54,9 +58,11 @@ Use this when creating `04_review_notes/01_full_review.md`.
    - genuine failure: possible evidence that would make the answer "No", unfavorable conditions, and failure cases
 
 8. Traceability
-   - table: Problem/gap | Objective/RQ | Method | Data/evidence | Result | Claim supported? | Weak point
+   - table: Problem/gap | Prior attempts/evidence | Unresolved need | Objective/RQ | Alternatives/selection rationale | Method | Data/evidence | Result | Output | Outcome/by-product | Claim supported? | Weak point
    - broken chains
    - unsupported claims
+   - output/outcome confusion
+   - by-products, side effects, cost, burden, and trade-offs that affect interpretation
    - stress-test status: problem survival, genuine failure, mandatory gates, measurement ceiling, no-new-problem
 
 9. Method and alternatives
@@ -64,6 +70,7 @@ Use this when creating `04_review_notes/01_full_review.md`.
    - standard alternatives omitted
    - missing baselines
    - method justification
+   - alternatives considered and selection rationale
    - novelty after strong baseline
    - mandatory gates before optimization: correctness, safety, security, ethics/legal, capacity, maximum error
    - no-new-problem guardrails: privacy, security, accessibility, cost, energy, maintainability, fairness, stakeholder burden

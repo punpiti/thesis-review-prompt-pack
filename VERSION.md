@@ -1,8 +1,15 @@
 # Version
 
-Current version: `v1.2`
+Current version: `v1.3`
 
-Release label: Thesis Review Prompt Pack: Student Edition v1.2
+Release label: Thesis Review Prompt Pack: Student Edition v1.3
+
+## v1.3
+
+- Integrated the latest public Research Methodology for AI-Assisted Thesis Review handout release `2026.07` as a companion teaching source.
+- Added explicit checks for problem statement discipline, prior attempts, unresolved need, alternatives and selection rationale.
+- Strengthened output/outcome/by-product traceability so review notes separate direct problem-resolution evidence from downstream claims.
+- Updated the full review prompt, rubric, common review patterns, README, student handout, and public start pages for the new research-argument chain.
 
 ## v1.2
 

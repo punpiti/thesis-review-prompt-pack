@@ -1,12 +1,22 @@
-# Thesis Review Prompt Pack: Student Edition v1.2
+# Thesis Review Prompt Pack: Student Edition v1.3
 
-Current version: `v1.2`
+Current version: `v1.3`
 
 ชุด prompt นี้ทำไว้สำหรับให้นิสิตใช้ตรวจวิทยานิพนธ์ บทความจากวิทยานิพนธ์ หรือ manuscript ของตนเองและของเพื่อนอย่างเป็นระบบ ก่อนส่งให้อาจารย์หรือกรรมการตรวจรอบถัดไป
 
 เป้าหมายคือช่วยให้เห็นว่าเอกสารมีปัญหาอะไรที่ควรแก้ก่อน เช่น ปัญหาวิจัยไม่ชัด วัตถุประสงค์ไม่ตรงกับผล literature review ยังไม่สังเคราะห์ reference ไม่พอ baseline ขาด หรือ claim แรงเกินหลักฐาน ไม่ใช่ให้ AI ตัดสินแทนผู้วิจัยหรือแทน reviewer จริง
 
-รุ่นนี้เพิ่มแนวคิดจากบทเรียน AI-assisted thesis review ให้ตรวจ research logic ก่อน polish ภาษา โดยใช้ 5 stress tests: problem survival, genuine failure, mandatory gates, measurement ceiling และ no-new-problem guardrail
+รุ่นนี้เพิ่มแนวคิดจากบทเรียน AI-assisted thesis review ให้ตรวจ research logic ก่อน polish ภาษา โดยใช้ 5 stress tests: problem survival, genuine failure, mandatory gates, measurement ceiling และ no-new-problem guardrail พร้อมเพิ่มการไล่รอย Problem -> Prior attempts -> Unresolved need -> Objective/RQ -> Alternatives -> Method -> Evidence -> Output -> Outcome
+
+## Companion Handout
+
+แนะนำให้อ่านเอกสารประกอบการเรียน Research Methodology for AI-Assisted Thesis Review รุ่น public `2026.07` ก่อนเริ่มใช้ prompt pack นี้ โดยเฉพาะถ้าจะตรวจ thesis/manuscript ทั้งเล่ม:
+
+- Public PDF/Markdown page: <https://punpiti.github.io/ai-assisted-thesis-review-handout/>
+- Source copy ล่าสุดในเครื่องสอน: `C:\Users\punpi\OneDrive\Class\Research Methodology\01_Current_Teaching\AI-Assisted Thesis Review\public-github-pages\`
+- เนื้อหาหลักที่ prompt pack รุ่นนี้นำมาใช้: Output/Outcome, prior attempts and unresolved need, alternatives and selection rationale, measurement ceiling, by-product, ethics/legal/responsible-AI checks และ five sharp thesis-review tests
+
+ถ้าตรวจ thesis แบบจริงจัง ให้อ่าน handout ก่อนหรือให้ AI ใช้ handout เป็นกรอบประกอบการตั้งคำถามตรวจ แต่ยังต้องยึดหลักฐานจาก thesis/manuscript, references และ result files เป็นหลักเสมอ
 
 ## Quick Start
 
@@ -21,6 +31,7 @@ Current version: `v1.2`
 - [about.html](about.html) - รายละเอียดระบบ privacy ข้อจำกัด และรายการไฟล์
 - [about-en.html](about-en.html) - English privacy, limits, and file list
 - [VERSION.md](VERSION.md) - เลขเวอร์ชันและสรุปการเปลี่ยนแปลงของชุดนี้
+- Companion handout 2026.07 - <https://punpiti.github.io/ai-assisted-thesis-review-handout/>
 
 1. เปิด [index.html](index.html)
 2. ใช้ [workspace.html](workspace.html) เป็นหลัก ถ้ามี Codex / Claude Code / Antigravity
@@ -83,6 +94,8 @@ workflow นี้ให้ AI เริ่มจาก `00_inbox/` เพื่
 - ถ้าใช้ Codex หรือ Claude Code อ่าน PDF reference ให้ AI เก็บบันทึกผลอ่านเป็น Markdown ใน `02_references/extracted_md/` หนึ่งไฟล์ต่อหนึ่ง PDF ก่อนนำไปเติม `abstract` หรือ metadata ใน BibTeX
 - claim เชิงผลทดลองต้องมี dataset, baseline, metric, raw result และวิธีคำนวณรองรับ
 - ก่อนแก้ภาษา ให้ตรวจว่า problem ยังรอด, งานมีโอกาส fail ได้จริง, mandatory gates ผ่านก่อน optimization, metric วัด construct ที่ claim จริง และ solution ไม่สร้างปัญหาใหม่ที่ยอมรับไม่ได้
+- แยก `output` ออกจาก `outcome`: output คือหลักฐานตรงว่าปัญหาถูกแก้ตาม objective; outcome คือสิ่งที่เกิดตามมาหลังปัญหาถูกแก้ และห้าม claim ว่าเกิดขึ้นจริงถ้าไม่ได้วัด
+- contribution ควรไล่รอยกลับไปได้ถึง prior attempts, unresolved need, alternatives/selection rationale, method, evidence, output, outcome/by-product และ limitation
 - ถ้างานเกี่ยวข้องกับคน ผู้ใช้ ข้อมูลส่วนบุคคล scraping dataset license หรือข้อมูลที่มีข้อบังคับ ต้องตรวจ IRB/ethics/legal compliance ตั้งแต่ต้น
 - ถ้างานใช้ LLM ต้องบอกให้ชัดว่าใช้ทำอะไร และตรวจผลจากแหล่งจริงอย่างไร
 - ตรวจคุณภาพการเขียนด้วย เช่น ใช้ AI แบบ generic หรือไม่ สะกดผิดมากเกินเหตุหรือไม่ ใช้ชื่อย่อเหมาะสมหรือไม่ ปนไทย/อังกฤษเกินจำเป็นหรือไม่ และลำดับการอธิบายทำให้ผู้อ่านต้องไปรู้สิ่งที่อยู่ด้านหลังก่อนหรือไม่

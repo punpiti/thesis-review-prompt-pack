@@ -16,6 +16,12 @@
 
 กติกาสั้น: ถ้า stress test สำคัญ fail ให้แก้โครงวิจัยก่อนแก้สำนวน
 
+สายเหตุผลขั้นต่ำที่ควรไล่ทุกครั้ง:
+
+```text
+Problem -> Prior attempts/evidence -> Unresolved need/gap -> Objective/RQ -> Alternatives/selection rationale -> Method -> Result/evidence -> Output -> Outcome/by-product -> Conclusion
+```
+
 ## 2. Observation ยังไม่ใช่ research problem
 
 ประโยคแบบนี้ยังไม่พอ:
@@ -34,7 +40,33 @@
 - วิธีเดิมแก้ได้แค่ไหนและยังเหลือ gap อะไร
 - ถ้างานสำเร็จ หลักฐานใดจะแสดงว่าปัญหาลดลง
 
-## 3. Claim แรงเกินหลักฐาน
+## 3. Problem, objective, output, outcome ต้องไม่ปนกัน
+
+- problem = สภาพไม่พึงประสงค์หรือยังไม่คลี่คลายหนึ่งเรื่อง
+- objective = การเปลี่ยนแปลงหรือการคลี่คลายที่งานตั้งใจทำให้เกิดกับ problem
+- output = หลักฐานตรงว่าปัญหาถูกแก้ตาม objective
+- outcome = สิ่งที่เกิดตามมาหลัง problem ถูกแก้ ต้องวัดก่อนจึง claim ได้
+- by-product = ผลพลอยได้ ผลไม่ตั้งใจ ต้นทุน ภาระ หรือ trade-off ที่กระทบคุณค่าและขอบเขตของข้อสรุป
+
+สัญญาณเสี่ยง:
+
+- เขียน objective เป็นกิจกรรม เช่น `เพื่อพัฒนาระบบ` แต่ไม่บอกว่าจะคลี่คลายปัญหาอะไร
+- ถือ deliverable หรือระบบที่รันได้เป็น output ทั้งที่ยังไม่พิสูจน์ว่าปัญหาลดลง
+- claim outcome เช่น satisfaction, learning gain, decision quality หรือ cost reduction โดยไม่มีการวัด
+- ไม่บอกผลเสีย ภาระ หรือ trade-off ที่เกิดจากวิธีแก้
+
+## 4. วิธีที่เลือกต้องไม่ถูกล็อกไว้ใน problem statement
+
+ข้อความระบุปัญหาไม่ควรบอกล่วงหน้าว่าต้องใช้แบบสอบถาม LLM, dashboard, neural network, recommender, blockchain หรือเทคนิคที่ผู้วิจัยอยากใช้ วิธีเหล่านี้ควรอยู่ในส่วน alternatives/method พร้อมเหตุผลการเลือก
+
+ให้ถามว่า:
+
+- มีทางเลือกที่ง่ายกว่า ปลอดภัยกว่า ถูกกว่า หรือเป็นวิธีนิยมในสาขาหรือไม่
+- literature บอกอะไรเกี่ยวกับข้อดีข้อเสียของแต่ละทางเลือก
+- เกณฑ์การเลือกวิธีคืออะไร และเกณฑ์นั้นสัมพันธ์กับ problem จริงหรือไม่
+- ถ้าวิธีพื้นฐานทำได้ใกล้เคียงกัน contribution ยังเหลืออะไร
+
+## 5. Claim แรงเกินหลักฐาน
 
 คำหรือโครงแบบนี้ต้องตรวจเป็นพิเศษ:
 
@@ -59,7 +91,7 @@
 - `supports`
 - `remains less directly explored`
 
-## 4. Placeholder ใน abstract หรือ results
+## 6. Placeholder ใน abstract หรือ results
 
 ห้ามมี placeholder เช่น `[X]`, `[dataset]`, `[baseline]`, `[metric]`, `[value]` ในเอกสารที่จะส่งจริง
 
@@ -74,7 +106,7 @@
 - error cases หรือ failure analysis
 - computation/runtime trade-off ถ้า method หนักกว่า baseline
 
-## 5. Abstract ต้องครบ 6 ส่วน
+## 7. Abstract ต้องครบ 6 ส่วน
 
 Abstract ที่ดีควรตอบ:
 
@@ -87,13 +119,13 @@ Abstract ที่ดีควรตอบ:
 
 ถ้ายังไม่มีผล ให้เขียนเป็น protocol-based abstract ชั่วคราว และ mark ว่าประโยค result ต้องเติมจากผลจริงเท่านั้น
 
-## 6. Introduction กับ Related Work ต้องไม่ซ้ำกัน
+## 8. Introduction กับ Related Work ต้องไม่ซ้ำกัน
 
 Introduction ควรเล่า problem, why hard, gap, contribution แบบสั้น
 
 Related Work ควรจัดกลุ่มงานเดิม เปรียบเทียบจุดแข็งจุดอ่อน และทำให้เห็นว่าทำไม design choice ของงานนี้จึงจำเป็น
 
-## 7. แยก direct prior work กับ conceptual support
+## 9. แยก direct prior work กับ conceptual support
 
 reference แต่ละตัวควรมีหน้าที่ชัด:
 
@@ -105,7 +137,7 @@ reference แต่ละตัวควรมีหน้าที่ชัด:
 
 ถ้าใช้ reference ข้าม domain ต้องเขียนว่า support อะไร และไม่ support อะไร
 
-## 8. Literature review ควรมี comparison matrix
+## 10. Literature review ควรมี comparison matrix
 
 ถ้า literature มีหลายกลุ่ม ควรทำตารางประมาณนี้:
 
@@ -118,7 +150,7 @@ reference แต่ละตัวควรมีหน้าที่ชัด:
 
 ตารางนี้ช่วยให้เห็นว่างานไม่ได้แค่ list papers แต่ใช้ literature เพื่อสร้าง argument
 
-## 9. Contribution ต้อง trace ได้
+## 11. Contribution ต้อง trace ได้
 
 ตรวจทุก contribution claim ด้วยคำถาม:
 
@@ -127,11 +159,12 @@ reference แต่ละตัวควรมีหน้าที่ชัด:
 - method ส่วนใดรองรับ claim นี้
 - result หรือ evidence ใดพิสูจน์ claim นี้
 - baseline หรือ alternative ใดใช้เทียบ
+- output ใดแสดงว่าปัญหาถูกแก้ และ outcome/by-product ใดถูกวัดหรือยังไม่ได้วัด
 - limitation ใดทำให้ claim นี้ต้องเขียนเบาลง
 
 ถ้า claim ไม่มี evidence location ให้ถือว่ายังอ่อน
 
-## 10. LLM เป็นเครื่องมือ ไม่ใช่แหล่งอ้างอิง
+## 12. LLM เป็นเครื่องมือ ไม่ใช่แหล่งอ้างอิง
 
 เมื่องานใช้ LLM ช่วยค้น อ่าน สรุป เขียน หรือ generate output ต้องตรวจว่า:
 
@@ -142,7 +175,7 @@ reference แต่ละตัวควรมีหน้าที่ชัด:
 - ถ้า LLM ธรรมดาทำได้เท่ากัน contribution ยังเหลืออะไร
 - งานวิจัยไม่ได้กลายเป็น generic LLM reviewer, chatbot, หรือ summarizer
 
-## 11. Data, baseline, evaluation, venue ต้อง feasible พร้อมกัน
+## 13. Data, baseline, evaluation, venue ต้อง feasible พร้อมกัน
 
 หัวข้อที่ดูดีแต่ไม่มี data หรือ evaluate ไม่ได้ควรถือว่าเสี่ยงสูง ให้ตรวจทุกหัวข้อด้วย matrix:
 
@@ -151,7 +184,7 @@ reference แต่ละตัวควรมีหน้าที่ชัด:
 
 สำหรับ thesis ควรถามหา `narrowest defensible version` เสมอ ไม่ใช่เริ่มจาก platform ใหญ่หรือ claim ใช้ได้ทุก domain
 
-## 12. Ethics, IRB, legal compliance ต้องไม่เป็นส่วนเติมท้าย
+## 14. Ethics, IRB, legal compliance ต้องไม่เป็นส่วนเติมท้าย
 
 ถ้างานเกี่ยวข้องกับคน ผู้ใช้ ข้อมูลส่วนบุคคล ข้อมูลอ่อนไหว หรือข้อมูลจากระบบ/platform ต้องตรวจตั้งแต่ต้น ไม่ใช่รอใกล้ส่ง paper แล้วค่อยเติมประโยค ethics
 
@@ -167,7 +200,7 @@ reference แต่ละตัวควรมีหน้าที่ชัด:
 
 หมายเหตุ: prompt ใช้ช่วย flag ประเด็นเท่านั้น ไม่ใช่ legal advice ต้องตรวจจริงกับอาจารย์ที่ปรึกษา IRB office สถาบัน venue instructions หรือแหล่งกฎหมาย/ข้อบังคับที่เกี่ยวข้อง
 
-## 13. Figures and tables ต้องเป็นหลักฐาน
+## 15. Figures and tables ต้องเป็นหลักฐาน
 
 รูปและตารางที่ดีควร:
 
@@ -178,7 +211,7 @@ reference แต่ละตัวควรมีหน้าที่ชัด:
 - ไม่ใส่ placeholder
 - สอดคล้องกับ result claim ใน abstract/conclusion
 
-## 14. คุณภาพภาษาและสัญญาณการใช้ AI แบบไม่ระวัง
+## 16. คุณภาพภาษาและสัญญาณการใช้ AI แบบไม่ระวัง
 
 เอกสารที่ใช้ AI ช่วยเขียนไม่ได้ผิดโดยตัวมันเอง แต่ผู้เขียนต้องยังควบคุมเนื้อหาและตรวจความถูกต้องเอง สัญญาณเสี่ยง ได้แก่:
 
@@ -189,7 +222,7 @@ reference แต่ละตัวควรมีหน้าที่ชัด:
 - reference หรือ DOI ดูเหมือนถูก generate แต่ยังไม่ตรวจ
 - บอกว่ามีผลหรือมีข้อสรุป ทั้งที่ไม่มี raw result หรือ metric รองรับ
 
-## 15. Spelling, acronyms, and reader flow
+## 17. Spelling, acronyms, and reader flow
 
 ควรตรวจ hygiene พื้นฐานก่อนส่งงาน:
 

@@ -9,17 +9,22 @@
 | Field and venue fit | สาขา ระดับ thesis และ target venue ชัดและสมเหตุสมผล | 0-5 |
 | Title-abstract alignment | title และ abstract สื่อเรื่องเดียวกัน และ title เหมาะกับ contribution | 0-5 |
 | Problem significance | ปัญหามีน้ำหนัก มี gap มีคุณค่าทางวิชาการหรือปฏิบัติ | 0-5 |
+| Problem statement discipline | ข้อความระบุปัญหาเป็นประโยคบอกเล่าชัด มีสภาพไม่พึงประสงค์หรือยังไม่คลี่คลายหนึ่งเรื่อง ไม่ใช่หัวข้อ คำถาม หรือวิธีที่ชอบ | 0-5 |
+| Prior attempts and unresolved need | แสดงว่าใครเคยทำอะไร อะไรใช้ได้/ใช้ไม่ได้ ภายใต้เงื่อนไขใด และยังเหลือความจำเป็นของงานนี้ตรงไหน | 0-5 |
 | Literature synthesis | literature review สังเคราะห์งาน ไม่ใช่แค่สรุปทีละ paper | 0-5 |
 | Reference quality | reference สำคัญ ครบ เชื่อถือได้ และเหมาะกับ reviewer ในสาขา | 0-5 |
 | Citation integrity | ไม่มี reference ที่ไม่ถูก cite ไม่มี claim สำคัญที่ไร้ cite และ cite ตรงประเด็น | 0-5 |
 | Directness of literature | แยก direct prior work, cross-domain support, foundational support, และ venue anchor ชัด | 0-5 |
 | Objective alignment | objectives/RQs มาจากปัญหา และไม่มี objective ที่ลอยจาก gap | 0-5 |
+| Alternatives and selection rationale | ระบุทางเลือกที่สมเหตุสมผลและอธิบายเหตุผลการเลือกวิธี ไม่ล็อกคำตอบไว้ตั้งแต่ problem statement | 0-5 |
 | Method justification | วิธีแก้ปัญหา make sense และเทียบกับทางเลือก/วิธีนิยมใน field แล้ว | 0-5 |
 | Baseline and alternatives | มี baseline หรือ alternative methods ที่ reviewer คาดหวัง | 0-5 |
 | Results evidence | ผลหรือ expected results แสดงว่าปัญหาลดลง/ถูกแก้ตาม objective | 0-5 |
 | Genuine failure test | งานมีเงื่อนไขที่ทำให้ตอบได้ว่าไม่สำเร็จ ไม่ตีความทุกผลเป็น success | 0-5 |
 | Reproducible evidence | มี dataset/testbed, raw results, metric definitions, scripts, และ error cases เท่าที่จำเป็น | 0-5 |
 | Traceability | problem-objective-method-result-contribution ต่อกันครบ | 0-5 |
+| Output/outcome discipline | output แสดงว่าปัญหาถูกแก้ตาม objective และ outcome ถูกแยกจาก output พร้อมหลักฐานการวัดก่อนถูก claim | 0-5 |
+| By-product and side-effect awareness | ระบุผลพลอยได้ ผลไม่ตั้งใจ ต้นทุน ภาระ หรือ trade-off ที่กระทบคุณค่าและขอบเขตของข้อสรุป | 0-5 |
 | Problem survival | ปัญหายังมีอยู่จริง สำคัญ ยังไม่ถูกแก้พอแล้ว และ output ที่เสนอพิสูจน์ได้ว่าปัญหาลดลง | 0-5 |
 | Mandatory gates | correctness, safety, security, ethics/legal หรือเกณฑ์ต้องผ่านอื่น ๆ ไม่ถูกกลบด้วยคะแนนเฉลี่ย/optimization metric | 0-5 |
 | Measurement validity | construct, proxy/indicator, instrument/ground truth, procedure และ claim ต่อกันสมเหตุสมผล | 0-5 |
@@ -52,7 +57,12 @@
 - ระบุปัญหาไม่ชัด
 - ปัญหาไม่รอด stress test เช่น ไม่มีหลักฐานว่ามีปัญหาจริง หรือมีวิธีเดิมที่แก้ได้พอแล้ว
 - objective ไม่ได้แก้ปัญหาที่ตั้งไว้
+- problem statement เป็นเพียงหัวข้อ คำถาม วิธีที่อยากใช้ หรือ deliverable ไม่ใช่สภาพปัญหาที่ตรวจได้
+- ไม่แสดง prior attempts/unresolved need จึงไม่เห็นว่าทำไมงานนี้ยังจำเป็น
+- ไม่มีทางเลือกหรือเหตุผลการเลือกวิธี ทำให้ method ดูเป็นความสะดวกมากกว่าการออกแบบวิจัย
 - result ไม่ตอบ objective
+- สับสน output กับ outcome เช่น claim ผลลัพธ์ปลายน้ำโดยไม่ได้วัด หรือถือ deliverable เป็นหลักฐานว่าปัญหาถูกแก้
+- ไม่กล่าวถึง by-product, side effect, cost, burden หรือ trade-off ที่กระทบการตีความ
 - งานไม่มีเงื่อนไขที่ทำให้ fail ได้ จึงพิสูจน์ success ไม่ได้
 - ใช้ proxy/metric ที่วัดไม่ตรง construct แต่สรุป claim ใหญ่เกิน measurement
 - mandatory gate ล้มเหลว แต่ถูกกลบด้วยค่าเฉลี่ยหรือ optimization metric
