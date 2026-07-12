@@ -88,7 +88,7 @@
   <div class="hero">
     <div class="hero-inner">
       <h1>ใช้กับ Codex / Claude Code / Antigravity</h1>
-      <p>นี่คือเส้นทางหลักที่แนะนำสำหรับ prompt pack นี้ เพราะการตรวจวิทยานิพนธ์ต้องให้ AI อ่านหลายไฟล์ ถามกลับ จัด missing inputs และสร้าง review notes เป็นรอบ ๆ ก่อนแก้ต้นฉบับ</p>
+      <p>นี่คือเส้นทางหลักที่แนะนำสำหรับ prompt pack นี้ เพราะการตรวจวิทยานิพนธ์ต้องให้ AI อ่านหลายไฟล์ ถามกลับ จัด missing inputs และสร้าง review notes เป็นรอบ ๆ เพื่อให้นิสิตใช้ตรวจและให้ feedback ไม่ใช่ให้ AI แก้ต้นฉบับแทนเจ้าของงาน</p>
       <p><a class="button secondary" href="index.html">กลับหน้าเริ่มต้น</a> <a class="button secondary" href="workspace-en.html" lang="en">English</a></p>
     </div>
   </div>
@@ -118,7 +118,8 @@
       <h2>กติกา</h2>
       <div class="warning">
         <strong>ให้ AI สร้าง review notes ก่อน ห้ามแก้ต้นฉบับทันที</strong>
-        <p>ห้ามให้ AI แต่งข้อมูลเกินหลักฐานที่ให้ไว้ เช่น citation, DOI, venue ranking, metric, result, IRB/legal requirement หรือข้อกฎหมายเอง</p>
+        <p>workflow นี้ใช้เพื่อช่วยตรวจและให้ feedback เท่านั้น ไม่ใช่ auto-rewrite หรือ auto-improvement pipeline ห้ามให้ AI แต่งข้อมูลเกินหลักฐานที่ให้ไว้ เช่น citation, DOI, venue ranking, metric, result, IRB/legal requirement หรือข้อกฎหมายเอง</p>
+        <p>ให้ AI/เพื่อนผู้ตรวจชี้จุดอ่อน แนะนำ และบอกหลักฐานที่ควรตรวจเพิ่ม จากนั้นเจ้าของงานต้องกลับไปคิดและทำเอง ถ้าจะใช้ AI ต่อ ให้นิสิตควรฝึกเขียน prompt จากปัญหาที่พบเอง</p>
       </div>
       <div class="info-panel">
         <strong>workflow นี้ช่วยลดการใช้ token อย่างไร</strong>
@@ -368,9 +369,20 @@ Set-Location $Workspace</pre>
 
       <div class="prompt-block">
         <div class="prompt-head">
-          <h3>Step 5: ถ้าต้องการสั่ง full review แยก</h3>
+          <h3>Step 5: ถ้าต้องการตรวจเชิงลึก</h3>
           <div class="prompt-actions">
-            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt Step 5" data-copy-target="step3-prompt">⧉</button>
+            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt ประเมินเชิงลึก" data-copy-target="step-deep-prompt">⧉</button>
+          </div>
+        </div>
+        <p class="small-note">ขั้นสูงสำหรับ draft ที่มี review notes และหลักฐานพอแล้ว เด็กใหม่ควรใช้ <code>ประเมิน</code> แล้วแก้ blocking issues ก่อนค่อยกลับมาใช้คำสั่งนี้</p>
+        <pre class="prompt-code" id="step-deep-prompt">ประเมินเชิงลึก</pre>
+      </div>
+
+      <div class="prompt-block">
+        <div class="prompt-head">
+          <h3>Step 6: ถ้าต้องการสั่ง full review แยก</h3>
+          <div class="prompt-actions">
+            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt Step 6" data-copy-target="step3-prompt">⧉</button>
             <button class="icon-button toggle-button" type="button" aria-expanded="false" aria-controls="step3-content" data-toggle-target="step3-content">▸</button>
           </div>
         </div>
@@ -417,9 +429,9 @@ Set-Location $Workspace</pre>
 
       <div class="prompt-block">
         <div class="prompt-head">
-          <h3>Step 6: ถ้าต้องการตรวจ references แยก</h3>
+          <h3>Step 7: ถ้าต้องการตรวจ references แยก</h3>
           <div class="prompt-actions">
-            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt Step 6" data-copy-target="step4-prompt">⧉</button>
+            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt Step 7" data-copy-target="step4-prompt">⧉</button>
             <button class="icon-button toggle-button" type="button" aria-expanded="false" aria-controls="step4-content" data-toggle-target="step4-content">▸</button>
           </div>
         </div>
@@ -453,14 +465,14 @@ Set-Location $Workspace</pre>
 
       <div class="prompt-block">
         <div class="prompt-head">
-          <h3>Step 7: ถ้าต้องการสร้าง action checklist แยก</h3>
+          <h3>Step 8: ถ้าต้องการสร้าง action checklist แยก</h3>
           <div class="prompt-actions">
-            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt Step 7" data-copy-target="step5-prompt">⧉</button>
+            <button class="icon-button copy-button" type="button" aria-label="คัดลอก prompt Step 8" data-copy-target="step5-prompt">⧉</button>
             <button class="icon-button toggle-button" type="button" aria-expanded="false" aria-controls="step5-content" data-toggle-target="step5-content">▸</button>
           </div>
         </div>
         <div class="collapsible-content" id="step5-content" hidden>
-          <p class="small-note"><code>04_review_notes/03_student_action_checklist.md</code> ไม่ใช่ไฟล์ที่มีมากับ prompt pack แต่เป็นไฟล์ผลลัพธ์ที่ให้ AI สร้างใน workspace ของนิสิตหลังจากทำ Step 5 และ Step 6 แล้ว ถ้าอยากเห็นรูปแบบ ให้ดู template ที่ <code>prompt_pack/templates/04_review_notes/03_student_action_checklist_TEMPLATE.md</code></p>
+          <p class="small-note"><code>04_review_notes/03_student_action_checklist.md</code> ไม่ใช่ไฟล์ที่มีมากับ prompt pack แต่เป็นไฟล์ผลลัพธ์ที่ให้ AI สร้างใน workspace ของนิสิตหลังจาก full review และ reference audit แล้ว ถ้าอยากเห็นรูปแบบ ให้ดู template ที่ <code>prompt_pack/templates/04_review_notes/03_student_action_checklist_TEMPLATE.md</code></p>
           <pre class="prompt-code" id="step5-prompt">อ่าน 04_review_notes/01_full_review.md และ 04_review_notes/02_reference_audit.md
 
 สร้างไฟล์ 04_review_notes/03_student_action_checklist.md
@@ -476,7 +488,7 @@ Set-Location $Workspace</pre>
 - งานที่ทำได้ใน 1 วัน
 - งานที่ทำได้ใน 1 สัปดาห์
 - งานที่ต้องใช้ข้อมูลเพิ่ม</pre>
-          <p class="small-note">หลังจากนี้ให้ผู้ใช้ไปทำต่อใน workspace ของตนเอง ถ้าจะให้ AI แก้ไฟล์ ให้สร้าง working copy และตรวจ diff ก่อนรับเสมอ</p>
+          <p class="small-note">หลังจากนี้ให้เจ้าของงานไปตัดสินใจแก้ใน workspace ของตนเอง ถ้าจะให้ AI ช่วยแก้ข้อความ ต้องทำหลังจากมี review notes แล้ว สร้าง working copy และตรวจ diff ก่อนรับเสมอ</p>
         </div>
       </div>
     </section>

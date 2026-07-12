@@ -4,7 +4,7 @@ Use these instructions when Claude Code opens this prompt pack or a thesis revie
 
 ## Core Rule
 
-Create review notes first. Do not edit the thesis/manuscript source file unless the user explicitly asks for a revision pass after review notes exist.
+Create review notes first. This pack is for student review and feedback, not automatic source improvement. The agent should point out weaknesses, recommend next checks, and leave revision decisions to the student/author. Do not edit the thesis/manuscript source file unless the user explicitly asks for a revision pass after review notes exist.
 
 ## Expected Workspace
 
@@ -71,6 +71,18 @@ If `00_review_instructions/review_profile.md` or `00_review_instructions/documen
    - `04_review_notes/00_inventory.md`
    - `04_review_notes/01_full_review.md`
    - `04_review_notes/02_reference_audit.md`
+   - `04_review_notes/03_student_action_checklist.md`
+   - `04_review_notes/99_review_state.md`
+
+## When User Says "ประเมินเชิงลึก"
+
+1. Confirm that initial review notes exist, especially `04_review_notes/01_full_review.md` and `04_review_notes/02_reference_audit.md`. If they do not exist, do the normal `ประเมิน` workflow first.
+2. If the draft is still early, or references/results are too thin for a meaningful attack, tell the user to fix blocking issues from the normal review first instead of producing a long missing-input-only deep review.
+3. Load `prompt_pack/06_deep_doctoral_review_prompt.md` if available.
+4. Use the existing review notes plus workspace evidence to run a deeper doctoral-level pass: source triangulation, recent literature/consensus gaps, strongest counter-arguments, claim credibility, data/result interpretation, decisive failure tests, and a short decision brief.
+5. Do not invent current consensus, papers, DOI, venue status, law, standards, or dataset updates. If live verification is needed and unavailable, mark it as `missing input` or `needs live verification`.
+6. Create or update:
+   - `04_review_notes/04_deep_review.md`
    - `04_review_notes/03_student_action_checklist.md`
    - `04_review_notes/99_review_state.md`
 

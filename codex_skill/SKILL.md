@@ -85,6 +85,15 @@ When the user says `ประเมิน`:
    - `04_review_notes/03_student_action_checklist.md`
    - `04_review_notes/99_review_state.md`
 
+When the user says `ประเมินเชิงลึก`:
+
+1. Confirm that `04_review_notes/01_full_review.md` and `04_review_notes/02_reference_audit.md` exist. If not, run the normal `ประเมิน` workflow first.
+2. If the draft is still early, or references/results are too thin for a meaningful attack, tell the user to fix blocking issues from the normal review first instead of producing a long missing-input-only deep review.
+3. Read `prompt_pack/06_deep_doctoral_review_prompt.md` if available.
+4. Create or update `04_review_notes/04_deep_review.md` with source triangulation, recent-literature/consensus gaps, strongest counter-arguments, claim credibility audit, data/result interpretation, decisive tests, and a short decision brief.
+5. Add any new actions to `04_review_notes/03_student_action_checklist.md` and update `04_review_notes/99_review_state.md`.
+6. Do not invent current consensus, papers, DOI, venue status, law, standards, or dataset updates. Mark unsupported external checks as `missing input` or `needs live verification`.
+
 ## Evidence Rules
 
 - Use only manuscript text, supplied references, supplied PDFs, official pages, and supplied result files.

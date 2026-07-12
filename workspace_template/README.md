@@ -41,4 +41,12 @@ init workspace จากไฟล์รวม
 ประเมิน
 ```
 
-AI ควรสร้างหรืออัปเดต context ใน `00_review_instructions/` ก่อน แล้วจึงสร้าง review notes ใน `04_review_notes/` ห้ามแก้ thesis ต้นฉบับทันที
+AI ควรสร้างหรืออัปเดต context ใน `00_review_instructions/` ก่อน แล้วจึงสร้าง review notes ใน `04_review_notes/` ห้ามแก้ thesis ต้นฉบับทันที ชุดนี้ใช้เพื่อช่วยตรวจและให้ feedback ไม่ใช่ให้ AI ปรับปรุงต้นฉบับแทนเจ้าของงานโดยอัตโนมัติ ให้ AI ชี้จุดอ่อน แนะนำ และบอกหลักฐานที่ควรตรวจเพิ่ม จากนั้นเจ้าของงานต้องกลับไปทำเอง
+
+ถ้ามี review notes รอบแรกแล้ว งานคืบหน้าพอ มี reference/result พอ และต้องการตรวจเข้มระดับปริญญาเอก ให้สั่ง:
+
+```text
+ประเมินเชิงลึก
+```
+
+AI ควรสร้าง `04_review_notes/04_deep_review.md` และอัปเดต action/state notes โดยยังไม่แก้ thesis ต้นฉบับ ถ้า draft ยังต้นมาก ให้แก้ blocking issues จาก `ประเมิน` ก่อน

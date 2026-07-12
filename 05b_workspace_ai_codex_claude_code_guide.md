@@ -174,6 +174,18 @@ init workspace จากไฟล์รวม
 ห้ามแก้ thesis หรือ references ในรอบนี้
 ```
 
+## Step 4b: ตรวจเชิงลึกระดับปริญญาเอก
+
+ใช้หลังจากมี review notes รอบแรกแล้ว และ draft มี reference/result พอให้ตรวจได้จริง เมื่อต้องการให้ AI โจมตี argument, ตรวจ claim credibility, แยก consensus/debate, และสรุปทางเลือกสำหรับ revision ใหญ่
+
+นิสิตใหม่ไม่จำเป็นต้องใช้ขั้นนี้ตั้งแต่แรก ให้ใช้ `ประเมิน` แล้วแก้ blocking issues ก่อน
+
+```text
+ประเมินเชิงลึก
+```
+
+ถ้าต้องการ prompt แบบเต็ม ให้ใช้ [06_deep_doctoral_review_prompt.md](06_deep_doctoral_review_prompt.md)
+
 ## Step 5: ถ้าต้องการสั่ง full review note แยก
 
 ใช้ template:

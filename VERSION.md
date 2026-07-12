@@ -4,6 +4,14 @@ Current version: `v1.3`
 
 Release label: Thesis Review Prompt Pack: Student Edition v1.3
 
+## Unreleased
+
+- Added a separate deep doctoral review prompt for `ประเมินเชิงลึก`, covering source triangulation, recent literature/consensus gaps, counter-arguments, claim credibility, data/result interpretation, decisive tests, and a decision brief.
+- Added `04_deep_review.md` template and workspace-agent instructions for the deep review pass.
+- Clarified progressive difficulty: new students should start with normal `ประเมิน`; `ประเมินเชิงลึก` is an advanced pass for more mature drafts with enough references/results.
+- Clarified student-review intent: the pack is for review notes and peer feedback, not automatic rewriting or automatic source improvement.
+- Emphasized that reviewers should point out weaknesses and recommend next checks, while students practice doing the revision work and follow-up prompting themselves.
+
 ## v1.3
 
 - Integrated the latest public Research Methodology for AI-Assisted Thesis Review handout release `2026.07` as a companion teaching source.

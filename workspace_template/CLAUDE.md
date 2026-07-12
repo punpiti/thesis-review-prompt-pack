@@ -1,6 +1,6 @@
 # Thesis Review Workspace Instructions
 
-When the user says `ประเมิน`, review this workspace and create review notes before editing any thesis/manuscript source.
+When the user says `ประเมิน`, review this workspace and create review notes before editing any thesis/manuscript source. This workspace is for student review and feedback, not automatic rewriting or automatic improvement. Point out weaknesses, recommend next checks, and leave revision decisions to the student/author.
 
 ## Files
 
@@ -50,6 +50,8 @@ Create or update:
 - `04_review_notes/03_student_action_checklist.md`
 - `04_review_notes/99_review_state.md`
 
+When the user says `ประเมินเชิงลึก`, use the initial review notes and `prompt_pack/06_deep_doctoral_review_prompt.md` if available. If the draft is still early or references/results are too thin, tell the user to fix blocking issues from the normal review first. Otherwise create or update `04_review_notes/04_deep_review.md`, then add any new actions to `04_review_notes/03_student_action_checklist.md` and update `04_review_notes/99_review_state.md`.
+
 ## Review Priorities
 
 Check research logic before polishing language:
@@ -69,4 +71,5 @@ Check research logic before polishing language:
 - If you scan a reference PDF, save one Markdown extraction note per PDF in `02_references/extracted_md/` before using it to fill BibTeX metadata or `abstract`.
 - Mark missing information as `missing input`.
 - If `04_review_notes/99_review_state.md` exists, continue unfinished items only unless the user says `ประเมินใหม่ทั้งหมด`.
+- For `ประเมินเชิงลึก`, do not invent current consensus, papers, DOI, venue status, law, standards, or dataset updates. Mark unsupported external checks as `missing input` or `needs live verification`.
 - Do not edit source thesis files unless the user explicitly asks for a revision pass after review notes exist.
