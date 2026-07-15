@@ -132,3 +132,9 @@ Claude Code, Codex, and similar workspace agents should follow the same conventi
 - Save PDF reading notes in `02_references/extracted_md/`, one `.md` file per PDF.
 - Each note should include source PDF filename, title/authors/year/venue/DOI found, abstract evidence if present, pages/sections checked, short topic summary, and uncertainty flags.
 - Do not treat `extracted_md/` as independent evidence. It is a trace note back to the supplied PDF or official page.
+
+<!-- BEGIN AGENT-PROJECT-KIT-ADAPTER -->
+Agent Project Kit adapter: read `AGENTS.md` before acting. If project-local
+`.ai/` state exists, read it as well. Do not overwrite project-local `.ai/`
+state when updating the kit.
+<!-- END AGENT-PROJECT-KIT-ADAPTER -->

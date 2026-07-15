@@ -9,9 +9,11 @@ webapp-en.html
 about.html
 about-en.html
 01_full_thesis_review_prompt_explained_th.html
+01_full_thesis_review_prompt_explained_en.html
 00_intake_checklist.md
 01_full_thesis_review_prompt.md
 01_full_thesis_review_prompt_explained_th.md
+01_full_thesis_review_prompt_explained_en.md
 02_reference_bibtex_prompt.md
 03_review_rubric.md
 04_common_review_patterns.md
@@ -19,6 +21,8 @@ about-en.html
 05a_chat_ai_quota_limited_guide.md
 05b_workspace_ai_codex_claude_code_guide.md
 06_deep_doctoral_review_prompt.md
+install-thesis-review.sh
+install-thesis-review.ps1
 AGENTS.md
 CLAUDE.md
 LICENSE.md

@@ -6,11 +6,13 @@ Release label: Thesis Review Prompt Pack: Student Edition v1.3
 
 ## Unreleased
 
+- Added an English explanation page for the full thesis review prompt concept: `01_full_thesis_review_prompt_explained_en.md` and `01_full_thesis_review_prompt_explained_en.html`.
 - Added a separate deep doctoral review prompt for `ประเมินเชิงลึก`, covering source triangulation, recent literature/consensus gaps, counter-arguments, claim credibility, data/result interpretation, decisive tests, and a decision brief.
 - Added `04_deep_review.md` template and workspace-agent instructions for the deep review pass.
 - Clarified progressive difficulty: new students should start with normal `ประเมิน`; `ประเมินเชิงลึก` is an advanced pass for more mature drafts with enough references/results.
 - Clarified student-review intent: the pack is for review notes and peer feedback, not automatic rewriting or automatic source improvement.
 - Emphasized that reviewers should point out weaknesses and recommend next checks, while students practice doing the revision work and follow-up prompting themselves.
+- Added lightweight Linux/macOS and Windows PowerShell installer scripts that only download the pack and create the workspace from the template.
 
 ## v1.3
 

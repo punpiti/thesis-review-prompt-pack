@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research Review Concept | Thesis Review Prompt Pack v1.3</title>
+  <style>
+    :root { --bg:#f7f8fb; --ink:#1f2933; --muted:#5b6776; --line:#d9dee7; --panel:#fff; --accent:#0f766e; --accent-2:#7c3aed; --accent-3:#b45309; --soft:#e7f5f3; --radius:8px; font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); line-height:1.75; }
+    a { color:var(--accent); font-weight:700; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .topbar { position:sticky; top:0; z-index:10; border-bottom:1px solid var(--line); background:rgba(255,255,255,.94); backdrop-filter:blur(10px); }
+    .topbar-inner, main, .footer { max-width:1120px; margin:0 auto; padding-left:20px; padding-right:20px; }
+    .topbar-inner { min-height:58px; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+    .brand { font-weight:900; }
+    .nav { display:flex; flex-wrap:wrap; gap:12px; font-size:14px; }
+    .hero { background:#102a43; color:#fff; }
+    .hero-inner { max-width:1120px; margin:0 auto; padding:42px 20px; }
+    .hero p { color:#d9e2ec; max-width:880px; font-size:18px; }
+    h1 { margin:0; font-size:clamp(32px,5vw,56px); line-height:1.08; }
+    h2 { margin:42px 0 12px; font-size:28px; line-height:1.2; }
+    h3 { margin:0 0 8px; font-size:19px; line-height:1.35; }
+    .lead { color:var(--muted); max-width:900px; font-size:17px; }
+    .notice { border-left:5px solid var(--accent); background:var(--soft); padding:16px 18px; border-radius:6px; margin-top:20px; }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+    .card { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:16px; }
+    .review-list { display:grid; gap:12px; }
+    .review-item { display:grid; grid-template-columns:56px minmax(0,1fr); gap:14px; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px; }
+    .num { width:42px; height:42px; border-radius:8px; background:#102a43; color:#fff; display:grid; place-items:center; font-weight:900; }
+    .review-item p { margin:0; color:var(--muted); }
+    .review-item ul { margin:8px 0 0; padding-left:20px; color:var(--muted); }
+    .review-item h3 { margin-top:1px; }
+    ul { padding-left:24px; }
+    code { background:#eef2f7; padding:2px 5px; border-radius:5px; }
+    .footer { border-top:1px solid var(--line); color:var(--muted); padding-top:24px; padding-bottom:34px; margin-top:48px; font-size:14px; }
+    @media (max-width:860px) { .grid, .review-item { grid-template-columns:1fr; } .nav { display:none; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Thesis Review Prompt Pack</div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index-en.html">Start</a>
+        <a href="workspace-en.html">Workspace</a>
+        <a href="about-en.html">About</a>
+        <a href="01_full_thesis_review_prompt_explained_th.html" lang="th">ไทย</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>General Research Review Concept</h1>
+      <p>English explanation of the full thesis review prompt, written to help students understand what to review before using AI for a real thesis or manuscript review.</p>
+    </div>
+  </div>
+
+  <main>
+    <section>
+      <h2>What this page is for</h2>
+      <p class="lead">This page explains the concept behind the main prompt. It is not the prompt to copy directly. To run a review, use the <a href="workspace-en.html">Workspace</a> guide or the main prompt file in the pack.</p>
+      <div class="notice">
+        <strong>Core idea:</strong>
+        a good thesis review is not only language editing. It checks whether the whole research argument holds together: problem, objectives, method, evidence, results, references, scope, and limitations.
+      </div>
+    </section>
+
+    <section>
+      <h2>Core ideas behind the prompt</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Check the research chain</h3>
+          <p>Problem, objectives, method, results, and claims must connect. If one link breaks, the work is not ready.</p>
+        </article>
+        <article class="card">
+          <h3>Check evidence</h3>
+          <p>Every important claim needs support from manuscript evidence, references, experiments, or real requirements, not AI-invented explanation.</p>
+        </article>
+        <article class="card">
+          <h3>Think like a reviewer</h3>
+          <p>Assess whether the work has enough weight for the field, degree level, and expected venue.</p>
+        </article>
+        <article class="card">
+          <h3>Test logic before polishing</h3>
+          <p>Run five checks before language editing: problem survival, genuine failure, mandatory gates, measurement ceiling, and no-new-problem guardrails.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Required starting context</h2>
+      <p>Before reviewing, AI must know or be able to extract at least:</p>
+      <ul>
+        <li>field and subfield</li>
+        <li>degree level or manuscript type</li>
+        <li>document status, such as proposal, thesis draft, defense draft, or journal manuscript</li>
+        <li>target venue or expected publication level</li>
+        <li>thesis or manuscript text</li>
+        <li>reference list or BibTeX</li>
+      </ul>
+      <p>If this information already appears in the documents, AI should summarize it from the documents instead of asking the student to re-enter it.</p>
+    </section>
+
+    <section>
+      <h2>What the prompt asks AI to review</h2>
+      <div class="review-list">
+        <article class="review-item">
+          <div class="num">1</div>
+          <div>
+            <h3>Field, level, and venue</h3>
+            <ul>
+              <li>Identify the field and subfield precisely, not only broad labels such as AI, education, or data science.</li>
+              <li>Check the expected contribution level and whether it fits an undergraduate, master's, doctoral, or manuscript-level work.</li>
+              <li>Assess whether the target venue or venue category fits the scope, method, results, and reference base.</li>
+              <li>Check whether the manuscript uses real papers from the target venue as scope anchors, not decorative citations.</li>
+              <li>If the target is too ambitious, state what baseline, experiment, theory, dataset, validation, or writing standard would be needed.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">2</div>
+          <div>
+            <h3>Title and abstract</h3>
+            <ul>
+              <li>Check whether the title and abstract point to the same study.</li>
+              <li>Check whether the title is specific enough and does not overclaim beyond what the work actually does.</li>
+              <li>Check whether the abstract includes problem, gap, method, data, result, and contribution.</li>
+              <li>Flag placeholders such as missing result, dataset, baseline, metric, or actual value.</li>
+              <li>Flag strong terms such as robust, significant, state-of-the-art, or solves when the manuscript does not provide evidence.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">3</div>
+          <div>
+            <h3>Problem significance</h3>
+            <ul>
+              <li>Identify the real research problem, not only a plan to build a system or apply a tool.</li>
+              <li>Assess whether the problem has enough academic weight or practical value.</li>
+              <li>Check whether the problem is justified by evidence, literature, a gap, limitations of prior work, or real data.</li>
+              <li>Check whether the problem is too broad, too narrow, already solved, or mainly a convenience for the researcher.</li>
+              <li>Test problem survival: the problem must exist, matter, remain unresolved, and not already be solved well enough by a simpler, safer, or more standard method.</li>
+              <li>State what evidence would make the problem stronger.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">4</div>
+          <div>
+            <h3>Literature review quality</h3>
+            <ul>
+              <li>Check whether the literature review establishes the problem, gap, and positioning.</li>
+              <li>Distinguish synthesis from a paper-by-paper summary.</li>
+              <li>Identify bibliography entries that are not cited.</li>
+              <li>Identify claims, definitions, datasets, methods, or background statements that need citations but have none.</li>
+              <li>Flag citations used too broadly, inaccurately, or decoratively.</li>
+              <li>Check whether Introduction and Related Work have distinct roles or repeat the same material.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">5</div>
+          <div>
+            <h3>Reference clustering and quality</h3>
+            <ul>
+              <li>Cluster references by role, not only by keyword: direct prior work, method foundation, dataset or benchmark, evaluation method, theory, target-venue anchor, background, or weak citation.</li>
+              <li>Assess whether each cluster has enough coverage, quality, recency, and relevance.</li>
+              <li>Identify missing key work, recent work, target-venue anchors, or expected baselines.</li>
+              <li>Explain what each cross-domain reference supports and what it cannot support.</li>
+              <li>Identify references that should be verified, demoted, removed, or replaced with stronger sources.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">6</div>
+          <div>
+            <h3>Objective and problem alignment</h3>
+            <ul>
+              <li>List every objective or research question.</li>
+              <li>Link each objective back to the problem or gap it should address.</li>
+              <li>Identify objectives that do not come from the problem or are only activities, such as study, develop, or design, without a research question.</li>
+              <li>Identify stated problems that no objective tries to solve.</li>
+              <li>Check whether each objective is measurable and later supported by results.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">7</div>
+          <div>
+            <h3>Results and contribution</h3>
+            <ul>
+              <li>Check whether actual or expected results show that the problem is reduced or solved.</li>
+              <li>Check whether results match objectives, and whether any objective lacks supporting results.</li>
+              <li>Separate implementation output from research evidence. Having a working system does not automatically prove a contribution.</li>
+              <li>For quantitative results, check dataset or testbed, baseline, metric definition, raw result, and calculation path.</li>
+              <li>Identify missing error analysis, failure cases, runtime or cost trade-off, or statistical or qualitative evidence expected by the venue.</li>
+              <li>Test genuine failure: what result would show that the method does not solve the problem or that the claim is unsupported?</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">8</div>
+          <div>
+            <h3>Overall coherence</h3>
+            <ul>
+              <li>Build a traceability table from <code>Problem/gap -> Objective/RQ -> Method -> Data/evidence -> Result -> Claim</code>.</li>
+              <li>Check whether every problem has an objective, every objective has a method, and every method has evidence.</li>
+              <li>Identify broken chains, such as a claim without a result or a result that does not answer the problem.</li>
+              <li>Identify claims that exceed the evidence or interpret beyond what the experiment can show.</li>
+              <li>Check measurement ceiling: the claim must not be stronger than the construct, proxy or indicator, instrument or ground truth, data procedure, and analysis that support it.</li>
+              <li>Decide whether the whole work is coherent or still a set of disconnected parts.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">9</div>
+          <div>
+            <h3>Proposed solution and alternatives</h3>
+            <ul>
+              <li>Evaluate whether the solution makes academic sense or is mainly convenient.</li>
+              <li>Identify standard or popular alternatives for the same problem that the manuscript ignores.</li>
+              <li>Check whether expected baselines are missing, such as keyword or BM25, embeddings, plain LLMs, structured prompts, or classical methods.</li>
+              <li>Check whether the method choice is justified.</li>
+              <li>Ask whether the novelty remains if a strong baseline performs similarly.</li>
+              <li>Check mandatory gates such as correctness, safety, security, ethics or legal compliance, capacity, or maximum error before optimization metrics are compared.</li>
+              <li>Check the no-new-problem guardrail: the solution must not create unacceptable burden or risk in privacy, security, cost, fairness, accessibility, maintenance, energy, or stakeholders.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">10</div>
+          <div>
+            <h3>Data, feasibility, and the narrowest defensible version</h3>
+            <ul>
+              <li>Check whether the required data exist, are accessible, and can be used under the relevant rules.</li>
+              <li>Check data cleanliness, ground truth, labeling, missing data, and data-cleaning risk.</li>
+              <li>Assess privacy, permission, consent, ownership, and confidentiality risks.</li>
+              <li>Check whether the evaluation plan can be completed with available time and resources.</li>
+              <li>Suggest the narrowest defensible version if the original plan is too large or the data are not ready.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">11</div>
+          <div>
+            <h3>Ethics, IRB, and legal or regulatory issues</h3>
+            <ul>
+              <li>Check whether the work involves human subjects, students, users, experts, patients, or vulnerable groups.</li>
+              <li>Check whether it uses personal data, sensitive data, images, voice, chat logs, behavioral logs, or identifiable information.</li>
+              <li>Check whether IRB approval, exemption, consent forms, participant information sheets, or institutional permission may be required.</li>
+              <li>Check issues involving scraping, platform Terms of Service, dataset licenses, copyright, NDAs, and data ownership.</li>
+              <li>AI must not conclude by itself that IRB is unnecessary. It should tell the student what must be verified with the advisor, IRB office, institution, or venue instructions.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">12</div>
+          <div>
+            <h3>Scope and limitation</h3>
+            <ul>
+              <li>Separate scope, which is the deliberate boundary of the study, from limitation, which affects interpretation of results.</li>
+              <li>Check whether the manuscript confuses the two terms or uses them interchangeably.</li>
+              <li>Check whether the scope is narrow enough to be feasible but not so narrow that the contribution disappears.</li>
+              <li>Identify expected limitations such as dataset bias, generalizability, sample size, evaluation weakness, or measurement error.</li>
+              <li>Check whether limitations are written responsibly rather than destructively.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">13</div>
+          <div>
+            <h3>LLM use and research responsibility</h3>
+            <ul>
+              <li>Identify whether LLMs are used for writing, translation, summarization, extraction, data generation, evaluation, or as the main method.</li>
+              <li>If LLM use affects evidence, the manuscript should document prompts, outputs, model names, dates, settings, and verification procedures.</li>
+              <li>Check citations, DOI, venue ranking, datasets, and factual claims that may have come from LLM output but have not been verified.</li>
+              <li>Distinguish whether the LLM is a tool, baseline, evaluator, or actual contribution.</li>
+              <li>Flag generic AI writing that sounds fluent but adds no reasoning, evidence, or concrete claim.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">14</div>
+          <div>
+            <h3>Acknowledgement and long-lived document risk</h3>
+            <ul>
+              <li>Check whether the acknowledgement is appropriate, specific, and not too long or personal.</li>
+              <li>Watch for wording about relationships, positions, affiliations, funding, or support that may change over time.</li>
+              <li>Check whether conflicts, dependencies, or support should be stated neutrally.</li>
+              <li>Check that wording does not make the thesis look informal when read years later.</li>
+              <li>Suggest safer acknowledgement principles if needed.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">15</div>
+          <div>
+            <h3>Language and document hygiene</h3>
+            <ul>
+              <li>Check typos, spelling, punctuation, and repeated errors that are excessive for the document stage.</li>
+              <li>Check whether Thai and English are mixed more than necessary and whether technical terms are used consistently.</li>
+              <li>Check whether abbreviations and acronyms are defined before use and used consistently.</li>
+              <li>Flag forward references to material that will be explained later without enough context.</li>
+              <li>Separate minor language polish from language problems that damage scientific meaning.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">16</div>
+          <div>
+            <h3>Tables and figures</h3>
+            <ul>
+              <li>Check whether tables and figures support claims or are only decoration.</li>
+              <li>Check clarity, font size, labels, legends, units, and abbreviations.</li>
+              <li>Check whether captions explain what the reader should learn, not only name the figure.</li>
+              <li>Check whether tables and figures are referenced near the right place in the text.</li>
+              <li>Check whether tables or figures support the claim and do not invite interpretation beyond the evidence.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="review-item">
+          <div class="num">17</div>
+          <div>
+            <h3>Reviewer-style verdict</h3>
+            <ul>
+              <li>Summarize readiness: not ready, early promising, thesis-draft ready, defense-review ready, manuscript-ready, or venue-ready.</li>
+              <li>Give top blocking issues first, instead of listing everything at the same priority.</li>
+              <li>Separate high-impact fixes from minor issues.</li>
+              <li>Identify questions the author must answer or ask the advisor.</li>
+              <li>Suggest the next review pass after blocking issues are fixed.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Why review state matters</h2>
+      <p class="lead">Full-thesis review often cannot be completed in one session. AI should record <code>04_review_notes/99_review_state.md</code> so the student can continue later without starting over.</p>
+      <ul>
+        <li>what was reviewed this round</li>
+        <li>what remains unfinished</li>
+        <li>what evidence is missing</li>
+        <li>what prompt should be used next</li>
+        <li>what should not be repeated unless the user asks for a full reassessment</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>For academic review support only. This is not a substitute for an advisor, reviewer, IRB office, or qualified legal/compliance source.</div>
+  </footer>
+</body>
+</html>

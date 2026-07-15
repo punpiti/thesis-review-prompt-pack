@@ -12,7 +12,7 @@ Thesis Review Prompt Pack: Student Edition v1.3
 1. เปิด index.html ก่อน
 2. แนะนำให้อ่านเอกสารประกอบ Research Methodology for AI-Assisted Thesis Review ก่อนเริ่มใช้ prompt pack เพื่อเข้าใจเกณฑ์ตรวจ: https://punpiti.github.io/ai-assisted-thesis-review-handout/
 3. ให้ใช้ workspace.html เป็นหลัก ถ้ามี Codex/Claude Code/Antigravity
-4. copy command ใน workspace.html ไปรันทีละบรรทัด command จะดาวน์โหลด zip และสร้าง my_thesis_review/ ให้เอง
+4. copy install command ใน workspace.html ไปรัน command จะดาวน์โหลดชุด prompt และสร้าง my_thesis_review/ ให้เอง
 5. ถ้ายังไม่รู้ว่าไฟล์ไหนควรอยู่ไหน ให้วางไฟล์รวมทั้งหมดใน my_thesis_review/00_inbox/
 6. ถ้าวางไฟล์ใน 00_inbox/ ให้สั่ง AI ว่า "init workspace จากไฟล์รวม"
 7. ใน workspace AI ให้สั่งว่า "เตรียม instruction จากงานปัจจุบัน"

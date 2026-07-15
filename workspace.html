@@ -132,7 +132,7 @@
       <h2>Prompt สำหรับ workspace</h2>
       <div class="prompt-block">
         <h3>Step 1: จัดไฟล์ให้ AI อ่านได้</h3>
-        <p>เลือกแท็บตามระบบปฏิบัติการ แล้วรัน command ทีละบรรทัดจากโฟลเดอร์ที่ต้องการสร้าง project folder</p>
+        <p>เลือกแท็บตามระบบปฏิบัติการ แล้วรัน command จากโฟลเดอร์ที่ต้องการสร้าง project folder</p>
         <p class="small-note">ค่าเริ่มต้นคือ <code>my_thesis_review/</code> ถ้าต้องการชื่ออื่น ให้แก้ตัวแปร <code>PROJECT</code> หรือ <code>$Project</code> ใน command ก่อนรัน</p>
         <div class="tab-list" role="tablist" aria-label="เลือก command ตามระบบปฏิบัติการ">
           <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="step1-linux-panel" id="step1-linux-tab" data-tab-target="step1-linux-panel">Linux / macOS</button>
@@ -142,16 +142,8 @@
           <div class="prompt-head">
             <div class="shell-window" aria-label="Linux หรือ macOS shell command">
               <div class="shell-bar"><span class="shell-dot red"></span><span class="shell-dot yellow"></span><span class="shell-dot green"></span><span>bash / zsh</span></div>
-              <pre class="command-code" id="step1-linux-command">PROJECT="my_thesis_review"
-curl -L -o thesis_review_student_edition.zip https://punpiti.github.io/thesis-review-prompt-pack/thesis_review_student_edition.zip
-unzip -o thesis_review_student_edition.zip
-cd prompt_packs/thesis_review_student_edition
-WORKSPACE="$PWD/../../$PROJECT"
-mkdir -p "$WORKSPACE"
-cp -R workspace_template/. "$WORKSPACE/"
-mkdir -p "$WORKSPACE/prompt_pack"
-cp -R . "$WORKSPACE/prompt_pack/"
-cd "$WORKSPACE"</pre>
+              <pre class="command-code" id="step1-linux-command">wget -O install-thesis-review.sh https://punpiti.github.io/thesis-review-prompt-pack/install-thesis-review.sh
+bash install-thesis-review.sh my_thesis_review</pre>
             </div>
             <div class="prompt-actions">
               <button class="icon-button copy-button" type="button" aria-label="คัดลอก command Linux Step 1" data-copy-target="step1-linux-command">⧉</button>
@@ -162,22 +154,15 @@ cd "$WORKSPACE"</pre>
           <div class="prompt-head">
             <div class="shell-window" aria-label="Windows PowerShell command">
               <div class="shell-bar"><span class="shell-dot red"></span><span class="shell-dot yellow"></span><span class="shell-dot green"></span><span>PowerShell</span></div>
-              <pre class="command-code" id="step1-windows-command">$Project = "my_thesis_review"
-Invoke-WebRequest -Uri "https://punpiti.github.io/thesis-review-prompt-pack/thesis_review_student_edition.zip" -OutFile ".\thesis_review_student_edition.zip"
-Expand-Archive -Path .\thesis_review_student_edition.zip -DestinationPath . -Force
-Set-Location .\prompt_packs\thesis_review_student_edition
-$Workspace = Join-Path (Resolve-Path ..\..).Path $Project
-New-Item -ItemType Directory -Force -Path $Workspace | Out-Null
-Copy-Item -Path .\workspace_template\* -Destination $Workspace -Recurse -Force
-New-Item -ItemType Directory -Force -Path (Join-Path $Workspace "prompt_pack") | Out-Null
-Copy-Item -Path .\* -Destination (Join-Path $Workspace "prompt_pack") -Recurse -Force
-Set-Location $Workspace</pre>
+              <pre class="command-code" id="step1-windows-command">Invoke-WebRequest -Uri "https://punpiti.github.io/thesis-review-prompt-pack/install-thesis-review.ps1" -OutFile ".\install-thesis-review.ps1"
+PowerShell -ExecutionPolicy Bypass -File ".\install-thesis-review.ps1" -Project "my_thesis_review"</pre>
             </div>
             <div class="prompt-actions">
               <button class="icon-button copy-button" type="button" aria-label="คัดลอก command Windows Step 1" data-copy-target="step1-windows-command">⧉</button>
             </div>
           </div>
         </div>
+        <p class="small-note">script นี้ทำแค่ดาวน์โหลดชุด prompt, แตก zip, และสร้าง workspace จาก template เท่านั้น หลังจากนั้นนิสิตยังต้องวางไฟล์เองและใช้ review notes เพื่อคิดต่อเอง</p>
         <div class="instruction-panel">
           <h4>หลังรัน command แล้ว ให้ใส่ไฟล์งานไว้ที่นี่</h4>
           <div class="path-box">my_thesis_review/00_inbox/</div>

@@ -132,3 +132,41 @@ Codex, Claude Code, and similar workspace agents should follow the same conventi
 - Save PDF reading notes in `02_references/extracted_md/`, one `.md` file per PDF.
 - Each note should include source PDF filename, title/authors/year/venue/DOI found, abstract evidence if present, pages/sections checked, short topic summary, and uncertainty flags.
 - Do not treat `extracted_md/` as independent evidence. It is a trace note back to the supplied PDF or official page.
+
+<!-- BEGIN COMPUTING-ENVIRONMENT -->
+
+## Computing Environment Rules
+
+Self-hosting guard: if this project is the Agent Project Kit source repository
+itself, including the legacy `computing-environment` folder, use root-level
+governance files as canonical and treat `.ai/computing-environment/` as a
+packaged downstream snapshot. Do not recurse into another Agent Project Kit /
+`computing-environment` layer unless explicitly requested.
+
+If project-local `.ai/` governance files exist, read the relevant files before
+working on this project:
+
+- `.ai/computing-environment/START_HERE.md`
+- `.ai/computing-environment/SPEC_EVAL_LOOP_INSTRUCTION.md`
+- `.ai/computing-environment/AGENTS.md`
+- `.ai/computing-environment/MACHINE_PROFILES.md`
+- `.ai/computing-environment/TOKEN_DISCIPLINE.md`
+- `.ai/computing-environment/DOCUMENT_PRODUCTION_POLICY.md`
+- `.ai/computing-environment/MARKDOWN_ORGANIZATION_POLICY.md`
+- `.ai/computing-environment/ENVIRONMENT_POLICY.md`
+- `.ai/computing-environment/MARKDOWN_ORGANIZATION_POLICY.md`
+- `.ai/PROJECT_STATE.md`
+- `.ai/PROJECT_HIERARCHY.md`
+- `.ai/MACHINE_PROFILE.md`
+- `.ai/LOCAL_RESOURCES.md`
+- `.ai/MACHINE_COMPATIBILITY.md`
+- `.ai/RUNBOOK.md`
+- `.ai/TOKEN_BUDGET.md`
+
+Use Spec–Eval–Loop Workflow when `.ai/` governance is present. Record machine
+identity/storage assumptions in `.ai/MACHINE_PROFILE.md`, record non-portable
+local resources, and keep AI Markdown in the `.ai/` pipeline only when those
+files/folders exist in the current workspace.
+Do not pretend L2/L3 or non-portable resources are solved by L1 alone.
+
+<!-- END COMPUTING-ENVIRONMENT -->

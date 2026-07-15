@@ -6,39 +6,32 @@
 
 ## Step 1: จัดไฟล์ให้ AI อ่านได้
 
-เลือก command ตามระบบปฏิบัติการ แล้วรันทีละบรรทัดจากโฟลเดอร์ที่ต้องการสร้าง project folder
+เลือก command ตามระบบปฏิบัติการ แล้วรันจากโฟลเดอร์ที่ต้องการสร้าง project folder
 
 ค่าเริ่มต้นคือ `my_thesis_review/` ถ้าต้องการชื่ออื่น ให้แก้ตัวแปร `PROJECT` หรือ `$Project` ใน command ก่อนรัน
 
 ### Linux / macOS
 
 ```bash
-PROJECT="my_thesis_review"
-curl -L -o thesis_review_student_edition.zip https://punpiti.github.io/thesis-review-prompt-pack/thesis_review_student_edition.zip
-unzip -o thesis_review_student_edition.zip
-cd prompt_packs/thesis_review_student_edition
-WORKSPACE="$PWD/../../$PROJECT"
-mkdir -p "$WORKSPACE"
-cp -R workspace_template/. "$WORKSPACE/"
-mkdir -p "$WORKSPACE/prompt_pack"
-cp -R . "$WORKSPACE/prompt_pack/"
-cd "$WORKSPACE"
+wget -O install-thesis-review.sh https://punpiti.github.io/thesis-review-prompt-pack/install-thesis-review.sh
+bash install-thesis-review.sh my_thesis_review
+```
+
+ถ้าเครื่องไม่มี `wget` ให้ใช้:
+
+```bash
+curl -fL -o install-thesis-review.sh https://punpiti.github.io/thesis-review-prompt-pack/install-thesis-review.sh
+bash install-thesis-review.sh my_thesis_review
 ```
 
 ### Windows PowerShell
 
 ```powershell
-$Project = "my_thesis_review"
-Invoke-WebRequest -Uri "https://punpiti.github.io/thesis-review-prompt-pack/thesis_review_student_edition.zip" -OutFile ".\thesis_review_student_edition.zip"
-Expand-Archive -Path .\thesis_review_student_edition.zip -DestinationPath . -Force
-Set-Location .\prompt_packs\thesis_review_student_edition
-$Workspace = Join-Path (Resolve-Path ..\..).Path $Project
-New-Item -ItemType Directory -Force -Path $Workspace | Out-Null
-Copy-Item -Path .\workspace_template\* -Destination $Workspace -Recurse -Force
-New-Item -ItemType Directory -Force -Path (Join-Path $Workspace "prompt_pack") | Out-Null
-Copy-Item -Path .\* -Destination (Join-Path $Workspace "prompt_pack") -Recurse -Force
-Set-Location $Workspace
+Invoke-WebRequest -Uri "https://punpiti.github.io/thesis-review-prompt-pack/install-thesis-review.ps1" -OutFile ".\install-thesis-review.ps1"
+PowerShell -ExecutionPolicy Bypass -File ".\install-thesis-review.ps1" -Project "my_thesis_review"
 ```
+
+script เหล่านี้ทำแค่ดาวน์โหลดชุด prompt, แตก zip, และสร้าง workspace จาก `workspace_template/` เท่านั้น หลังจากนั้นนิสิตยังต้องวางไฟล์เองและใช้ review notes เพื่อคิดต่อเอง
 
 วางไฟล์รวมทั้งหมดไว้ใน:
 

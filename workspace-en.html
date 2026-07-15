@@ -90,30 +90,15 @@
       <h2>Step 1: Create the Workspace</h2>
       <div class="prompt-block">
         <h3>Linux / macOS</h3>
-        <pre class="command-code">PROJECT="my_thesis_review"
-curl -L -o thesis_review_student_edition.zip https://punpiti.github.io/thesis-review-prompt-pack/thesis_review_student_edition.zip
-unzip -o thesis_review_student_edition.zip
-cd prompt_packs/thesis_review_student_edition
-WORKSPACE="$PWD/../../$PROJECT"
-mkdir -p "$WORKSPACE"
-cp -R workspace_template/. "$WORKSPACE/"
-mkdir -p "$WORKSPACE/prompt_pack"
-cp -R . "$WORKSPACE/prompt_pack/"
-cd "$WORKSPACE"</pre>
+        <pre class="command-code">wget -O install-thesis-review.sh https://punpiti.github.io/thesis-review-prompt-pack/install-thesis-review.sh
+bash install-thesis-review.sh my_thesis_review</pre>
       </div>
       <div class="prompt-block">
         <h3>Windows PowerShell</h3>
-        <pre class="command-code">$Project = "my_thesis_review"
-Invoke-WebRequest -Uri "https://punpiti.github.io/thesis-review-prompt-pack/thesis_review_student_edition.zip" -OutFile ".\thesis_review_student_edition.zip"
-Expand-Archive -Path .\thesis_review_student_edition.zip -DestinationPath . -Force
-Set-Location .\prompt_packs\thesis_review_student_edition
-$Workspace = Join-Path (Resolve-Path ..\..).Path $Project
-New-Item -ItemType Directory -Force -Path $Workspace | Out-Null
-Copy-Item -Path .\workspace_template\* -Destination $Workspace -Recurse -Force
-New-Item -ItemType Directory -Force -Path (Join-Path $Workspace "prompt_pack") | Out-Null
-Copy-Item -Path .\* -Destination (Join-Path $Workspace "prompt_pack") -Recurse -Force
-Set-Location $Workspace</pre>
+        <pre class="command-code">Invoke-WebRequest -Uri "https://punpiti.github.io/thesis-review-prompt-pack/install-thesis-review.ps1" -OutFile ".\install-thesis-review.ps1"
+PowerShell -ExecutionPolicy Bypass -File ".\install-thesis-review.ps1" -Project "my_thesis_review"</pre>
       </div>
+      <p class="small-note">These scripts only download the prompt pack, extract it, and create the workspace from the template. Students still place their own files and use review notes to think through the work.</p>
       <p>Put all mixed input files in <code>my_thesis_review/00_inbox/</code>: thesis drafts, LaTeX, Word, PDF, BibTeX, reference PDFs, figures, tables, results, scripts, logs, metrics, and baselines.</p>
     </section>
 
