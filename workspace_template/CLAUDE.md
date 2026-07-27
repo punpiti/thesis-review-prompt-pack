@@ -2,6 +2,74 @@
 
 When the user says `ประเมิน`, review this workspace and create review notes before editing any thesis/manuscript source. This workspace is for student review and feedback, not automatic rewriting or automatic improvement. Point out weaknesses, recommend next checks, and leave revision decisions to the student/author.
 
+## Prompt Pack Version / Update Safety
+
+If this workspace already has `prompt_pack/VERSION.md`, check it before
+adopting new workflow instructions. Do not overwrite thesis source files,
+`04_review_notes/`, `00_review_instructions/`, or user-edited `AGENTS.md` /
+`CLAUDE.md` without explicit instruction.
+
+When updating, prefer replacing only `prompt_pack/` after preserving the old one
+as `prompt_pack_backup_<timestamp>`. If new workflow instructions are useful,
+summarize the difference and ask before patching workspace-level instructions.
+
+## L1-L4 Review Model
+
+- L1 = AI can execute now: file inventory, section map, review notes, reference audit, PDF extraction notes, and action checklist.
+- L2 = human academic judgment: advisor/student decisions about research scope, target venue, positioning, tone, ethical judgment, and what to revise.
+- L3 = external feedback/data: committee/reviewer comments, student/user/expert validation, experiment results, survey/interview data, venue instructions, or live metadata verification.
+- L4 = local evidence/resource layer: manuscript files, BibTeX, PDFs in hand, official pages, result artifacts, scripts/logs, and machine-specific paths available in this workspace.
+
+Do not treat L1 review work as proof that L2/L3 questions are resolved. Do not treat missing L4 evidence, especially missing PDFs or result files, as available evidence.
+
+## Topic Hierarchy
+
+Review and report at the smallest level supported by evidence:
+
+- document -> chapter/section -> subsection/paragraph -> claim/evidence -> citation/BibTeX/PDF
+
+For each blocking issue, cite the most specific location available and mark missing location detail as `missing input`.
+
+## Reference/BibTeX Skill Routing
+
+If the user asks only for reference work, do that directly without running a
+full thesis review first:
+
+- `ตรวจ ref`, `ตรวจ reference`, `ตรวจ bibliography` -> update `04_review_notes/02_reference_audit.md`
+- `สร้าง BibTeX` -> create/update `02_references/bib/references.bib` from supplied PDFs/official pages only
+- `วิเคราะห์ ref จาก BibTeX` -> assess and cluster the supplied BibTeX reference set
+- `ตรวจ citation` -> compare manuscript claims/cited keys against BibTeX and source PDFs
+
+Use `prompt_pack/02_reference_bibtex_prompt.md` or the standalone
+`thesis-reference-bibtex` skill if available.
+
+## Focused Review Skill Routing
+
+Use focused section workflows when the user asks for a section, or when the
+overview pass says the section is ready:
+
+- broad research lifecycle / "ควรใช้ skill ไหน" -> route first
+- overview / `ประเมินภาพรวม` / `ประเมิน` -> decide which sections are ready
+- title, abstract, expected outcome/result -> title/abstract/outcome review
+- proposal / concept note / โครงร่างวิจัย -> proposal readiness review
+- RQ / hypothesis / variables / testability -> RQ/hypothesis review
+- introduction / บทนำ / problem statement / objective/RQ -> introduction review
+- literature review / related work / research gap -> literature review
+- systematic review / scoping review / SLR protocol -> systematic-review protocol review
+- experiment design / methodology evaluation / baseline / metric -> experiment design review
+- data analysis / result interpretation / visualization -> data analysis/interpretation review
+- manuscript revision / submission / reviewer response -> manuscript revision/submission review
+- collaboration / advisor meeting / productivity plan -> coordination/productivity review
+- LaTeX install/build / venue template / Thai font / PDF layout -> LaTeX document production
+- references / BibTeX / citation use -> reference/BibTeX review
+- venue selection / publication fit / readiness verdict / qualitative prognosis -> venue/status/prognosis review
+
+Do not rush to review sections that are not drafted or do not have enough
+evidence. Mark them as `not ready for this skill` and list the missing inputs.
+Run venue/status/prognosis near the end only when the reviewed evidence is
+sufficient. Mark venue metrics/rankings as `needs live verification` unless the
+workspace supplies verified sources.
+
 ## Files
 
 - If files are mixed in `00_inbox/`, organize them first when the user says `init workspace จากไฟล์รวม`.
@@ -56,7 +124,10 @@ When the user says `ประเมินเชิงลึก`, use the initial
 
 Check research logic before polishing language:
 
+- title and abstract first pass, if present, to understand the main intended problem and contribution while keeping this critique separate from deeper sections
+- topic hierarchy and L1-L4 status
 - problem survival: the problem exists, matters, remains unresolved, and is not already solved adequately by simpler existing approaches
+- literature review as research-problem and research-gap discovery, not only a paper summary or citation list
 - objective/RQ alignment
 - genuine failure: the study has possible evidence that would make the answer "No"
 - mandatory gates: correctness, safety, security, legal/ethical compliance, capacity, or maximum-error gates pass before optimization metrics matter
@@ -69,6 +140,9 @@ Check research logic before polishing language:
 - Do not invent citations, DOI, venue ranking, paper metadata, results, IRB/legal requirements, or claims.
 - Fill `00_review_instructions/` from workspace evidence only. Mark unavailable facts as `missing input`.
 - If you scan a reference PDF, save one Markdown extraction note per PDF in `02_references/extracted_md/` before using it to fill BibTeX metadata or `abstract`.
+- Every cited key must exist in the BibTeX/reference list. Every BibTeX/reference-list entry should be cited or explicitly marked as unused/background.
+- Every scholarly reference should have a source PDF in `02_references/pdf/` whenever possible. Missing PDFs must be listed in `04_review_notes/02_reference_audit.md`; official pages are fallback evidence, not a reason to pretend the PDF is in hand.
+- BibTeX metadata must be traceable to supplied PDFs, supplied reference lists, or supplied official pages. Mark incomplete metadata as `NEEDS_VERIFICATION`; never fill it from memory.
 - Mark missing information as `missing input`.
 - If `04_review_notes/99_review_state.md` exists, continue unfinished items only unless the user says `ประเมินใหม่ทั้งหมด`.
 - For `ประเมินเชิงลึก`, do not invent current consensus, papers, DOI, venue status, law, standards, or dataset updates. Mark unsupported external checks as `missing input` or `needs live verification`.

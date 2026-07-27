@@ -7,15 +7,26 @@
 | Dimension | What to Check | Score |
 |---|---|---:|
 | Field and venue fit | สาขา ระดับ thesis และ target venue ชัดและสมเหตุสมผล | 0-5 |
+| Venue/status prognosis discipline | การเลือก venue/category และ readiness verdict อิงหลักฐานที่ตรวจแล้ว แยก qualitative prognosis จากการเดา acceptance/ranking และระบุ live verification ที่ต้องทำ | 0-5 |
+| L1-L4 review discipline | แยกชัดว่า AI ตรวจอะไรได้เอง อะไรต้องใช้ judgment มนุษย์ อะไรต้องรอ external feedback/live verification และหลักฐานไฟล์ใดมี/ไม่มีใน workspace | 0-5 |
+| Topic hierarchy discipline | ระบุปัญหาได้ถึงระดับ document/chapter/section/paragraph/claim/citation เท่าที่หลักฐานรองรับ ไม่วิจารณ์กว้างเกินตำแหน่งจริง | 0-5 |
+| Title-abstract first-pass clarity | ถ้ามี title/abstract ต้องตรวจเป็นด่านแรกเพื่อเข้าใจแกนงาน และแยกคำวิจารณ์ส่วนนี้ออกจาก method/result ที่อาจยังไม่พร้อมใน draft ต้นทาง | 0-5 |
 | Title-abstract alignment | title และ abstract สื่อเรื่องเดียวกัน และ title เหมาะกับ contribution | 0-5 |
 | Problem significance | ปัญหามีน้ำหนัก มี gap มีคุณค่าทางวิชาการหรือปฏิบัติ | 0-5 |
 | Problem statement discipline | ข้อความระบุปัญหาเป็นประโยคบอกเล่าชัด มีสภาพไม่พึงประสงค์หรือยังไม่คลี่คลายหนึ่งเรื่อง ไม่ใช่หัวข้อ คำถาม หรือวิธีที่ชอบ | 0-5 |
+| Problem framing completeness | แยกสภาพที่ควรเป็น สภาพจริง ผลกระทบหากไม่แก้ และ research gap ได้ชัด ไม่ใช่บ่นปัญหาลอย ๆ | 0-5 |
 | Prior attempts and unresolved need | แสดงว่าใครเคยทำอะไร อะไรใช้ได้/ใช้ไม่ได้ ภายใต้เงื่อนไขใด และยังเหลือความจำเป็นของงานนี้ตรงไหน | 0-5 |
 | Literature synthesis | literature review สังเคราะห์งาน ไม่ใช่แค่สรุปทีละ paper | 0-5 |
+| Literature-to-problem discovery | literature review ทำให้เห็นว่า author หา research problem เจอจาก prior work ไม่ใช่แค่เลือก topic/method | 0-5 |
+| Research gap understanding | author เข้าใจ gap ว่าอะไร known แล้ว อะไรยัง unresolved อยู่ในบริบท/เงื่อนไขใด และทำไม gap นั้นสำคัญ | 0-5 |
 | Reference quality | reference สำคัญ ครบ เชื่อถือได้ และเหมาะกับ reviewer ในสาขา | 0-5 |
 | Citation integrity | ไม่มี reference ที่ไม่ถูก cite ไม่มี claim สำคัญที่ไร้ cite และ cite ตรงประเด็น | 0-5 |
+| Reference existence gate | cited key ทุกตัวมีอยู่จริงใน BibTeX/reference list และไม่มี BibTeX entry ที่ดูแต่งขึ้นหรือ trace ไม่ได้จากหลักฐานที่ให้มา | 0-5 |
+| Reference source coverage | scholarly reference แต่ละรายการมี PDF ในมือหรือ official source fallback ที่ระบุชัด พร้อมรายการ missing PDFs | 0-5 |
+| BibTeX completeness | BibTeX มี field สำคัญครบตามประเภท entry และ metadata/abstract trace ได้จาก PDF, reference list, หรือ official page | 0-5 |
 | Directness of literature | แยก direct prior work, cross-domain support, foundational support, และ venue anchor ชัด | 0-5 |
 | Objective alignment | objectives/RQs มาจากปัญหา และไม่มี objective ที่ลอยจาก gap | 0-5 |
+| Objective-methodology verb alignment | คำกริยาใน objective สอดคล้องกับวิธีวิจัยและหลักฐานที่วิธีนั้นผลิตได้ เช่น quant/qual/design/R&D/mixed method | 0-5 |
 | Alternatives and selection rationale | ระบุทางเลือกที่สมเหตุสมผลและอธิบายเหตุผลการเลือกวิธี ไม่ล็อกคำตอบไว้ตั้งแต่ problem statement | 0-5 |
 | Method justification | วิธีแก้ปัญหา make sense และเทียบกับทางเลือก/วิธีนิยมใน field แล้ว | 0-5 |
 | Baseline and alternatives | มี baseline หรือ alternative methods ที่ reviewer คาดหวัง | 0-5 |
@@ -24,6 +35,7 @@
 | Reproducible evidence | มี dataset/testbed, raw results, metric definitions, scripts, และ error cases เท่าที่จำเป็น | 0-5 |
 | Traceability | problem-objective-method-result-contribution ต่อกันครบ | 0-5 |
 | Output/outcome discipline | output แสดงว่าปัญหาถูกแก้ตาม objective และ outcome ถูกแยกจาก output พร้อมหลักฐานการวัดก่อนถูก claim | 0-5 |
+| Academic/practical contribution discipline | แยก contribution ด้านวิชาการกับด้านปฏิบัติ/นโยบาย และไม่ claim outcome ปลายน้ำโดยไม่มีหลักฐาน | 0-5 |
 | By-product and side-effect awareness | ระบุผลพลอยได้ ผลไม่ตั้งใจ ต้นทุน ภาระ หรือ trade-off ที่กระทบคุณค่าและขอบเขตของข้อสรุป | 0-5 |
 | Problem survival | ปัญหายังมีอยู่จริง สำคัญ ยังไม่ถูกแก้พอแล้ว และ output ที่เสนอพิสูจน์ได้ว่าปัญหาลดลง | 0-5 |
 | Mandatory gates | correctness, safety, security, ethics/legal หรือเกณฑ์ต้องผ่านอื่น ๆ ไม่ถูกกลบด้วยคะแนนเฉลี่ย/optimization metric | 0-5 |
@@ -72,7 +84,13 @@
 - งานเกี่ยวข้องกับคนหรือข้อมูลส่วนบุคคลแต่ไม่กล่าวถึง IRB/ethics approval/exemption, consent, anonymization หรือ risk management
 - ใช้ข้อมูลที่มี license, copyright, Terms of Service, confidentiality, NDA หรือข้อกฎหมายเฉพาะ แต่ไม่ระบุ permission/compliance
 - literature review ไม่แสดง gap
+- literature review ไม่พาไปสู่ research problem ที่ตรวจได้ เป็นเพียงการเล่า topic หรือวิธีที่อยากใช้
+- author อธิบาย research gap แบบ assert เอง ไม่ได้ derive จาก prior work
 - reference คุณภาพต่ำหรือไม่ตรง field
+- cited key ไม่มีอยู่จริงใน BibTeX/reference list
+- BibTeX มีรายการที่ trace กลับไปยัง PDF/reference list/official page ไม่ได้
+- scholarly reference สำคัญไม่มี PDF ในมือ และไม่มี official source fallback ที่ระบุชัด
+- BibTeX ขาด metadata หลักจนตรวจ source, DOI, venue, year หรือ abstract ไม่ได้
 - citation หลักรองรับ claim ไม่ได้
 - ใช้ reference ข้าม domain โดยไม่ qualify
 - ใช้ LLM สร้าง claim/citation/venue metric โดยไม่ตรวจแหล่งจริง

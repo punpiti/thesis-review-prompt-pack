@@ -11,6 +11,76 @@ Use this skill when the user asks to review, evaluate, audit, or continue review
 
 Create review notes before editing source files. Never rewrite the thesis/manuscript directly unless the user explicitly requests a revision pass after review notes exist.
 
+## Version / Update Safety
+
+When working in an existing workspace, check `prompt_pack/VERSION.md` if present.
+Do not assume older workspaces can be overwritten safely.
+
+- never overwrite thesis/manuscript files, `04_review_notes/`,
+  `00_review_instructions/`, or user-edited workspace instructions without
+  explicit instruction
+- prefer replacing only `prompt_pack/` and preserving old versions as
+  `prompt_pack_backup_<timestamp>`
+- compare old/new `VERSION.md` and explain whether the update matters for the
+  user's current task
+- if new AGENTS/CLAUDE workflow would help, propose a patch instead of silently
+  replacing workspace files
+
+## Related Reference/BibTeX Skill
+
+Reference work is its own skill-level workflow. If the user asks specifically
+to check references, create BibTeX, complete BibTeX metadata, analyze a
+reference set from BibTeX, or audit citation use, use the companion
+`thesis-reference-bibtex` skill if available. If that standalone skill is not
+available in the current agent, follow `references/reference-audit.md` from this
+skill.
+
+Do not force a full thesis review before doing reference/BibTeX work.
+
+## Focused Review Skills
+
+This pack treats major review areas as separate skills. Use the focused skill
+when the user asks for that section, or when the overview review determines the
+section is mature enough:
+
+- `thesis-overview-review`: overall routing/readiness view; decides which focused skills are applicable.
+- `research-workflow-router`: broad research lifecycle router when the request spans multiple stages or is unclear.
+- `thesis-title-abstract-outcome`: title, abstract, expected output/outcome, contribution snapshot.
+- `thesis-proposal-readiness`: early research proposal, topic proposal, concept note, proposal-stage alignment and missing inputs.
+- `research-question-hypothesis`: RQ refinement, hypothesis generation, variables, testability, scope options.
+- `thesis-introduction-review`: introduction, problem statement, motivation, scope, objectives/RQs.
+- `thesis-literature-review`: literature review, research problem discovery, research gap understanding.
+- `systematic-review-protocol`: formal SLR/scoping-review protocol, search strategy, screening/extraction plan.
+- `thesis-experiment-design`: method/evaluation plan, baselines, metrics, genuine failure, reproducibility.
+- `research-data-analysis-interpretation`: statistical analysis plan, result interpretation, visualization, robustness, evidence-to-claim alignment.
+- `research-manuscript-revision-submission`: manuscript self-review, submission package, reviewer response.
+- `research-collaboration-productivity`: advisor/collaboration communication, meeting prep, action tracking.
+- `latex-document-production`: LaTeX install/build, venue templates, Thai/English fonts, glyph/math issues, tables, and final PDF layout QA.
+- `thesis-reference-bibtex`: reference audit, BibTeX creation/analysis, citation-use audit.
+- `thesis-venue-status-prognosis`: venue/category selection, readiness verdict, and qualitative end-of-review prognosis.
+
+Do not rush to review a section that is not drafted or not mature enough. Mark
+it `not ready for this skill` and list the minimum missing inputs.
+
+## L1-L4 Review Model
+
+- L1 = agentic execution from supplied files: inventory, section map, review notes, reference audit, PDF extraction notes, and action checklist.
+- L2 = human academic judgment: advisor/student decisions about scope, positioning, target venue, ethical judgment, and which fixes to make.
+- L3 = external evidence/feedback: committee/reviewer input, student/user/expert validation, experiment results, surveys/interviews, venue instructions, or live metadata verification.
+- L4 = local evidence/resource layer: manuscript files, BibTeX, PDFs in hand, official pages, results, scripts/logs, and machine-specific paths actually available in the workspace.
+
+Do not treat L1 review output as proof that L2/L3 is resolved. Missing L4 evidence must be recorded as missing input.
+
+## Topic Hierarchy
+
+Review at the smallest defensible level:
+
+```text
+document -> chapter/section -> subsection/paragraph -> claim/evidence -> citation/BibTeX/PDF
+```
+
+For every blocking issue, cite the most specific location available.
+
 ## Expected Workspace
 
 ```text
@@ -63,6 +133,14 @@ Use only workspace evidence and mark unavailable facts as `missing input`.
 
 When the user says `init workspace จากไฟล์รวม`, organize files from `00_inbox/` first. Do not review yet.
 
+When the user asks only for reference/BibTeX work, run the reference workflow
+instead of the full thesis review workflow:
+
+- `ตรวจ ref`, `ตรวจ reference`, `ตรวจ bibliography` -> create/update `04_review_notes/02_reference_audit.md`
+- `สร้าง BibTeX` -> create/update `02_references/bib/references.bib` from supplied PDFs/official pages only
+- `วิเคราะห์ ref จาก BibTeX` -> cluster and assess the reference set from supplied BibTeX
+- `ตรวจ citation` -> compare manuscript claims/cited keys against BibTeX and source PDFs
+
 When the user says `เตรียม instruction จากงานปัจจุบัน`, create/update only:
 
 - `00_review_instructions/review_profile.md`
@@ -78,7 +156,8 @@ When the user says `ประเมิน`:
 2. Load or create `00_review_instructions/` files first.
 3. Read existing `04_review_notes/99_review_state.md` if present.
 4. Continue unfinished items only, unless the user says `ประเมินใหม่ทั้งหมด`.
-5. Create or update:
+5. Use `thesis-overview-review` if available to decide which focused skills are applicable. Always check title/abstract/expected outcome first if present. Skip sections that are not ready rather than producing speculative criticism. Use `thesis-venue-status-prognosis` near the end only when there is enough evidence for a qualitative readiness/venue judgment.
+6. Create or update:
    - `04_review_notes/00_inventory.md`
    - `04_review_notes/01_full_review.md`
    - `04_review_notes/02_reference_audit.md`
@@ -101,6 +180,10 @@ When the user says `ประเมินเชิงลึก`:
 - If evidence is missing, write `missing input` and explain why it matters.
 - Distinguish manuscript evidence, reference evidence, and reviewer interpretation.
 - When scanning reference PDFs, save one Markdown extraction note per PDF in `02_references/extracted_md/` before using extracted evidence to fill BibTeX metadata or `abstract` fields.
+- Every cited key must exist in the BibTeX/reference list.
+- Every BibTeX/reference-list entry should be cited or explicitly marked unused/background.
+- Every scholarly reference should have a source PDF in `02_references/pdf/` whenever possible. If no PDF is available, record the missing PDF and any official-source fallback in `04_review_notes/02_reference_audit.md`.
+- BibTeX metadata must be traceable to supplied PDFs, supplied reference lists, or supplied official pages. Mark unsupported metadata as `NEEDS_VERIFICATION`.
 
 ## What To Load When Needed
 
@@ -111,12 +194,16 @@ When the user says `ประเมินเชิงลึก`:
 ## Review Order
 
 1. Inventory and missing inputs.
-2. Research logic and traceability.
-3. Literature and references.
-4. Method, data, baseline, evaluation, and feasibility.
-5. Ethics/IRB/legal and LLM responsibility.
-6. Writing/document hygiene, tables, and figures.
-7. Action checklist and next-state note.
+2. Overview maturity gate: decide which focused skills can be run from current evidence.
+3. Title and abstract first pass, if either exists. Use them to understand the intended problem, field, method, evidence, and contribution, but keep title/abstract criticism separate from deeper method/result criticism.
+4. Proposal readiness review, if the work is a proposal/concept note or lacks mature thesis sections.
+5. Introduction review, if the introduction exists.
+6. Literature review, if there is enough related-work text to judge problem/gap discovery.
+7. Experiment design review, only if method/data/baseline/metric/evaluation evidence exists.
+8. Reference/BibTeX audit, if references, BibTeX, PDFs, or citation text exist.
+9. Venue/status/prognosis review, only if field, contribution, evidence state, and target venue/category information are sufficient.
+10. Cross-section coherence and action checklist.
+11. Next-state note, including which focused skills are done, partial, skipped, or not ready.
 
 ## Output Style
 

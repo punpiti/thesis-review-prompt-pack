@@ -1,11 +1,28 @@
 # Version
 
-Current version: `v1.3`
+Current version: `v1.4`
 
-Release label: Thesis Review Prompt Pack: Student Edition v1.3
+Release label: Thesis Review Prompt Pack: Student Edition v1.4
 
 ## Unreleased
 
+- No unreleased changes.
+
+## v1.4
+
+- Added L1-L4 thesis review framing from Agent Project Kit/computing-environment: L1 agentic review work, L2 human academic judgment, L3 external feedback/live verification, and L4 local evidence/resource availability.
+- Added topic hierarchy guidance so review notes can locate issues at document, chapter/section, paragraph, claim/evidence, and citation/BibTeX/PDF levels.
+- Strengthened the reference integrity gate: every cited key must exist, BibTeX entries must be traceable and complete, scholarly references should have source PDFs in hand, and missing PDFs or official-source fallbacks must be listed.
+- Added a standalone `thesis-reference-bibtex` skill for reference audit, BibTeX creation from supplied PDFs/official sources, reference-set analysis from BibTeX, and citation-use audit.
+- Clarified review order: title and abstract should be reviewed first when present, even for early drafts, while keeping that critique separate from deeper method/result sections.
+- Strengthened literature-review checks around whether the author found a research problem and understands the research gap from prior work.
+- Added standalone focused review skills for overview orchestration, title/abstract/expected outcome, introduction, literature review, and experiment design.
+- Clarified that overview review should choose applicable focused skills by draft maturity and skip sections that are not ready instead of forcing a full review.
+- Added a standalone venue/status/prognosis skill for venue/category selection, readiness verdicts, and qualitative end-of-review prognosis with live-verification guards for venue metrics/rankings.
+- Added a proposal-readiness skill and adapted proposal heuristics into review checks: title directions, introduction funnel, ideal/reality/consequence/gap problem framing, objective-methodology verb alignment, and academic/practical contribution separation.
+- Added a research workflow router and additional lifecycle skills adapted from broad scientist-prompt patterns: RQ/hypothesis refinement, data analysis/interpretation, manuscript revision/submission, systematic-review protocol, and collaboration/productivity.
+- Added a LaTeX document production skill for install/build diagnosis, venue templates, Thai/English font setup, missing glyph/math-symbol issues, table autofit, and final PDF layout QA.
+- Added safer update behavior to installers: existing workspaces keep existing template files by default, old `prompt_pack/` is backed up, and agents are instructed to check prompt-pack versions before recommending workflow updates.
 - Added an English explanation page for the full thesis review prompt concept: `01_full_thesis_review_prompt_explained_en.md` and `01_full_thesis_review_prompt_explained_en.html`.
 - Added a separate deep doctoral review prompt for `ประเมินเชิงลึก`, covering source triangulation, recent literature/consensus gaps, counter-arguments, claim credibility, data/result interpretation, decisive tests, and a decision brief.
 - Added `04_deep_review.md` template and workspace-agent instructions for the deep review pass.

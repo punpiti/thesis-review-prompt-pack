@@ -35,26 +35,60 @@ Review rules:
 10. Separate output from outcome. Output is direct evidence that the defined problem was solved according to the objective. Outcome is what follows after the problem is solved and must be measured before it is claimed.
 11. At the end, record what was reviewed, what remains unfinished, and the suggested next prompt for continuing later.
 12. Write the final review in Thai. Keep technical terms, paper titles, venue names, dataset names, and metric names in English where appropriate.
+13. Use the L1-L4 review model:
+   - L1: review work the AI can execute from supplied files.
+   - L2: academic/context decisions that must remain with the student, advisor, or committee.
+   - L3: external feedback, live verification, field consensus, reviewer input, user/expert validation, or experiment data not present in the supplied files.
+   - L4: local evidence/resources actually available in the workspace, especially manuscript files, BibTeX, PDFs, official pages, results, scripts, logs, and machine-specific paths.
+14. Use this topic hierarchy when locating issues: document -> chapter/section -> subsection/paragraph -> claim/evidence -> citation/BibTeX/PDF.
+15. Treat reference integrity as a gate: every cited key must exist in the bibliography, every bibliography entry should be cited or explicitly marked unused/background, every scholarly reference should have a supplied PDF whenever possible, and missing PDFs must be listed as missing input.
+16. If a title or abstract exists, review it before other content as a first-pass understanding check. Keep title/abstract criticism separate from later method, result, and contribution criticism, especially for early drafts where the rest of the study may still be incomplete.
+17. Use section maturity gates. If a section is absent or too immature, mark it `not ready for this skill` and list the minimum missing inputs instead of forcing a full critique.
+18. Treat overview review as orchestration: identify which focused review skills are applicable now, summarize the cross-section picture, and avoid repeating detailed criticism already covered by focused skill notes.
 
 Tasks:
 
-1. Field, level, and venue calibration
+0. Review loop and topic hierarchy calibration
+- State what can be reviewed at L1 from the supplied files.
+- State which decisions require L2 human academic judgment.
+- State which claims/checks require L3 external feedback or live verification.
+- State which L4 local evidence files are present or missing: manuscript text, BibTeX/reference list, reference PDFs, official pages, results, scripts/logs.
+- Build a short topic hierarchy map from document level down to claim/citation level where possible.
+- For the rest of the review, report each blocking issue at the smallest defensible level available.
+- Create a section maturity gate:
+  Title/abstract/expected outcome | Introduction | Literature review | Experiment design | References/BibTeX | Venue/status/prognosis.
+  For each, mark available / partial / missing, ready / not ready, and the focused skill to run.
+
+0.1 Focused skill routing
+- Title/abstract/expected outcome -> use title/abstract/outcome criteria if title, abstract, expected result, or expected outcome exists.
+- Introduction -> review only if the introduction/problem/objective text exists.
+- Literature review -> review only if there is enough related-work text to judge research problem discovery and research gap understanding.
+- Experiment design -> review only if method, data/testbed, baseline/comparison, metric, or evaluation plan exists.
+- References/BibTeX -> review if references, BibTeX, PDFs, or citation text exists.
+- Venue/status/prognosis -> review near the end only if there is enough evidence about field, contribution, evidence state, and target venue/category. Do not invent venue ranking, metrics, or acceptance likelihood.
+- If a focused area is not ready, write what is missing and do not produce a speculative section review.
+
+1. Title and abstract first pass, if available
+- If a title or abstract exists, review it first to infer the manuscript's intended problem, field, method, evidence, and contribution.
+- Check whether the title and abstract point in the same direction.
+- Judge whether the title is specific, accurate, and suitable for the current stage and likely venue.
+- Check whether the abstract contains problem, gap, method, data, result, and contribution.
+- For early drafts, distinguish between "not yet clear because the study is early" and "logically misleading or unsupported."
+- Flag any placeholder result, dataset, baseline, metric, or value.
+- Flag claims such as "robust", "verified", "significant", "state-of-the-art", or "solves" unless the manuscript provides evidence.
+- Record title/abstract issues separately so they do not hide or duplicate deeper literature, method, and result problems.
+
+2. Field, level, and venue calibration
 - Identify the field/subfield of the work.
 - Assess whether the expected contribution matches the degree level.
 - Assess whether the work is currently positioned for the target venue.
 - Identify whether the manuscript cites recent papers from the target venue as real scope anchors, not decorative citations.
 - Suggest 2-5 alternative venue categories or venues if appropriate, but mark clearly if venue metrics need live verification.
 
-2. Title and abstract alignment
-- Check whether the title and abstract point in the same direction.
-- Judge whether the title is specific, accurate, and suitable for the venue.
-- Check whether the abstract contains problem, gap, method, data, result, and contribution.
-- Flag any placeholder result, dataset, baseline, metric, or value.
-- Flag claims such as "robust", "verified", "significant", "state-of-the-art", or "solves" unless the manuscript provides evidence.
-
 3. Problem significance
 - Identify the stated research problem.
 - Check whether the problem statement is a clear declarative statement of one central undesirable, unresolved, uncertain, missing, or insufficient condition.
+- Check whether the problem framing separates expected/ideal condition, current reality, consequence if unresolved, and the research gap.
 - Flag problem statements that are only a topic, research area, preferred method, system deliverable, or question.
 - Judge whether the problem has enough academic weight.
 - Judge whether the problem has practical or scientific value.
@@ -70,8 +104,15 @@ Tasks:
 
 4. Literature review quality
 - Assess whether the literature review establishes the problem, gap, and research positioning.
+- Judge whether the author actually found a research problem from the literature, or merely selected a topic/method.
+- Judge whether the author understands the research gap: what is known, what remains unresolved, under which context/conditions, and why that unresolved part matters.
+- Check whether the literature review explains prior attempts: what works, what does not work, where, for whom, and under what constraints.
+- Check whether the gap is derived from evidence across papers rather than asserted in the author's own words without support.
+- Identify whether the gap is too broad, too generic, already solved, or not connected to the stated objectives.
 - Identify references in the bibliography that are not cited.
 - Identify cited keys that are missing from the bibliography.
+- Identify bibliography entries with no supplied PDF and mark whether an official page is available as fallback evidence.
+- Identify BibTeX/reference-list entries whose title, author, year, venue, DOI, URL, pages/article number, or abstract cannot be traced to supplied evidence.
 - Identify important claims, datasets, methods, definitions, or background statements that need citations but do not have them.
 - Identify citations used too generally, inaccurately, or decoratively.
 - Check whether the literature review synthesizes literature or only summarizes papers one by one.
@@ -89,6 +130,7 @@ Tasks:
 6. Objectives and problem alignment
 - List every objective or research question.
 - Map each objective/RQ to the problem/gap it claims to solve.
+- Check whether objective verbs match the methodology and evidence type: quantitative, qualitative, design/R&D, mixed method, or another field-specific approach.
 - Identify objectives that do not come from the problem.
 - Identify problems that are stated but not addressed by any objective.
 - Identify objectives that are activities or deliverables rather than research objectives.
@@ -129,6 +171,7 @@ Tasks:
 
 10. Data, feasibility, and narrowest defensible version
 - Assess whether the data needed for the thesis exists, can be obtained ethically, and is clean enough.
+- Check whether proposal-stage inputs are explicit enough: population/context, inclusion/exclusion criteria when relevant, instruments/data sources, procedure, analysis plan, and ethics/data-permission risks.
 - Identify privacy, permission, labeling, ground-truth, and data-cleaning risks.
 - Identify the narrowest version of the thesis that can still be defended academically.
 - Identify fallback formulations if the main data/evaluation plan fails.
@@ -190,6 +233,8 @@ Tasks:
 17. Reviewer-style verdict
 Provide:
 - Overall readiness: not ready / early promising / thesis-draft ready / defense-review ready / manuscript-ready / venue-ready
+- Qualitative prognosis: plausible next state if blockers are fixed, what remains unlikely without new evidence, and what needs human judgment or live verification
+- Venue/category fit: only from supplied evidence; mark venue metrics/rankings/scope claims as `needs live verification` when not supplied
 - Top 5 blocking issues
 - Top 5 high-impact fixes
 - Minor issues
@@ -198,6 +243,8 @@ Provide:
 
 Output format:
 
+## L1-L4 Review Gate and Topic Hierarchy
+## Section Maturity Gate and Focused Skill Routing
 ## Executive Summary
 ## Required Missing Inputs, if any
 ## Field-Level-Venue Calibration
@@ -206,6 +253,7 @@ Output format:
 ## Prior Evidence, Unresolved Need, and Alternatives
 ## Research Logic Stress Tests
 ## Literature Review and Reference Quality
+## Reference Integrity Gate
 ## Objective-Problem-Result Traceability
 ## Output, Outcome, By-Product, and Claim Discipline
 ## Method and Alternative Approaches

@@ -9,6 +9,8 @@ Use this when creating `04_review_notes/02_reference_audit.md` or building `02_r
 - If metadata is missing, mark `NEEDS_VERIFICATION`.
 - Include `abstract` only when visible in a supplied PDF or official source.
 - When reading a supplied PDF, save a Markdown trace note in `02_references/extracted_md/` before using it to complete BibTeX metadata or an `abstract` field.
+- Treat reference integrity as a gate: every cited key must exist in BibTeX/reference list, and every BibTeX/reference-list entry should be cited or explicitly marked unused/background.
+- Treat PDF_IN_HAND as the expected source status for scholarly references. If a PDF is missing, list it as a required source request and record any supplied official page as fallback evidence.
 
 ## PDF Extraction Notes
 
@@ -32,6 +34,7 @@ Check:
 
 - required fields by entry type
 - missing `abstract`
+- source coverage: PDF in hand, official page fallback, extraction note if PDF was scanned, or missing source
 - suspicious DOI, URL, venue, year, or publication type
 - duplicate entries
 - inconsistent citation keys
@@ -49,6 +52,7 @@ For each entry:
 - add `abstract` only if available
 - mark uncertain metadata as `NEEDS_VERIFICATION`
 - list missing PDFs or official pages needed
+- create a source coverage table with `PDF_IN_HAND`, `OFFICIAL_PAGE_ONLY`, `MISSING_SOURCE`, or `NEEDS_VERIFICATION`
 
 ## Citation Use Audit
 
@@ -56,6 +60,7 @@ Compare references to manuscript text:
 
 - uncited bibliography entries
 - cited keys missing from bibliography
+- bibliography entries with no PDF in hand or no official fallback
 - claims needing citations but lacking citations
 - citations that do not support the claim
 - decorative citations
@@ -68,6 +73,9 @@ Compare references to manuscript text:
 Include:
 
 - summary judgment of reference quality
+- citation key integrity gate
+- PDF and official source coverage table
+- BibTeX completeness table
 - reference clusters by research role
 - high-risk metadata issues
 - citation support problems

@@ -1,6 +1,6 @@
-# Thesis Review Prompt Pack: Student Edition v1.3
+# Thesis Review Prompt Pack: Student Edition v1.4
 
-Current version: `v1.3`
+Current version: `v1.4`
 
 ชุด prompt นี้ทำไว้สำหรับให้นิสิตใช้ตรวจวิทยานิพนธ์ บทความจากวิทยานิพนธ์ หรือ manuscript ของตนเองและของเพื่อนอย่างเป็นระบบ ก่อนส่งให้อาจารย์หรือกรรมการตรวจรอบถัดไป
 
@@ -88,6 +88,21 @@ Current version: `v1.3`
 - [CLAUDE.md](CLAUDE.md) - instruction คู่กันสำหรับ Claude Code
 - [workspace_template/](workspace_template/) - โครง workspace พร้อม `AGENTS.md`, `CLAUDE.md` และ README ในแต่ละโฟลเดอร์สำหรับให้นิสิตวางไฟล์งาน
 - [codex_skill/SKILL.md](codex_skill/SKILL.md) - skill แบบย่อสำหรับ Codex หรือ agent ที่รองรับ skill เพื่อลดการ paste prompt ยาว
+- [codex_research_workflow_router_skill/SKILL.md](codex_research_workflow_router_skill/SKILL.md) - router สำหรับเลือก skill ตามช่วงของ research lifecycle
+- [codex_overview_review_skill/SKILL.md](codex_overview_review_skill/SKILL.md) - skill ภาพรวมสำหรับตัดสินว่างานถึงขั้นไหน และควรเรียก skill ย่อยใด
+- [codex_title_abstract_outcome_skill/SKILL.md](codex_title_abstract_outcome_skill/SKILL.md) - skill สำหรับ title, abstract, expected output/outcome และ contribution snapshot
+- [codex_proposal_readiness_skill/SKILL.md](codex_proposal_readiness_skill/SKILL.md) - skill สำหรับตรวจโครงร่างวิจัยระยะต้น โดยดู title direction, introduction funnel, problem framing, RQ/objective/methodology fit และ expected contribution
+- [codex_research_question_hypothesis_skill/SKILL.md](codex_research_question_hypothesis_skill/SKILL.md) - skill สำหรับ refine RQ/hypothesis, variables, conceptual model และ testability
+- [codex_introduction_review_skill/SKILL.md](codex_introduction_review_skill/SKILL.md) - skill สำหรับ introduction, problem statement, objective/RQ และ scope
+- [codex_literature_review_skill/SKILL.md](codex_literature_review_skill/SKILL.md) - skill สำหรับ literature review, research problem discovery และ research gap understanding
+- [codex_systematic_review_protocol_skill/SKILL.md](codex_systematic_review_protocol_skill/SKILL.md) - skill สำหรับ systematic/scoping review protocol, search strategy, screening/extraction และ synthesis plan
+- [codex_experiment_design_skill/SKILL.md](codex_experiment_design_skill/SKILL.md) - skill สำหรับ experiment/evaluation design, baseline, metric และ genuine failure
+- [codex_data_analysis_interpretation_skill/SKILL.md](codex_data_analysis_interpretation_skill/SKILL.md) - skill สำหรับ statistical analysis plan, result interpretation, visualization และ robustness checks
+- [codex_manuscript_revision_submission_skill/SKILL.md](codex_manuscript_revision_submission_skill/SKILL.md) - skill สำหรับ manuscript self-review, submission package และ reviewer response
+- [codex_collaboration_productivity_skill/SKILL.md](codex_collaboration_productivity_skill/SKILL.md) - skill สำหรับ advisor meeting, collaboration communication, agenda และ action tracking
+- [codex_latex_document_production_skill/SKILL.md](codex_latex_document_production_skill/SKILL.md) - skill สำหรับติดตั้ง/ตรวจ LaTeX, เลือก venue template, ตั้งค่า TH Sarabun New/ฟอนต์, แก้กล่องสี่เหลี่ยม, ตาราง autofit และ final PDF QA
+- [codex_venue_status_prognosis_skill/SKILL.md](codex_venue_status_prognosis_skill/SKILL.md) - skill สำหรับเลือก venue/category, วิจารณ์สถานะ readiness และพยากรณ์ความเป็นไปได้เชิงคุณภาพตอนจบ
+- [codex_reference_bibtex_skill/SKILL.md](codex_reference_bibtex_skill/SKILL.md) - skill แยกสำหรับตรวจ ref, สร้าง BibTeX, วิเคราะห์ reference set จาก BibTeX และตรวจ citation use
 - [STUDENT_HANDOUT.md](STUDENT_HANDOUT.md) - ข้อความสั้นสำหรับส่งให้นิสิตในแชต อีเมล หรือ LMS
 - [LICENSE.md](LICENSE.md) - เงื่อนไขการนำไปใช้และเผยแพร่ต่อ
 - [VERSION.md](VERSION.md) - เลขเวอร์ชันและสรุปการเปลี่ยนแปลง
@@ -116,6 +131,21 @@ PowerShell -ExecutionPolicy Bypass -File ".\install-thesis-review.ps1" -Project 
 
 installer ทำแค่ดาวน์โหลดชุด prompt, แตก zip, และสร้าง workspace จาก template เท่านั้น หลังจากนั้นนิสิตยังต้องวางไฟล์เอง อ่าน review notes เอง และคิด prompt ต่อเองจากปัญหาที่พบ
 
+ถ้ารัน installer ทับ workspace เดิม รุ่นใหม่จะใช้ safe update เป็นค่าเริ่มต้น:
+
+- ไม่ทับไฟล์ workspace template ที่มีอยู่แล้ว
+- backup `prompt_pack/` เดิมเป็น `prompt_pack_backup_<timestamp>`
+- ติดตั้ง prompt pack รุ่นใหม่ใน `prompt_pack/`
+- ไม่ควรทับ thesis source, review notes หรือ instruction ที่มีงานค้าง
+
+ถ้าต้องการ refresh template files จริง ๆ ให้ตั้ง `THESIS_REVIEW_INSTALL_MODE=overwrite` แต่ควรทำเฉพาะเมื่อ backup แล้ว
+
+หลังอัปเดต workspace เดิม ให้เปิดใน Codex / Claude Code แล้วสั่ง:
+
+```text
+เช็คเวอร์ชัน prompt_pack ว่าควรอัปเดต workflow หรือ AGENTS/CLAUDE ใน workspace ไหม โดยห้ามทับ review notes หรือไฟล์ thesis
+```
+
 จากนั้นให้ใส่ไฟล์รวมทั้งหมดใน `my_thesis_review/00_inbox/` แล้วสั่ง `init workspace จากไฟล์รวม`
 
 ใส่ได้ทั้ง thesis/manuscript, LaTeX, Word, PDF, BibTeX, reference PDF, รูป, ตาราง, ผลทดลอง, script, log, metric และ baseline
@@ -137,11 +167,26 @@ workflow นี้ให้ AI เริ่มจาก `00_inbox/` เพื่
 - ห้ามให้ AI แต่ง citation, DOI, venue metric, paper title, result หรือ ranking เอง
 - ถ้าไม่แน่ใจ ให้เขียนว่า `ยังไม่ได้ตรวจสอบ` แทนการเดา
 - citation ทุกตัวควรตรวจจาก paper หรือหน้าเว็บ/ข้อมูลจากแหล่งทางการ
+- cited key ทุกตัวใน manuscript ต้องมีอยู่จริงใน BibTeX/reference list
+- BibTeX/reference-list entry ทุกตัวควรถูก cite หรือถูก mark ชัดว่า unused/background
+- scholarly reference ทุกรายการควรมี PDF ต้นฉบับใน `02_references/pdf/`; ถ้าไม่มี PDF ให้บันทึกเป็น missing input และระบุ official page/DOI/publisher page ที่ใช้เป็น fallback
+- BibTeX ที่ถือว่าพร้อมควรมี author, title, year, venue, DOI หรือ URL, pages/article number เมื่อมี, publisher เมื่อเกี่ยวข้อง, entry type ที่ถูกต้อง, และ abstract เมื่อมีหลักฐานจาก PDF หรือ official source
 - ถ้าใช้ Codex หรือ Claude Code อ่าน PDF reference ให้ AI เก็บบันทึกผลอ่านเป็น Markdown ใน `02_references/extracted_md/` หนึ่งไฟล์ต่อหนึ่ง PDF ก่อนนำไปเติม `abstract` หรือ metadata ใน BibTeX
 - claim เชิงผลทดลองต้องมี dataset, baseline, metric, raw result และวิธีคำนวณรองรับ
+- ถ้ามี title หรือ abstract ให้ตรวจก่อนเสมอเพื่อจับแกนงาน แต่ให้แยกคำวิจารณ์ title/abstract ออกจากการตัดสิน method/result/contribution ที่อาจยังไม่พร้อมในงานระยะต้น
+- งาน proposal ระยะต้นให้ตรวจเป็น readiness ไม่ใช่รีบเขียนแทน: ดู title direction, introduction funnel จากบริบทกว้างสู่บริบทเฉพาะ, problem framing ที่แยก ideal/reality/consequence/gap, RQ-objective-methodology alignment และ contribution แยก academic/practical
+- literature review ต้องตรวจว่าเขาหา research problem เจอจาก prior work หรือไม่ และเข้าใจ research gap แค่ไหน ไม่ใช่แค่สรุป paper หรือรวบ citation
 - ก่อนแก้ภาษา ให้ตรวจว่า problem ยังรอด, งานมีโอกาส fail ได้จริง, mandatory gates ผ่านก่อน optimization, metric วัด construct ที่ claim จริง และ solution ไม่สร้างปัญหาใหม่ที่ยอมรับไม่ได้
 - แยก `output` ออกจาก `outcome`: output คือหลักฐานตรงว่าปัญหาถูกแก้ตาม objective; outcome คือสิ่งที่เกิดตามมาหลังปัญหาถูกแก้ และห้าม claim ว่าเกิดขึ้นจริงถ้าไม่ได้วัด
 - contribution ควรไล่รอยกลับไปได้ถึง prior attempts, unresolved need, alternatives/selection rationale, method, evidence, output, outcome/by-product และ limitation
+- ใช้ L1-L4 ในการแยกสถานะ review: L1 คือสิ่งที่ AI ตรวจจากไฟล์ได้, L2 คือ judgment ของนิสิต/อาจารย์/กรรมการ, L3 คือ feedback หรือข้อมูลภายนอกที่ยังต้องเก็บ/verify, และ L4 คือหลักฐานไฟล์จริงใน workspace เช่น manuscript, BibTeX, PDFs, official pages, results, scripts/logs
+- ระบุปัญหาตามระดับหัวข้อที่เล็กที่สุดที่หลักฐานรองรับ: `document -> chapter/section -> subsection/paragraph -> claim/evidence -> citation/BibTeX/PDF`
+- งาน reference/BibTeX ควรเป็น skill แยกได้เอง: `ตรวจ ref`, `สร้าง BibTeX`, `วิเคราะห์ ref จาก BibTeX`, และ `ตรวจ citation use` ไม่จำเป็นต้องรัน full thesis review ก่อน
+- หัวข้อหลักควรเป็น skill แยก: title/abstract/expected outcome, introduction, literature review, experiment design, reference/BibTeX และมี overview skill อีกตัวเพื่อดูภาพรวมและเลือกตรวจเฉพาะส่วนที่พร้อม
+- ถ้าโจทย์กว้างหรือไม่รู้ควรใช้ skill ไหน ให้ใช้ research workflow router ก่อน เพื่อเลือกเฉพาะ skill ที่เหมาะกับช่วงงาน เช่น RQ/hypothesis, SLR protocol, data interpretation, manuscript revision, collaboration หรือ venue/status
+- งาน LaTeX/PDF production ควรเป็น skill แยกจากการประเมินเนื้อหา: ตรวจ engine/package/template ตาม venue, Thai font/TH Sarabun New, กล่องสี่เหลี่ยมในภาษาอังกฤษหรือสัญลักษณ์คณิตศาสตร์, table/column autofit, hanging heading และ hanging line ก่อนเรียก PDF ว่า final
+- การเลือก venue/category และการสรุปสถานะหรือพยากรณ์ความเป็นไปได้เชิงคุณภาพตอนจบควรเป็น skill แยก และต้องอิง evidence ที่ตรวจแล้ว ไม่ใช่เดา acceptance หรือ venue ranking
+- งานยังไม่ถึงหัวข้อไหนไม่ต้องรีบตรวจหัวข้อนั้น ให้ mark ว่า `not ready for this skill` และบอก minimum missing inputs
 - ถ้างานเกี่ยวข้องกับคน ผู้ใช้ ข้อมูลส่วนบุคคล scraping dataset license หรือข้อมูลที่มีข้อบังคับ ต้องตรวจ IRB/ethics/legal compliance ตั้งแต่ต้น
 - ถ้างานใช้ LLM ต้องบอกให้ชัดว่าใช้ทำอะไร และตรวจผลจากแหล่งจริงอย่างไร
 - ตรวจคุณภาพการเขียนด้วย เช่น ใช้ AI แบบ generic หรือไม่ สะกดผิดมากเกินเหตุหรือไม่ ใช้ชื่อย่อเหมาะสมหรือไม่ ปนไทย/อังกฤษเกินจำเป็นหรือไม่ และลำดับการอธิบายทำให้ผู้อ่านต้องไปรู้สิ่งที่อยู่ด้านหลังก่อนหรือไม่

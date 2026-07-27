@@ -27,6 +27,25 @@ The review may not finish in one run. The state file lets the next agent continu
 | Reference audit | done / partial / not started | 04_review_notes/02_reference_audit.md |  |  |
 | Student action checklist | done / partial / not started | 04_review_notes/03_student_action_checklist.md |  |  |
 
+## Focused Skill State
+
+| Focused skill | Status | Evidence/location checked | Output section/file | Not-ready reason / next input |
+|---|---|---|---|---|
+| Overview review | done / partial / skipped / not ready |  | 04_review_notes/01_full_review.md |  |
+| Title/abstract/expected outcome | done / partial / skipped / not ready |  |  |  |
+| Proposal readiness | done / partial / skipped / not ready |  |  |  |
+| RQ/hypothesis | done / partial / skipped / not ready |  |  |  |
+| Introduction review | done / partial / skipped / not ready |  |  |  |
+| Literature review | done / partial / skipped / not ready |  |  |  |
+| Systematic/scoping review protocol | done / partial / skipped / not ready |  |  |  |
+| Experiment design | done / partial / skipped / not ready |  |  |  |
+| Data analysis/interpretation | done / partial / skipped / not ready |  |  |  |
+| Manuscript revision/submission | done / partial / skipped / not ready |  |  |  |
+| Collaboration/productivity | done / partial / skipped / not ready |  |  |  |
+| LaTeX/PDF production | done / partial / skipped / not ready |  |  |  |
+| Reference/BibTeX | done / partial / skipped / not ready |  | 04_review_notes/02_reference_audit.md |  |
+| Venue/status/prognosis | done / partial / skipped / not ready |  | 04_review_notes/01_full_review.md |  |
+
 ## Remaining Work
 
 | Priority | Remaining task | Why still needed | Required input/evidence | Suggested next prompt |

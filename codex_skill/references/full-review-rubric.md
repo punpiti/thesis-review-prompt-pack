@@ -12,10 +12,13 @@ Use this when creating `04_review_notes/01_full_review.md`.
    - alternative venue categories if needed
 
 2. Title and abstract
+   - always review first if present, even when the rest of the draft is early
+   - use as a first-pass understanding check for intended problem, field, method, evidence, and contribution
    - title/abstract alignment
    - problem, gap, method, data, result, contribution
    - placeholder results or metrics
    - overclaim terms without evidence
+   - separate title/abstract criticism from deeper method/result/contribution criticism
 
 3. Problem significance
    - stated research problem
@@ -29,6 +32,10 @@ Use this when creating `04_review_notes/01_full_review.md`.
 4. Literature review
    - synthesis vs paper-by-paper summary
    - problem/gap positioning
+   - whether the author found a research problem from the literature rather than only choosing a topic or method
+   - whether the author understands the research gap: known work, unresolved part, context/conditions, and why it matters
+   - prior attempts: what works, what does not, where, for whom, and under what constraints
+   - whether the gap is evidence-derived rather than asserted without support
    - uncited bibliography entries
    - missing citations for claims
    - decorative or inaccurate citations

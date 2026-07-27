@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Workspace AI Guide | Thesis Review Prompt Pack v1.3</title>
+  <title>Workspace AI Guide | Thesis Review Prompt Pack v1.4</title>
   <style>
     :root { --bg:#f7f8fb; --ink:#1f2933; --muted:#5b6776; --line:#d9dee7; --panel:#fff; --accent:#7c3aed; --danger:#b42318; --radius:8px; font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
     * { box-sizing:border-box; }
@@ -162,7 +162,12 @@ PowerShell -ExecutionPolicy Bypass -File ".\install-thesis-review.ps1" -Project 
             </div>
           </div>
         </div>
-        <p class="small-note">script นี้ทำแค่ดาวน์โหลดชุด prompt, แตก zip, และสร้าง workspace จาก template เท่านั้น หลังจากนั้นนิสิตยังต้องวางไฟล์เองและใช้ review notes เพื่อคิดต่อเอง</p>
+        <p class="small-note">script นี้ทำแค่ดาวน์โหลดชุด prompt, แตก zip, และสร้างหรืออัปเดต workspace จาก template เท่านั้น หลังจากนั้นนิสิตยังต้องวางไฟล์เองและใช้ review notes เพื่อคิดต่อเอง</p>
+        <div class="info-panel">
+          <strong>อัปเดต workspace เดิมได้อย่างปลอดภัย</strong>
+          <p>ถ้ารัน installer ซ้ำกับ workspace ที่มีอยู่แล้ว ค่าเริ่มต้นคือ safe update: ไม่ทับไฟล์ workspace template ที่มีอยู่, backup <code>prompt_pack/</code> เดิมเป็น <code>prompt_pack_backup_&lt;timestamp&gt;</code>, แล้วติดตั้ง prompt pack รุ่นใหม่เข้า <code>prompt_pack/</code></p>
+          <p>ถ้าต้องการ refresh template files จริง ๆ ให้ตั้ง <code>THESIS_REVIEW_INSTALL_MODE=overwrite</code> ก่อนรัน แต่ควรทำเฉพาะเมื่อ backup แล้ว</p>
+        </div>
         <div class="instruction-panel">
           <h4>หลังรัน command แล้ว ให้ใส่ไฟล์งานไว้ที่นี่</h4>
           <div class="path-box">my_thesis_review/00_inbox/</div>

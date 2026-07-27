@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About | Thesis Review Prompt Pack v1.3</title>
+  <title>About | Thesis Review Prompt Pack v1.4</title>
   <style>
     :root { --bg:#f7f8fb; --ink:#1f2933; --muted:#5b6776; --line:#d9dee7; --panel:#fff; --accent:#0f766e; --danger:#b42318; --radius:8px; font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
     * { box-sizing:border-box; }
@@ -47,7 +47,7 @@
   <div class="hero">
     <div class="hero-inner">
       <h1>About</h1>
-      <p>รายละเอียดของระบบ ขอบเขตการใช้ ข้อจำกัด และรายการไฟล์ในชุด prompt pack รุ่น v1.3</p>
+      <p>รายละเอียดของระบบ ขอบเขตการใช้ ข้อจำกัด และรายการไฟล์ในชุด prompt pack รุ่น v1.4</p>
       <p><a href="about-en.html" lang="en">Read this page in English</a></p>
     </div>
   </div>
@@ -126,12 +126,16 @@
         <div class="file-row"><a href="05a_chat_ai_quota_limited_guide.md">05a_chat_ai_quota_limited_guide.md</a><span>คู่มือ Gemini / ChatGPT / Claude สำหรับ quota จำกัด</span></div>
         <div class="file-row"><a href="05b_workspace_ai_codex_claude_code_guide.md">05b_workspace_ai_codex_claude_code_guide.md</a><span>คู่มือ Codex / Claude Code / Antigravity</span></div>
         <div class="file-row"><a href="06_deep_doctoral_review_prompt.md">06_deep_doctoral_review_prompt.md</a><span>prompt เสริมสำหรับคำสั่ง ประเมินเชิงลึก หลังจากมี review notes รอบแรก</span></div>
-        <div class="file-row"><a href="install-thesis-review.sh">install-thesis-review.sh</a><span>installer สำหรับ Linux / macOS ที่ดาวน์โหลด zip และสร้าง workspace จาก template</span></div>
-        <div class="file-row"><a href="install-thesis-review.ps1">install-thesis-review.ps1</a><span>installer สำหรับ Windows PowerShell ที่ดาวน์โหลด zip และสร้าง workspace จาก template</span></div>
+        <div class="file-row"><a href="install-thesis-review.sh">install-thesis-review.sh</a><span>installer สำหรับ Linux / macOS ที่ดาวน์โหลด zip และสร้างหรืออัปเดต workspace จาก template โดย safe update เป็นค่าเริ่มต้น</span></div>
+        <div class="file-row"><a href="install-thesis-review.ps1">install-thesis-review.ps1</a><span>installer สำหรับ Windows PowerShell ที่ดาวน์โหลด zip และสร้างหรืออัปเดต workspace จาก template โดย safe update เป็นค่าเริ่มต้น</span></div>
         <div class="file-row"><a href="AGENTS.md">AGENTS.md</a><span>instruction สำหรับ workspace agents เมื่อนำ prompt pack ไปใช้กับ Codex / Claude Code / Antigravity</span></div>
         <div class="file-row"><a href="CLAUDE.md">CLAUDE.md</a><span>instruction คู่กันสำหรับ Claude Code</span></div>
         <div class="file-row"><a href="workspace_template/README.md">workspace_template/</a><span>โครง workspace พร้อม AGENTS.md, CLAUDE.md และ README ในแต่ละโฟลเดอร์สำหรับให้นิสิตวางไฟล์งาน</span></div>
         <div class="file-row"><a href="codex_skill/SKILL.md">codex_skill/SKILL.md</a><span>skill แบบย่อสำหรับ Codex หรือ agent ที่รองรับ skill เพื่อลดการ paste prompt ยาว</span></div>
+        <div class="file-row"><a href="codex_research_workflow_router_skill/SKILL.md">codex_research_workflow_router_skill/</a><span>router สำหรับเลือก focused skill ตามช่วงของ research lifecycle</span></div>
+        <div class="file-row"><a href="codex_overview_review_skill/SKILL.md">codex_overview_review_skill/</a><span>skill ภาพรวมสำหรับดูความพร้อมของงานและเลือกหัวข้อที่ควรตรวจต่อ</span></div>
+        <div class="file-row"><a href="codex_reference_bibtex_skill/SKILL.md">codex_reference_bibtex_skill/</a><span>skill แยกสำหรับตรวจ reference, สร้าง BibTeX, วิเคราะห์ reference set และตรวจ citation use</span></div>
+        <div class="file-row"><span>focused review skills</span><span>skill ย่อยสำหรับ title/abstract, proposal, RQ/hypothesis, introduction, literature review, SLR protocol, experiment design, data interpretation, manuscript revision, collaboration, LaTeX production และ venue/status prognosis</span></div>
         <div class="file-row"><a href="STUDENT_HANDOUT.md">STUDENT_HANDOUT.md</a><span>ข้อความสั้นสำหรับส่งให้นิสิต</span></div>
         <div class="file-row"><a href="LICENSE.md">LICENSE.md</a><span>เงื่อนไขการนำไปใช้และเผยแพร่ต่อ</span></div>
         <div class="file-row"><a href="VERSION.md">VERSION.md</a><span>เลขเวอร์ชันและสรุปการเปลี่ยนแปลง</span></div>
