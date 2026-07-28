@@ -56,6 +56,10 @@
     .button.secondary { background:#fff; color:var(--accent); }
     pre { margin:12px 0 0; padding:14px; overflow-x:auto; border-radius:8px; border:1px solid #cbd5e1; background:#f8fafc; color:var(--ink); font-size:13px; line-height:1.55; white-space:pre-wrap; }
     .shell-window { flex:1 1 auto; margin-top:12px; overflow:hidden; border:1px solid #1f2937; border-radius:8px; background:#0b1020; box-shadow:0 12px 28px rgba(15,23,42,.18); }
+    .command-copy-group { display:grid; gap:12px; margin-top:12px; }
+    .command-copy-group .prompt-head { align-items:stretch; }
+    .command-copy-title { margin:0; font-size:14px; font-weight:900; color:#241047; }
+    .command-copy-title + .prompt-head .shell-window { margin-top:6px; }
     .shell-bar { min-height:34px; display:flex; align-items:center; gap:7px; padding:0 12px; border-bottom:1px solid #263244; background:#111827; color:#cbd5e1; font-size:12px; font-weight:800; }
     .shell-dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
     .shell-dot.red { background:#f87171; }
@@ -167,6 +171,54 @@ PowerShell -ExecutionPolicy Bypass -File ".\install-thesis-review.ps1" -Project 
           <strong>อัปเดต workspace เดิมได้อย่างปลอดภัย</strong>
           <p>ถ้ารัน installer ซ้ำกับ workspace ที่มีอยู่แล้ว ค่าเริ่มต้นคือ safe update: เช็ค <code>VERSION.md</code> ล่าสุดจาก GitHub Pages, ไม่ทับไฟล์ workspace template ที่มีอยู่, backup <code>prompt_pack/</code> เดิมเป็น <code>prompt_pack_backup_&lt;timestamp&gt;</code>, แล้วติดตั้ง prompt pack รุ่นใหม่เข้า <code>prompt_pack/</code></p>
           <p>installer จะบันทึก <code>PROMPT_PACK_VERSION.md</code> และสร้าง <code>PROMPT_PACK_UPDATE_NOTES_&lt;timestamp&gt;.md</code> เพื่อให้ AI/ผู้ใช้เทียบแนวคิดใหม่ก่อนรับเข้า workspace ห้ามแทนที่ <code>AGENTS.md</code>, <code>CLAUDE.md</code>, review notes, instruction เดิม หรือสิ่งที่เคยใช้แล้วโดยอัตโนมัติ</p>
+          <div class="command-copy-group">
+            <div>
+              <p class="command-copy-title">รันซ้ำเพื่อ safe update ตามปกติ</p>
+              <div class="prompt-head">
+                <div class="shell-window" aria-label="Linux หรือ macOS safe update command">
+                  <div class="shell-bar"><span class="shell-dot red"></span><span class="shell-dot yellow"></span><span class="shell-dot green"></span><span>bash / zsh</span></div>
+                  <pre class="command-code" id="safe-update-linux-command">wget -O install-thesis-review.sh https://punpiti.github.io/thesis-review-prompt-pack/install-thesis-review.sh
+bash install-thesis-review.sh my_thesis_review</pre>
+                </div>
+                <div class="prompt-actions">
+                  <button class="icon-button copy-button" type="button" aria-label="คัดลอก command safe update Linux" data-copy-target="safe-update-linux-command">⧉</button>
+                </div>
+              </div>
+              <div class="prompt-head">
+                <div class="shell-window" aria-label="Windows PowerShell safe update command">
+                  <div class="shell-bar"><span class="shell-dot red"></span><span class="shell-dot yellow"></span><span class="shell-dot green"></span><span>PowerShell</span></div>
+                  <pre class="command-code" id="safe-update-windows-command">Invoke-WebRequest -Uri "https://punpiti.github.io/thesis-review-prompt-pack/install-thesis-review.ps1" -OutFile ".\install-thesis-review.ps1"
+PowerShell -ExecutionPolicy Bypass -File ".\install-thesis-review.ps1" -Project "my_thesis_review"</pre>
+                </div>
+                <div class="prompt-actions">
+                  <button class="icon-button copy-button" type="button" aria-label="คัดลอก command safe update Windows" data-copy-target="safe-update-windows-command">⧉</button>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="command-copy-title">กรณีตั้งใจ refresh template files หลัง backup แล้ว</p>
+              <div class="prompt-head">
+                <div class="shell-window" aria-label="Linux หรือ macOS overwrite update command">
+                  <div class="shell-bar"><span class="shell-dot red"></span><span class="shell-dot yellow"></span><span class="shell-dot green"></span><span>bash / zsh</span></div>
+                  <pre class="command-code" id="overwrite-update-linux-command">wget -O install-thesis-review.sh https://punpiti.github.io/thesis-review-prompt-pack/install-thesis-review.sh
+THESIS_REVIEW_INSTALL_MODE=overwrite bash install-thesis-review.sh my_thesis_review</pre>
+                </div>
+                <div class="prompt-actions">
+                  <button class="icon-button copy-button" type="button" aria-label="คัดลอก command overwrite Linux" data-copy-target="overwrite-update-linux-command">⧉</button>
+                </div>
+              </div>
+              <div class="prompt-head">
+                <div class="shell-window" aria-label="Windows PowerShell overwrite update command">
+                  <div class="shell-bar"><span class="shell-dot red"></span><span class="shell-dot yellow"></span><span class="shell-dot green"></span><span>PowerShell</span></div>
+                  <pre class="command-code" id="overwrite-update-windows-command">Invoke-WebRequest -Uri "https://punpiti.github.io/thesis-review-prompt-pack/install-thesis-review.ps1" -OutFile ".\install-thesis-review.ps1"
+PowerShell -ExecutionPolicy Bypass -File ".\install-thesis-review.ps1" -Project "my_thesis_review" -Mode "overwrite"</pre>
+                </div>
+                <div class="prompt-actions">
+                  <button class="icon-button copy-button" type="button" aria-label="คัดลอก command overwrite Windows" data-copy-target="overwrite-update-windows-command">⧉</button>
+                </div>
+              </div>
+            </div>
+          </div>
           <p>ถ้าต้องการ refresh template files จริง ๆ ให้ตั้ง <code>THESIS_REVIEW_INSTALL_MODE=overwrite</code> ก่อนรัน แต่ควรทำเฉพาะเมื่อ backup แล้ว</p>
         </div>
         <div class="instruction-panel">

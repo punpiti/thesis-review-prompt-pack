@@ -145,6 +145,34 @@ installer ทำแค่ดาวน์โหลดชุด prompt, แตก 
 
 ถ้าต้องการ refresh template files จริง ๆ ให้ตั้ง `THESIS_REVIEW_INSTALL_MODE=overwrite` แต่ควรทำเฉพาะเมื่อ backup แล้ว
 
+ตัวอย่างคำสั่งสำหรับอัปเดต workspace เดิมแบบ safe update:
+
+Linux / macOS:
+
+```bash
+wget -O install-thesis-review.sh https://punpiti.github.io/thesis-review-prompt-pack/install-thesis-review.sh
+bash install-thesis-review.sh my_thesis_review
+```
+
+Windows PowerShell:
+
+```powershell
+Invoke-WebRequest -Uri "https://punpiti.github.io/thesis-review-prompt-pack/install-thesis-review.ps1" -OutFile ".\install-thesis-review.ps1"
+PowerShell -ExecutionPolicy Bypass -File ".\install-thesis-review.ps1" -Project "my_thesis_review"
+```
+
+กรณีตั้งใจ refresh template files หลัง backup แล้ว:
+
+```bash
+wget -O install-thesis-review.sh https://punpiti.github.io/thesis-review-prompt-pack/install-thesis-review.sh
+THESIS_REVIEW_INSTALL_MODE=overwrite bash install-thesis-review.sh my_thesis_review
+```
+
+```powershell
+Invoke-WebRequest -Uri "https://punpiti.github.io/thesis-review-prompt-pack/install-thesis-review.ps1" -OutFile ".\install-thesis-review.ps1"
+PowerShell -ExecutionPolicy Bypass -File ".\install-thesis-review.ps1" -Project "my_thesis_review" -Mode "overwrite"
+```
+
 หลังอัปเดต workspace เดิม ให้เปิดใน Codex / Claude Code แล้วสั่ง:
 
 ```text
