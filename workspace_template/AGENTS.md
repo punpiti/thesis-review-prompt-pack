@@ -5,13 +5,22 @@ When the user says `ประเมิน`, review this workspace and create rev
 ## Prompt Pack Version / Update Safety
 
 If this workspace already has `prompt_pack/VERSION.md`, check it before
-adopting new workflow instructions. Do not overwrite thesis source files,
-`04_review_notes/`, `00_review_instructions/`, or user-edited `AGENTS.md` /
-`CLAUDE.md` without explicit instruction.
+adopting new workflow instructions. If internet access is available or the user
+asks to check for updates, compare it with the GitHub Pages version:
+
+- `https://punpiti.github.io/thesis-review-prompt-pack/VERSION.md`
+
+Do not overwrite thesis source files, `04_review_notes/`,
+`00_review_instructions/`, or user-edited `AGENTS.md` / `CLAUDE.md` without
+explicit instruction.
 
 When updating, prefer replacing only `prompt_pack/` after preserving the old one
-as `prompt_pack_backup_<timestamp>`. If new workflow instructions are useful,
-summarize the difference and ask before patching workspace-level instructions.
+as `prompt_pack_backup_<timestamp>`. Keep or create update notes such as
+`PROMPT_PACK_UPDATE_NOTES_<timestamp>.md`. If new workflow concepts, gates,
+skills, or safety rules are useful, summarize the difference and propose a small
+patch to workspace-level instructions instead of replacing them wholesale. Keep
+rules and workflows the user has already used unless the user explicitly decides
+to replace them.
 
 ## L1-L4 Review Model
 

@@ -1,12 +1,21 @@
 # Version
 
-Current version: `v1.4`
+Current version: `v1.5`
 
-Release label: Thesis Review Prompt Pack: Student Edition v1.4
+Release label: Thesis Review Prompt Pack: Student Edition v1.5
 
 ## Unreleased
 
-- No unreleased changes.
+No unreleased changes.
+
+## v1.5
+
+- Added GitHub Pages version checking to the Linux/macOS and Windows installers.
+- Installers now download and extract packages in isolated temporary directories, so first-time installation cannot overwrite a user's existing ZIP or `prompt_packs/` folder in the launch directory.
+- Installers now refuse a project path that collides with an existing non-directory file; an existing directory is handled as a safe workspace update.
+- Existing workspace updates now record local, remote, installed, and backup versions in `PROMPT_PACK_VERSION.md`.
+- Existing workspace updates now create `PROMPT_PACK_UPDATE_NOTES_<timestamp>.md` so new prompt-pack concepts can be reviewed and adopted manually without overwriting user-used workspace instructions.
+- Strengthened workspace-agent update guidance: compare against `https://punpiti.github.io/thesis-review-prompt-pack/VERSION.md`, replace only `prompt_pack/` by default, keep backups, and propose small patches for `AGENTS.md`/`CLAUDE.md` instead of replacing local rules.
 
 ## v1.4
 

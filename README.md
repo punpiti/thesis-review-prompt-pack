@@ -1,6 +1,6 @@
-# Thesis Review Prompt Pack: Student Edition v1.4
+# Thesis Review Prompt Pack: Student Edition v1.5
 
-Current version: `v1.4`
+Current version: `v1.5`
 
 ชุด prompt นี้ทำไว้สำหรับให้นิสิตใช้ตรวจวิทยานิพนธ์ บทความจากวิทยานิพนธ์ หรือ manuscript ของตนเองและของเพื่อนอย่างเป็นระบบ ก่อนส่งให้อาจารย์หรือกรรมการตรวจรอบถัดไป
 
@@ -129,13 +129,18 @@ Invoke-WebRequest -Uri "https://punpiti.github.io/thesis-review-prompt-pack/inst
 PowerShell -ExecutionPolicy Bypass -File ".\install-thesis-review.ps1" -Project "my_thesis_review"
 ```
 
-installer ทำแค่ดาวน์โหลดชุด prompt, แตก zip, และสร้าง workspace จาก template เท่านั้น หลังจากนั้นนิสิตยังต้องวางไฟล์เอง อ่าน review notes เอง และคิด prompt ต่อเองจากปัญหาที่พบ
+installer ทำแค่ดาวน์โหลดชุด prompt, แตก zip, และสร้าง workspace จาก template เท่านั้น หลังจากนั้นนิสิตยังต้องวางไฟล์เอง อ่าน review notes เอง และคิด prompt ต่อเองจากปัญหาที่พบ การดาวน์โหลดและแตก ZIP จะทำใน temporary directory จึงไม่ทับไฟล์ `thesis_review_student_edition.zip` หรือโฟลเดอร์ `prompt_packs/` ที่ผู้ใช้อาจมีอยู่แล้วในโฟลเดอร์ที่รัน installer
+
+ในการติดตั้งครั้งแรก ถ้าชื่อ project ชนกับไฟล์ธรรมดาที่มีอยู่ installer จะหยุดและแจ้งข้อผิดพลาด ถ้าชนกับโฟลเดอร์เดิม จะถือว่าเป็น existing workspace และใช้ safe update โดยไม่ทับไฟล์เดิม
 
 ถ้ารัน installer ทับ workspace เดิม รุ่นใหม่จะใช้ safe update เป็นค่าเริ่มต้น:
 
+- เช็ค `VERSION.md` ล่าสุดจาก GitHub Pages ที่ <https://punpiti.github.io/thesis-review-prompt-pack/VERSION.md>
 - ไม่ทับไฟล์ workspace template ที่มีอยู่แล้ว
 - backup `prompt_pack/` เดิมเป็น `prompt_pack_backup_<timestamp>`
 - ติดตั้ง prompt pack รุ่นใหม่ใน `prompt_pack/`
+- บันทึก local/remote/installed version ลง `PROMPT_PACK_VERSION.md`
+- สร้าง `PROMPT_PACK_UPDATE_NOTES_<timestamp>.md` เพื่อให้ AI/ผู้ใช้เทียบแนวคิดใหม่ก่อนรับเข้า workspace
 - ไม่ควรทับ thesis source, review notes หรือ instruction ที่มีงานค้าง
 
 ถ้าต้องการ refresh template files จริง ๆ ให้ตั้ง `THESIS_REVIEW_INSTALL_MODE=overwrite` แต่ควรทำเฉพาะเมื่อ backup แล้ว
@@ -143,8 +148,10 @@ installer ทำแค่ดาวน์โหลดชุด prompt, แตก 
 หลังอัปเดต workspace เดิม ให้เปิดใน Codex / Claude Code แล้วสั่ง:
 
 ```text
-เช็คเวอร์ชัน prompt_pack ว่าควรอัปเดต workflow หรือ AGENTS/CLAUDE ใน workspace ไหม โดยห้ามทับ review notes หรือไฟล์ thesis
+เช็คเวอร์ชัน prompt_pack กับ GitHub Pages และสรุปแนวคิดใหม่ที่ควรรับเข้ามา โดยห้ามทับ review notes, instruction เดิม, หรือสิ่งที่ user เคยใช้แล้ว
 ```
+
+หลักการคือรับ “แนวคิดใหม่” จาก prompt pack รุ่นล่าสุดเป็นข้อเสนอ patch เท่านั้น เช่น gate ใหม่, skill ใหม่, หรือข้อควรระวังใหม่ ไม่ใช่การแทนที่ `AGENTS.md`, `CLAUDE.md`, `00_review_instructions/`, หรือ workflow ที่ workspace นั้นใช้งานไปแล้วแบบอัตโนมัติ
 
 จากนั้นให้ใส่ไฟล์รวมทั้งหมดใน `my_thesis_review/00_inbox/` แล้วสั่ง `init workspace จากไฟล์รวม`
 

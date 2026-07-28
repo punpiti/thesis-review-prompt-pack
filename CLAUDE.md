@@ -96,22 +96,33 @@ Use only the latest thesis/manuscript version unless the user asks to compare ve
 ## Prompt Pack Version / Update Safety
 
 When opening an existing workspace, check `prompt_pack/VERSION.md` if present.
-If the installed prompt pack is older than the current package, do not blindly
-overwrite workspace files. Treat the workspace as student work:
+If internet access is available or the user asks to check for updates, compare
+the local version against the GitHub Pages version at:
+
+- `https://punpiti.github.io/thesis-review-prompt-pack/VERSION.md`
+
+If the GitHub Pages version is newer, update by downloading/running the current
+installer or current zip, but do not blindly overwrite workspace files. Treat
+the workspace as student work:
 
 - never overwrite thesis/manuscript files, `04_review_notes/`, `00_review_instructions/`, or user-edited `AGENTS.md`/`CLAUDE.md` without explicit instruction;
 - prefer updating or replacing only `prompt_pack/`;
 - preserve any old `prompt_pack` as `prompt_pack_backup_<timestamp>`;
-- summarize version differences and recommend whether an update is useful;
-- if workflow instructions changed, propose a small manual patch or ask before
-  refreshing workspace `AGENTS.md`/`CLAUDE.md`.
+- create or keep update notes such as `PROMPT_PACK_UPDATE_NOTES_<timestamp>.md`;
+- summarize version differences from `prompt_pack/VERSION.md` and the backup
+  version, especially new review concepts, gates, skills, or safety rules;
+- propose a small manual patch for workspace `AGENTS.md`/`CLAUDE.md` only if new
+  concepts are useful for that workspace;
+- keep rules and workflows the user has already used unless the user explicitly
+  decides to replace them.
 
 Use this prompt when needed:
 
 ```text
-เช็คเวอร์ชัน prompt_pack/VERSION.md เทียบกับ workspace instructions ปัจจุบัน
-บอกว่าควรอัปเดต workflow ไหม
-ห้ามทับ thesis source, review notes, หรือไฟล์ instruction ที่มีงานค้างโดยไม่ถามก่อน
+เช็คเวอร์ชัน prompt_pack กับ GitHub Pages
+ถ้ามีเวอร์ชันใหม่ ให้ update prompt_pack แบบ backup ก่อน
+สรุปแนวคิดใหม่ที่ควรรับเข้ามาเป็นข้อเสนอ patch เท่านั้น
+ห้ามทับ thesis source, review notes, 00_review_instructions, AGENTS/CLAUDE เดิม หรือสิ่งที่ user เคยใช้แล้วโดยไม่ถามก่อน
 ```
 
 ## Init Workspace From Inbox

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Workspace AI Guide | Thesis Review Prompt Pack v1.4</title>
+  <title>Workspace AI Guide | Thesis Review Prompt Pack v1.5</title>
   <style>
     :root { --bg:#f7f8fb; --ink:#1f2933; --muted:#5b6776; --line:#d9dee7; --panel:#fff; --accent:#7c3aed; --danger:#b42318; --radius:8px; font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
     * { box-sizing:border-box; }
@@ -101,7 +101,8 @@ PowerShell -ExecutionPolicy Bypass -File ".\install-thesis-review.ps1" -Project 
       <p class="small-note">These scripts only download the prompt pack, extract it, and create or update the workspace from the template. Students still place their own files and use review notes to think through the work.</p>
       <div class="info-panel">
         <strong>Safe updates for existing workspaces</strong>
-        <p>If you run the installer again on an existing workspace, the default mode is safe update: existing workspace template files are not overwritten, the old <code>prompt_pack/</code> is backed up as <code>prompt_pack_backup_&lt;timestamp&gt;</code>, and the new prompt pack is installed into <code>prompt_pack/</code>.</p>
+        <p>If you run the installer again on an existing workspace, the default mode is safe update: the installer checks the latest <code>VERSION.md</code> on GitHub Pages, existing workspace template files are not overwritten, the old <code>prompt_pack/</code> is backed up as <code>prompt_pack_backup_&lt;timestamp&gt;</code>, and the new prompt pack is installed into <code>prompt_pack/</code>.</p>
+        <p>The installer records <code>PROMPT_PACK_VERSION.md</code> and creates <code>PROMPT_PACK_UPDATE_NOTES_&lt;timestamp&gt;.md</code> so the AI/user can review new concepts before adopting them. Do not automatically replace <code>AGENTS.md</code>, <code>CLAUDE.md</code>, review notes, instruction files, or workflows the user has already used.</p>
         <p>Set <code>THESIS_REVIEW_INSTALL_MODE=overwrite</code> only when you intentionally want to refresh template files and already have a backup.</p>
       </div>
       <p>Put all mixed input files in <code>my_thesis_review/00_inbox/</code>: thesis drafts, LaTeX, Word, PDF, BibTeX, reference PDFs, figures, tables, results, scripts, logs, metrics, and baselines.</p>
