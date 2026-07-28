@@ -92,6 +92,7 @@ Set-Location (Join-Path $StagingDirectory "extracted\prompt_packs\thesis_review_
 
 $Workspace = Join-Path $InstallRoot $Project
 $WorkspaceExists = Test-Path $Workspace
+$HadPromptPack = Test-Path (Join-Path $Workspace "prompt_pack") -PathType Container
 New-Item -ItemType Directory -Force -Path $Workspace | Out-Null
 
 if ($WorkspaceExists -and $Mode -ne "overwrite") {
@@ -117,10 +118,12 @@ $Timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
 $PromptPackPath = Join-Path $Workspace "prompt_pack"
 $Backup = ""
 $UpdateNote = ""
-if (Test-Path $PromptPackPath) {
+if ($HadPromptPack) {
   $Backup = Join-Path $Workspace "prompt_pack_backup_$Timestamp"
   Move-Item -Path $PromptPackPath -Destination $Backup
   Write-Host "Backed up existing prompt_pack to: $Backup"
+} elseif (Test-Path $PromptPackPath) {
+  Remove-Item $PromptPackPath -Recurse -Force
 }
 
 New-Item -ItemType Directory -Force -Path (Join-Path $Workspace "prompt_pack") | Out-Null

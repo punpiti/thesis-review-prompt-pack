@@ -103,8 +103,12 @@ cd "$staging_dir/extracted/prompt_packs/thesis_review_student_edition"
 
 workspace="$install_root/$project"
 workspace_exists=0
+had_prompt_pack=0
 if [[ -d "$workspace" ]]; then
   workspace_exists=1
+fi
+if [[ -d "$workspace/prompt_pack" ]]; then
+  had_prompt_pack=1
 fi
 
 mkdir -p "$workspace"
@@ -130,10 +134,12 @@ else
   cp -R workspace_template/. "$workspace/"
 fi
 
-if [[ -d "$workspace/prompt_pack" ]]; then
+if [[ "$had_prompt_pack" -eq 1 ]]; then
   backup="$workspace/prompt_pack_backup_$timestamp"
   mv "$workspace/prompt_pack" "$backup"
   echo "Backed up existing prompt_pack to: $backup"
+elif [[ -d "$workspace/prompt_pack" ]]; then
+  rm -rf "$workspace/prompt_pack"
 fi
 
 mkdir -p "$workspace/prompt_pack"
