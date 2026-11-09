@@ -257,39 +257,14 @@ Codex, Claude Code, and similar workspace agents should follow the same conventi
 If the reference gate cannot be completed, mark the review state as `partial` and list the missing PDFs, official pages, or manuscript citation data needed for the next pass.
 
 <!-- BEGIN COMPUTING-ENVIRONMENT -->
+This project uses Agent Project Kit. On each request:
 
-## Computing Environment Rules
+1. Read `.ai/PROJECT_STATE.md` and `.ai/agent-project-kit/STARTUP.md`.
+2. Classify the task and load only the routed prompt/state files.
+3. If the task is clear, proceed; ask one outcome question only when materially ambiguous.
 
-Self-hosting guard: if this project is the Agent Project Kit source repository
-itself, including the legacy `computing-environment` folder, use root-level
-governance files as canonical and treat `.ai/computing-environment/` as a
-packaged downstream snapshot. Do not recurse into another Agent Project Kit /
-`computing-environment` layer unless explicitly requested.
-
-If project-local `.ai/` governance files exist, read the relevant files before
-working on this project:
-
-- `.ai/computing-environment/START_HERE.md`
-- `.ai/computing-environment/SPEC_EVAL_LOOP_INSTRUCTION.md`
-- `.ai/computing-environment/AGENTS.md`
-- `.ai/computing-environment/MACHINE_PROFILES.md`
-- `.ai/computing-environment/TOKEN_DISCIPLINE.md`
-- `.ai/computing-environment/DOCUMENT_PRODUCTION_POLICY.md`
-- `.ai/computing-environment/MARKDOWN_ORGANIZATION_POLICY.md`
-- `.ai/computing-environment/ENVIRONMENT_POLICY.md`
-- `.ai/computing-environment/MARKDOWN_ORGANIZATION_POLICY.md`
-- `.ai/PROJECT_STATE.md`
-- `.ai/PROJECT_HIERARCHY.md`
-- `.ai/MACHINE_PROFILE.md`
-- `.ai/LOCAL_RESOURCES.md`
-- `.ai/MACHINE_COMPATIBILITY.md`
-- `.ai/RUNBOOK.md`
-- `.ai/TOKEN_BUDGET.md`
-
-Use Spec–Eval–Loop Workflow when `.ai/` governance is present. Record machine
-identity/storage assumptions in `.ai/MACHINE_PROFILE.md`, record non-portable
-local resources, and keep AI Markdown in the `.ai/` pipeline only when those
-files/folders exist in the current workspace.
-Do not pretend L2/L3 or non-portable resources are solved by L1 alone.
-
+Do not scan the managed snapshot or rerun onboarding, machine discovery, update
+checks, or repository scans merely because a new session started. Follow the
+cadence and `run-once.py` guidance in `STARTUP.md`. Keep L1 execution distinct
+from L2 human judgment and L3 external evidence.
 <!-- END COMPUTING-ENVIRONMENT -->
